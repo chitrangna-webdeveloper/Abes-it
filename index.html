@@ -1,589 +1,869 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Harsh ke liye ✨</title>
+<title>CodeVault — Resources that actually slap</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Baloo+2:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
+  /* ============ TOKENS ============ */
   :root{
-    --sky-deep:#161232;
-    --sky-mid:#231a4d;
-    --gold:#f5b841;
-    --coral:#ff7a68;
-    --teal:#4fc0b8;
-    --cream:#f7f1e6;
-    --line-dim:rgba(245,184,65,0.22);
+    --bg:#0F1115;
+    --surface:#171A21;
+    --surface-2:#1E222B;
+    --ink:#F5F3EE;
+    --ink-dim:#9CA0AC;
+    --pink:#FF5D8F;
+    --yellow:#FFD23F;
+    --mint:#5DD8C4;
+    --lavender:#B892FF;
+    --line: rgba(245,243,238,0.10);
+    --font-display:'Space Grotesk', sans-serif;
+    --font-body:'Inter', sans-serif;
+    --font-mono:'JetBrains Mono', monospace;
   }
 
-  *{box-sizing:border-box;}
-
-  html,body{
-    margin:0;
-    padding:0;
-    width:100%;
-    min-height:100%;
-    background:radial-gradient(ellipse at 50% -10%, var(--sky-mid), var(--sky-deep) 60%);
-    color:var(--cream);
-    font-family:'Baloo 2', sans-serif;
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--font-body);
+    line-height:1.5;
     overflow-x:hidden;
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(245,243,238,0.045) 1px, transparent 0);
+    background-size: 26px 26px;
   }
-
-  h1,h2,h3,.display{
-    font-family:'Fredoka', sans-serif;
-  }
-
-  #stars-bg{
-    position:fixed;
-    inset:0;
-    z-index:0;
-    pointer-events:none;
-  }
-  #stars-bg span{
-    position:absolute;
-    width:2px;
-    height:2px;
-    background:var(--cream);
-    border-radius:50%;
-    opacity:0.4;
-    animation:twinkle 3.5s ease-in-out infinite;
-  }
-  @keyframes twinkle{
-    0%,100%{opacity:0.15; transform:scale(1);}
-    50%{opacity:0.9; transform:scale(1.6);}
-  }
-
-  .wrap{
-    position:relative;
-    z-index:1;
-    max-width:880px;
-    margin:0 auto;
-    padding:56px 20px 100px;
-    text-align:center;
-  }
+  a{ color:inherit; text-decoration:none; }
+  ul{ list-style:none; }
+  img{ max-width:100%; display:block; }
+  section{ padding: 90px 8vw; position:relative; }
+  h1,h2,h3{ font-family:var(--font-display); }
+  :focus-visible{ outline:3px solid var(--yellow); outline-offset:3px; }
 
   .eyebrow{
-    letter-spacing:0.3em;
+    font-family:var(--font-mono);
+    font-size:0.8rem;
+    letter-spacing:0.08em;
     text-transform:uppercase;
-    font-size:12px;
-    color:var(--teal);
-    font-weight:600;
+    color:var(--ink-dim);
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
     margin-bottom:14px;
   }
+  .eyebrow::before{ content:"//"; color:var(--pink); }
 
-  h1.title{
-    font-size:clamp(32px, 6vw, 56px);
-    font-weight:700;
-    margin:0 0 10px;
-    line-height:1.15;
-    background:linear-gradient(90deg, var(--gold), var(--coral));
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
-  }
+  .section-head{ max-width:640px; margin-bottom:48px; }
+  .section-head h2{ font-size:clamp(1.8rem, 3vw, 2.6rem); font-weight:700; margin-bottom:12px; }
+  .section-head p{ color:var(--ink-dim); font-size:1.05rem; }
 
-  .subtitle{
-    font-size:clamp(15px,2.4vw,18px);
-    color:rgba(247,241,230,0.75);
-    max-width:520px;
-    margin:0 auto 8px;
-    line-height:1.6;
+  /* ============ NAV (editor tab bar vibe) ============ */
+  .nav-wrap{
+    position:sticky; top:0; z-index:100;
+    padding: 18px 8vw;
+    background:rgba(15,17,21,0.82);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid var(--line);
+    display:flex; align-items:center; justify-content:space-between;
   }
+  .nav-brand{ display:flex; align-items:center; gap:10px; font-family:var(--font-display); font-weight:700; font-size:1.15rem; }
+  .nav-brand .dots{ display:flex; gap:5px; }
+  .nav-brand .dots span{ width:9px; height:9px; border-radius:50%; display:inline-block; }
+  .nav-brand .dots span:nth-child(1){ background:var(--pink); }
+  .nav-brand .dots span:nth-child(2){ background:var(--yellow); }
+  .nav-brand .dots span:nth-child(3){ background:var(--mint); }
 
-  .hint{
-    margin-top:6px;
-    font-size:14px;
-    color:var(--gold);
-    opacity:0.85;
-    font-weight:500;
+  .nav-toggle-checkbox{ display:none; }
+  .nav-toggle-label{
+    display:none; font-size:1.5rem; cursor:pointer; user-select:none;
+    background:none; border:none; color:var(--ink);
   }
+  .nav-links{ display:flex; gap:32px; font-size:0.95rem; font-weight:500; }
+  .nav-links a{ position:relative; padding:6px 0; color:var(--ink-dim); transition: color .25s; }
+  .nav-links a:hover{ color:var(--ink); }
+  .nav-links a::after{
+    content:""; position:absolute; left:0; bottom:0; width:0; height:2px;
+    background:var(--pink); transition: width .3s;
+  }
+  .nav-links a:hover::after{ width:100%; }
 
-  .progress-row{
-    display:flex;
-    justify-content:center;
-    gap:8px;
-    margin:22px 0 8px;
+  /* ============ HERO ============ */
+  .hero{
+    padding-top: 90px; padding-bottom: 60px;
+    display:grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items:center;
+    min-height: 78vh;
   }
-  .progress-dot{
-    width:8px;height:8px;border-radius:50%;
-    background:rgba(245,241,230,0.2);
-    transition:all .3s ease;
+  .hero-copy .eyebrow{ margin-bottom:20px; }
+  .hero h1{
+    font-size: clamp(2.4rem, 5.2vw, 4.2rem);
+    line-height:1.05; font-weight:700; letter-spacing:-0.02em;
   }
-  .progress-dot.lit{
-    background:var(--gold);
-    box-shadow:0 0 8px var(--gold);
+  .typed{
+    display:inline-block; overflow:hidden; white-space:nowrap;
+    border-right: 4px solid var(--pink);
+    width:0; max-width:100%;
+    animation: typing 2.6s steps(28,end) 0.3s forwards, blink 0.75s step-end infinite;
+    vertical-align:bottom;
   }
+  @keyframes typing{ from{width:0} to{width:100%} }
+  @keyframes blink{ 50%{ border-color:transparent } }
 
-  /* Constellation */
-  .constellation-holder{
-    position:relative;
-    width:100%;
-    max-width:520px;
-    margin:30px auto 10px;
-    aspect-ratio:1/1;
+  .hero-copy p.lede{
+    margin-top:22px; font-size:1.15rem; color:var(--ink-dim); max-width:520px;
   }
+  .hero-ctas{ display:flex; gap:16px; margin-top:34px; flex-wrap:wrap; }
+  .btn{
+    font-family:var(--font-mono); font-weight:500; font-size:0.95rem;
+    padding:14px 26px; border-radius:6px; border:1px solid transparent;
+    display:inline-flex; align-items:center; gap:8px; cursor:pointer;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .btn:hover{ transform:translateY(-3px); }
+  .btn-solid{ background:var(--pink); color:#191114; }
+  .btn-solid:hover{ box-shadow:0 10px 26px -8px rgba(255,93,143,0.55); }
+  .btn-ghost{ border-color:var(--line); color:var(--ink); }
+  .btn-ghost:hover{ border-color:var(--lavender); box-shadow:0 10px 26px -10px rgba(184,146,255,0.4); }
 
-  svg.lines{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
+  .hero-stickers{ position:relative; height:100%; min-height:340px; }
+  .sticker{
+    position:absolute; font-family:var(--font-mono); font-size:0.85rem;
+    background:var(--surface-2); border:1px solid var(--line);
+    padding:10px 16px; border-radius:8px; box-shadow:0 12px 30px -12px rgba(0,0,0,0.6);
+    animation: float 6s ease-in-out infinite;
   }
-  svg.lines path{
-    fill:none;
-    stroke:var(--gold);
-    stroke-width:1.6;
-    stroke-linecap:round;
-    stroke-dasharray:400;
-    stroke-dashoffset:400;
-    opacity:0;
-    filter:drop-shadow(0 0 4px rgba(245,184,65,0.6));
-    transition:opacity .4s ease;
-  }
-  svg.lines path.drawn{
-    opacity:1;
-    animation:drawline 1s ease forwards;
-  }
-  @keyframes drawline{
-    to{stroke-dashoffset:0;}
-  }
+  .sticker--1{ top:6%; left:10%; color:var(--yellow); rotate:-6deg; animation-delay:0s;}
+  .sticker--2{ top:34%; left:48%; color:var(--mint); rotate:4deg; animation-delay:1.2s;}
+  .sticker--3{ top:60%; left:6%; color:var(--pink); rotate:-3deg; animation-delay:2.1s;}
+  .sticker--4{ top:78%; left:52%; color:var(--lavender); rotate:5deg; animation-delay:0.6s;}
+  @keyframes float{ 0%,100%{ transform:translateY(0px);} 50%{ transform:translateY(-14px);} }
 
-  .star-btn{
-    position:absolute;
-    width:46px;
-    height:46px;
-    transform:translate(-50%,-50%);
-    background:transparent;
-    border:none;
-    cursor:pointer;
-    padding:0;
-    -webkit-tap-highlight-color: transparent;
+  /* ============ TICKER ============ */
+  .ticker{
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    background:var(--surface); overflow:hidden; padding:16px 0;
   }
-  .star-btn .glow{
-    position:absolute;
-    inset:0;
-    border-radius:50%;
-    background:radial-gradient(circle, rgba(245,184,65,0.35), transparent 70%);
-    opacity:0;
-    transition:opacity .4s ease;
-  }
-  .star-btn.lit .glow{opacity:1;}
-
-  .star-btn svg{
-    width:100%;
-    height:100%;
-    position:relative;
-    z-index:2;
-  }
-  .star-btn svg polygon{
-    fill:rgba(247,241,230,0.35);
-    stroke:rgba(247,241,230,0.5);
-    stroke-width:1;
-    transition:fill .3s ease, stroke .3s ease, transform .3s ease;
-    transform-origin:center;
-  }
-  .star-btn:hover svg polygon{
-    transform:scale(1.15);
-  }
-  .star-btn.lit svg polygon{
-    fill:var(--gold);
-    stroke:var(--gold);
-    animation:pulse 1.8s ease-in-out infinite;
-  }
-  @keyframes pulse{
-    0%,100%{filter:drop-shadow(0 0 2px var(--gold));}
-    50%{filter:drop-shadow(0 0 10px var(--gold));}
-  }
-
-  .star-label{
-    position:absolute;
-    top:56px;
-    left:50%;
-    transform:translateX(-50%);
-    font-size:11px;
+  .ticker-track{
+    display:flex; width:max-content; gap:48px;
+    animation: scrollTicker 28s linear infinite;
+    font-family:var(--font-mono); font-size:0.95rem; color:var(--ink-dim);
     white-space:nowrap;
-    color:rgba(247,241,230,0.55);
-    font-weight:500;
-    pointer-events:none;
   }
+  .ticker-track span{ display:flex; align-items:center; gap:10px; }
+  @keyframes scrollTicker{ from{ transform:translateX(0);} to{ transform:translateX(-50%);} }
 
-  /* Message bubble */
-  .message-bubble{
-    position:fixed;
-    left:50%;
-    bottom:36px;
-    transform:translateX(-50%) translateY(20px);
-    max-width:88vw;
-    width:380px;
-    background:rgba(35,26,77,0.95);
-    border:1px solid rgba(245,184,65,0.3);
-    border-radius:16px;
-    padding:18px 20px;
-    box-shadow:0 12px 40px rgba(0,0,0,0.4);
-    opacity:0;
-    pointer-events:none;
-    transition:all .35s cubic-bezier(.2,.8,.2,1);
-    z-index:10;
-    text-align:left;
+  /* ============ REVEAL (progressive scroll animation) ============ */
+  .reveal{
+    animation: fadeUp 1s cubic-bezier(.2,.7,.2,1) both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 35%;
   }
-  .message-bubble.show{
-    opacity:1;
-    transform:translateX(-50%) translateY(0);
-  }
-  .message-bubble .tag{
-    font-size:11px;
-    color:var(--teal);
-    text-transform:uppercase;
-    letter-spacing:0.15em;
-    font-weight:600;
-    margin-bottom:6px;
-  }
-  .message-bubble p{
-    margin:0;
-    font-size:15.5px;
-    line-height:1.55;
-    color:var(--cream);
-  }
+  @keyframes fadeUp{ from{ opacity:0; transform:translateY(36px);} to{ opacity:1; transform:translateY(0);} }
 
-  /* Finale */
-  .finale{
-    position:fixed;
-    inset:0;
-    z-index:30;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:24px;
-    background:radial-gradient(ellipse at 50% 30%, rgba(255,122,104,0.15), rgba(22,18,50,0.97) 65%);
-    opacity:0;
-    pointer-events:none;
-    transition:opacity .6s ease;
+  /* ============ RESOURCE GRID (corkboard notes) ============ */
+  .board{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+    gap:28px;
   }
-  .finale.show{
-    opacity:1;
-    pointer-events:auto;
+  .note{
+    background:var(--surface); border:1px solid var(--line); border-radius:4px;
+    padding:26px 24px 24px; position:relative;
+    transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+    transform: rotate(var(--tilt, -1.5deg));
   }
-  .finale-card{
-    max-width:520px;
-    text-align:center;
-    transform:scale(0.9);
-    transition:transform .6s cubic-bezier(.2,.8,.2,1);
+  .note:nth-child(2n){ --tilt:1.5deg; }
+  .note:nth-child(3n){ --tilt:-0.8deg; }
+  .note::before{
+    content:""; position:absolute; top:-9px; left:24px; width:16px; height:16px;
+    border-radius:50%; background: var(--accent, var(--pink));
+    box-shadow:0 4px 8px rgba(0,0,0,0.4);
   }
-  .finale.show .finale-card{
-    transform:scale(1);
+  .note:hover{
+    transform: rotate(0deg) translateY(-8px);
+    box-shadow: 0 22px 40px -18px rgba(0,0,0,0.55);
+    border-color: var(--accent, var(--pink));
   }
-  .finale-card .big-heart{
-    font-size:46px;
-    margin-bottom:6px;
-    display:inline-block;
-    animation:beat 1.4s ease-in-out infinite;
+  .note .tag{
+    font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.05em;
+    color: var(--accent, var(--pink)); text-transform:uppercase; margin-bottom:10px; display:block;
   }
-  @keyframes beat{
-    0%,100%{transform:scale(1);}
-    50%{transform:scale(1.15);}
+  .note h3{ font-size:1.2rem; margin-bottom:10px; }
+  .note p{ color:var(--ink-dim); font-size:0.92rem; margin-bottom:18px; }
+  .note a.open{
+    font-family:var(--font-mono); font-size:0.85rem; color:var(--ink);
+    display:inline-flex; align-items:center; gap:6px;
+    border-bottom:1px solid var(--accent, var(--pink));
+    padding-bottom:2px; transition: gap .2s;
   }
-  .finale-card h2{
-    font-size:clamp(26px,5vw,38px);
-    margin:8px 0 16px;
-    color:var(--gold);
-  }
-  .finale-card p{
-    font-size:16.5px;
-    line-height:1.75;
-    color:rgba(247,241,230,0.9);
-    margin:0 0 10px;
-  }
-  .finale-card .sign{
-    margin-top:20px;
-    font-size:14px;
-    color:var(--teal);
-    letter-spacing:0.08em;
-  }
-  .close-finale{
-    margin-top:26px;
-    background:none;
-    border:1px solid rgba(245,184,65,0.4);
-    color:var(--gold);
-    padding:10px 22px;
-    border-radius:30px;
-    font-family:'Baloo 2', sans-serif;
-    font-size:14px;
-    cursor:pointer;
-    transition:all .25s ease;
-  }
-  .close-finale:hover{
-    background:rgba(245,184,65,0.12);
-  }
+  .note a.open:hover{ gap:11px; }
 
-  canvas#confetti{
-    position:fixed;
-    inset:0;
-    z-index:31;
-    pointer-events:none;
-  }
+  #webdev .note{ --accent: var(--pink); }
+  #python .note{ --accent: var(--yellow); }
+  #java .note{ --accent: var(--mint); }
+  #claude .note{ --accent: var(--lavender); }
 
-  footer{
+  /* ============ CHEAT SHEET / NOTES ============ */
+  .cheat-grid{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:24px;
+  }
+  .cheat-card{
+    background:var(--surface-2); border:1px solid var(--line); border-radius:8px; overflow:hidden;
+  }
+  .cheat-card .cheat-head{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 18px; border-bottom:1px solid var(--line);
+    font-family:var(--font-mono); font-size:0.82rem; color:var(--ink-dim);
+  }
+  .cheat-card pre{
+    padding:18px; font-family:var(--font-mono); font-size:0.85rem; color:var(--mint);
+    overflow-x:auto; line-height:1.6;
+  }
+  .cheat-card .cheat-head .lang-dot{ width:8px; height:8px; border-radius:50%; background:var(--pink); margin-right:8px; display:inline-block; }
+
+  /* ============ MINI GAME: SQUASH THE BUGS ============ */
+  .bug-game{
     position:relative;
-    z-index:1;
-    text-align:center;
-    padding-bottom:30px;
-    font-size:12px;
-    color:rgba(247,241,230,0.35);
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(90px,1fr));
+    gap:22px; background:var(--surface); border:1px solid var(--line);
+    border-radius:14px; padding:44px 36px;
+  }
+  .bug{ display:flex; justify-content:center; }
+  .bug-checkbox{ position:absolute; opacity:0; width:0; height:0; }
+  .bug-label{
+    width:74px; height:74px; border-radius:50%; cursor:pointer;
+    background:var(--surface-2); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    font-size:2rem; position:relative; overflow:hidden;
+    transition: transform .25s ease, background .25s ease, border-color .25s ease;
+  }
+  .bug-label:hover{ transform:scale(1.08) rotate(-4deg); border-color:var(--pink); }
+  .bug-icon{ transition: opacity .25s ease, transform .4s ease; }
+  .bug-squashed{
+    display:none; position:absolute; inset:0; align-items:center; justify-content:center;
+  }
+  .bug-checkbox:checked ~ .bug-label{
+    background:rgba(255,93,143,0.14); border-color:var(--pink); cursor:default;
+    transform:scale(0.94);
+  }
+  .bug-checkbox:checked ~ .bug-label:hover{ transform:scale(0.94); }
+  .bug-checkbox:checked ~ .bug-label .bug-icon{ opacity:0; transform:scale(0) rotate(90deg); }
+  .bug-checkbox:checked ~ .bug-label .bug-squashed{ display:flex; animation:splat .35s ease; }
+  @keyframes splat{ from{ transform:scale(0) rotate(-20deg); opacity:0;} to{ transform:scale(1) rotate(0); opacity:1;} }
+
+  .bug-win{
+    grid-column:1/-1; display:none; text-align:center; padding:22px;
+    border-radius:10px; border:1px solid var(--mint); color:var(--mint);
+    background:rgba(93,216,196,0.10); font-family:var(--font-mono); font-size:0.95rem;
+    animation: fadeUp .5s ease;
+  }
+  .bug-game:has(#bug1:checked):has(#bug2:checked):has(#bug3:checked):has(#bug4:checked):has(#bug5:checked):has(#bug6:checked):has(#bug7:checked):has(#bug8:checked) .bug-win{
+    display:block;
+  }
+  .bug-hint{
+    grid-column:1/-1; text-align:center; font-family:var(--font-mono);
+    font-size:0.82rem; color:var(--ink-dim);
+  }
+  .bug-game:has(#bug1:checked):has(#bug2:checked):has(#bug3:checked):has(#bug4:checked):has(#bug5:checked):has(#bug6:checked):has(#bug7:checked):has(#bug8:checked) .bug-hint{
+    display:none;
+  }
+
+  /* ============ MINI GAME 2: BEAT THE DEADLINE (single player) ============ */
+  .dl-game{
+    display:flex; flex-direction:column; align-items:center; gap:24px;
+    background:var(--surface); border:1px solid var(--line); border-radius:14px;
+    padding:44px 32px;
+  }
+  .dl-choices{ display:flex; gap:16px; }
+  .dl-radio{ position:absolute; opacity:0; width:0; height:0; }
+  .dl-choice{
+    width:84px; height:96px; border-radius:12px; background:var(--surface-2);
+    border:1px solid var(--line); display:flex; flex-direction:column; align-items:center;
+    justify-content:center; gap:8px; font-size:2rem; cursor:pointer;
+    transition: transform .25s ease, border-color .25s ease, background .25s ease;
+  }
+  .dl-choice span{ font-family:var(--font-mono); font-size:0.68rem; color:var(--ink-dim); }
+  .dl-choice:hover{ transform:translateY(-5px); border-color:var(--lavender); }
+  .dl-radio:checked + .dl-choice{
+    border-color:var(--pink); background:rgba(255,93,143,0.14); transform:translateY(-3px);
+  }
+  .dl-hint{ font-family:var(--font-mono); font-size:0.85rem; color:var(--ink-dim); text-align:center; }
+  .dl-radio:checked ~ .dl-hint{ display:none; }
+  .dl-result{
+    display:none; text-align:center; padding:20px 26px; border-radius:10px;
+    border:1px solid var(--line); font-family:var(--font-mono); font-size:0.92rem;
+    max-width:480px; animation: fadeUp .4s ease;
+  }
+  #dl-code:checked ~ .dl-result-code{ display:block; border-color:var(--mint); color:var(--mint); }
+  #dl-coffee:checked ~ .dl-result-coffee{ display:block; border-color:var(--pink); color:var(--pink); }
+  #dl-sleep:checked ~ .dl-result-sleep{ display:block; border-color:var(--pink); color:var(--pink); }
+
+  /* ============ DAILY LOCKER ============ */
+  .locker-wrap{ display:flex; justify-content:center; }
+  .locker-box{ position:relative; width:360px; max-width:100%; min-height:340px; perspective:1200px; }
+  .locker-content{
+    background:var(--surface-2); border:1px solid var(--line); border-radius:16px;
+    padding:36px 28px; text-align:center; display:flex; flex-direction:column;
+    align-items:center; gap:14px; min-height:340px; justify-content:center;
+  }
+  .locker-content-head{
+    font-family:var(--font-mono); font-size:0.8rem; color:var(--lavender);
+    text-transform:uppercase; letter-spacing:0.06em;
+  }
+  .locker-news-text{ font-size:1.05rem; line-height:1.6; max-width:300px; }
+  .locker-date{ font-family:var(--font-mono); font-size:0.78rem; color:var(--ink-dim); }
+  .locker-btn-small{
+    margin-top:6px; font-family:var(--font-mono); font-size:0.82rem;
+    color:var(--ink-dim); background:none; border:1px solid var(--line);
+    padding:8px 16px; border-radius:6px; cursor:pointer; transition: border-color .25s, color .25s;
+  }
+  .locker-btn-small:hover{ border-color:var(--pink); color:var(--ink); }
+
+  .locker-face{
+    position:absolute; inset:0; background:var(--surface); border:1px solid var(--line);
+    border-radius:16px; padding:36px 28px; display:flex; flex-direction:column;
+    align-items:center; gap:14px; justify-content:center;
+    transform-origin:left center; transform-style:preserve-3d; backface-visibility:hidden;
+    transition: transform .8s cubic-bezier(.2,.8,.2,1), opacity .6s ease .1s;
+  }
+  .locker-icon{ font-size:2.6rem; }
+  .locker-input{
+    width:100%; max-width:220px; font-family:var(--font-mono); font-size:0.95rem;
+    background:var(--bg); border:1px solid var(--line); color:var(--ink);
+    padding:12px 14px; border-radius:8px; text-align:center;
+  }
+  .locker-input:focus{ outline:none; border-color:var(--lavender); }
+  .locker-btn{
+    font-family:var(--font-mono); font-weight:500; font-size:0.9rem;
+    padding:12px 24px; border-radius:6px; border:none; background:var(--pink);
+    color:#191114; cursor:pointer; transition: transform .2s ease;
+  }
+  .locker-btn:hover{ transform:translateY(-3px); }
+  .locker-hint{ font-family:var(--font-mono); font-size:0.75rem; color:var(--ink-dim); }
+  .locker-error{ font-family:var(--font-mono); font-size:0.78rem; color:var(--pink); min-height:1em; }
+
+  .locker-face.open{ transform:rotateY(-108deg); opacity:0; pointer-events:none; }
+  .locker-face.shake{ animation: lockerShake .4s ease; }
+  @keyframes lockerShake{
+    0%,100%{ transform:translateX(0); }
+    20%{ transform:translateX(-8px); }
+    40%{ transform:translateX(8px); }
+    60%{ transform:translateX(-6px); }
+    80%{ transform:translateX(6px); }
+  }
+
+  /* ============ QUOTE / MEME BREAK ============ */
+  .meme-break{
+    text-align:center; padding:70px 8vw;
+    background: linear-gradient(180deg, transparent, rgba(184,146,255,0.06), transparent);
+  }
+  .meme-break blockquote{
+    font-family:var(--font-display); font-weight:600;
+    font-size:clamp(1.4rem,3vw,2.2rem); max-width:760px; margin:0 auto 14px;
+  }
+  .meme-break span{ font-family:var(--font-mono); color:var(--ink-dim); font-size:0.9rem; }
+
+  /* ============ FOOTER ============ */
+  footer{
+    border-top:1px solid var(--line); padding: 50px 8vw 30px;
+    display:flex; flex-wrap:wrap; gap:30px; justify-content:space-between; align-items:flex-start;
+  }
+  footer .foot-brand{ font-family:var(--font-display); font-weight:700; font-size:1.2rem; max-width:320px; }
+  footer .foot-brand p{ font-family:var(--font-body); font-weight:400; color:var(--ink-dim); font-size:0.9rem; margin-top:10px; }
+  .foot-cols{ display:flex; gap:60px; flex-wrap:wrap; }
+  .foot-cols h4{ font-family:var(--font-mono); font-size:0.8rem; color:var(--ink-dim); text-transform:uppercase; margin-bottom:14px; letter-spacing:0.05em; }
+  .foot-cols ul li{ margin-bottom:9px; font-size:0.9rem; }
+  .foot-cols ul li a:hover{ color:var(--pink); }
+  .foot-bottom{
+    text-align:center; padding-top:30px; margin-top:30px; border-top:1px solid var(--line);
+    font-family:var(--font-mono); font-size:0.78rem; color:var(--ink-dim); width:100%;
+  }
+
+  /* ============ BACK TO TOP ============ */
+  .to-top{
+    position:fixed; bottom:26px; right:26px; z-index:90;
+    width:46px; height:46px; border-radius:50%;
+    background:var(--surface-2); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.1rem; box-shadow:0 10px 24px -10px rgba(0,0,0,0.6);
+    transition: transform .25s, border-color .25s;
+  }
+  .to-top:hover{ transform:translateY(-4px); border-color:var(--pink); }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 860px){
+    .hero{ grid-template-columns:1fr; min-height:auto; }
+    .hero-stickers{ min-height:220px; margin-top:20px; }
+    .nav-links{
+      display:none; position:absolute; top:100%; left:0; right:0;
+      background:var(--surface); flex-direction:column; padding:20px 8vw; gap:18px;
+      border-bottom:1px solid var(--line);
+    }
+    .nav-toggle-checkbox:checked ~ .nav-links{ display:flex; }
+    .nav-toggle-label{ display:block; }
+    section{ padding:60px 6vw; }
   }
 
   @media (prefers-reduced-motion: reduce){
-    *{animation:none !important; transition:none !important;}
+    *{ animation:none !important; transition:none !important; }
+    .typed{ width:100%; border-right:none; }
   }
 </style>
 </head>
 <body>
 
-<div id="stars-bg"></div>
-
-<div class="wrap">
-  <div class="eyebrow">Ek chhota sa digital tohfa</div>
-  <h1 class="title">Harsh, tere liye ✨</h1>
-  <p class="subtitle">Neeche 6 sitare hain — har ek ek yaad chhupaye baithe hai. Sabko chhoo lo, aur dekho kya banta hai.</p>
-  <p class="hint">👆 star par tap/click karo</p>
-
-  <div class="progress-row" id="progressRow"></div>
-
-  <div class="constellation-holder" id="holder">
-    <svg class="lines" viewBox="0 0 400 400" id="linesSvg"></svg>
-    <!-- stars injected by JS -->
+  <!-- ============ NAV ============ -->
+  <div class="nav-wrap">
+    <div class="nav-brand">
+      <span class="dots"><span></span><span></span><span></span></span>
+      CodeVault
+    </div>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
+    <label for="nav-toggle" class="nav-toggle-label">☰</label>
+    <ul class="nav-links">
+      <li><a href="#webdev">Web Dev</a></li>
+      <li><a href="#python">Python</a></li>
+      <li><a href="#java">Java</a></li>
+      <li><a href="#claude">Claude AI</a></li>
+      <li><a href="#notes">Cheat Sheets</a></li>
+      <li><a href="#game">Mini Game</a></li>
+      <li><a href="#game2">Deadline</a></li>
+      <li><a href="#locker">Locker</a></li>
+    </ul>
   </div>
-</div>
 
-<footer>banaya gaya thoda pyaar, thoda code se — dosti ke naam</footer>
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="home">
+    <div class="hero-copy">
+      <span class="eyebrow">for cs students, by the syllabus that failed us</span>
+      <h1>Stop googling<br><span class="typed">"how to center a div"</span></h1>
+      <p class="lede">Web dev, Python, Java aur Claude AI ke best free resources — sab ek jagah pinned, so you can actually build stuff instead of drowning in 40 open tabs.</p>
+      <div class="hero-ctas">
+        <a href="#webdev" class="btn btn-solid">Explore resources →</a>
+        <a href="#claude" class="btn btn-ghost">Claude AI notes</a>
+      </div>
+    </div>
+    <div class="hero-stickers">
+      <div class="sticker sticker--1">console.log("no cap")</div>
+      <div class="sticker sticker--2">git commit -m "fixed bug 🙏"</div>
+      <div class="sticker sticker--3">assignment due in 6hrs 🔥</div>
+      <div class="sticker sticker--4">import antigravity 🚀</div>
+    </div>
+  </section>
 
-<div class="message-bubble" id="bubble">
-  <div class="tag" id="bubbleTag">Yaad</div>
-  <p id="bubbleText"></p>
-</div>
-
-<div class="finale" id="finale">
-  <div class="finale-card">
-    <span class="big-heart">💛</span>
-    <h2>Yeh Dosti Hamesha Chamakti Rahegi</h2>
-    <p>Harsh, tu bas ek dost nahi — mera sabse bharosemand saathi hai. Chahe waqt kaisa bhi ho, tu hamesha waise ka waisa acha dost bana rahega, aur main bhi.</p>
-    <p>Yeh sitare, yeh yaadein — inki jagah kabhi koi nahi le sakta. Thank you mere saath hone ke liye. 🤍</p>
-    <div class="sign">— hamesha ke liye tera dost</div>
-    <button class="close-finale" id="closeFinale">Dobara dekhein</button>
+  <!-- ============ TICKER ============ -->
+  <div class="ticker">
+    <div class="ticker-track">
+      <span>🔥 trending in the DSA lab</span>
+      <span>☕ coffee &gt; sleep, fight me</span>
+      <span>🐍 print("python &gt; everything")</span>
+      <span>💻 undefined is not a person, it's a bug</span>
+      <span>📌 notes pinned, deadlines ignored</span>
+      <span>🤖 asked Claude, it actually helped fr</span>
+      <span>🔥 trending in the DSA lab</span>
+      <span>☕ coffee &gt; sleep, fight me</span>
+      <span>🐍 print("python &gt; everything")</span>
+      <span>💻 undefined is not a person, it's a bug</span>
+      <span>📌 notes pinned, deadlines ignored</span>
+      <span>🤖 asked Claude, it actually helped fr</span>
+    </div>
   </div>
-</div>
 
-<canvas id="confetti"></canvas>
+  <!-- ============ WEB DEV ============ -->
+  <section id="webdev" class="reveal">
+    <div class="section-head">
+      <span class="eyebrow">html · css · js</span>
+      <h2>Web Development</h2>
+      <p>Wahi resources jinse actually seekha ja sakta hai — no fluff, direct build karna seekho.</p>
+    </div>
+    <div class="board">
+      <div class="note">
+        <span class="tag">Docs</span>
+        <h3>MDN Web Docs</h3>
+        <p>HTML, CSS, JS ka sabse trusted reference. Jab bhi kuch stuck ho, yahi pehle check karo.</p>
+        <a class="open" href="https://developer.mozilla.org/" target="_blank" rel="noopener">Open resource →</a>
+      </div>
+      <div class="note">
+        <span class="tag">Course</span>
+        <h3>freeCodeCamp</h3>
+        <p>Free full curriculum — HTML/CSS se leke full stack projects tak, certificates ke saath.</p>
+        <a class="open" href="https://www.freecodecamp.org/" target="_blank" rel="noopener">Open resource →</a>
+      </div>
+      <div class="note">
+        <span class="tag">Path</span>
+        <h3>The Odin Project</h3>
+        <p>Project-based learning path jo real developer jaisa sochna sikhata hai.</p>
+        <a class="open" href="https://www.theodinproject.com/" target="_blank" rel="noopener">Open resource →</a>
+      </div>
+      <div class="note">
+        <span class="tag">Deep Dive</span>
+        <h3>JavaScript.info</h3>
+        <p>JS ko surface level nahi, andar tak samjhata hai — from basics to async/await.</p>
+        <a class="open" href="https://javascript.info/" target="_blank" rel="noopener">Open resource →</a>
+      </div>
+      <div class="note">
+        <span class="tag">CSS</span>
+        <h3>Josh Comeau's CSS blog</h3>
+        <p>CSS ko interactive demos ke saath explain karta hai — animations samajhne ke liye best.</p>
+        <a class="open" href="https://www.joshwcomeau.com/css/" target="_blank" rel="noopener">Open resource →</a>
+      </div>
+      <div class="note">
+        <span class="tag">Quick Ref</span>
+        <h3>W3Schools</h3>
+        <p>Fast syntax lookup ke liye handy — exam se ek raat pehle wale saathi.</p>
+        <a class="open" href="https://www.w3schools.com/" target="_blank" rel="noopener">Open resource →</a>
+      </div>
+    </div>
+  </section>
 
-<script>
-// ---------- Background twinkling stars ----------
-const starsBg = document.getElementById('stars-bg');
-const bgCount = window.innerWidth < 500 ? 45 : 90;
-for(let i=0;i<bgCount;i++){
-  const s = document.createElement('span');
-  s.style.left = Math.random()*100 + '%';
-  s.style.top = Math.random()*100 + '%';
-  const size = Math.random()*2 + 1;
-  s.style.width = size+'px';
-  s.style.height = size+'px';
-  s.style.animationDelay = (Math.random()*3.5)+'s';
-  s.style.animationDuration = (2.5 + Math.random()*3)+'s';
-  starsBg.appendChild(s);
-}
+  <!-- ============ PYTHON ============ -->
+  <section id="python" class="reveal">
+    <div class="section-head">
+      <span class="eyebrow">scripts, data, everything</span>
+      <h2>Python</h2>
+      <p>Beginner se automation aur data tak — sab kuch cover karne wale resources.</p>
+    </div>
+    <div class="board">
+      <div class="note">
+        <span class="tag">Docs</span>
+        <h3>Official Python Docs</h3>
+        <p>Sabse accurate source — jab koi library ka doubt ho, straight yahin aao.</p>
+        <a class="open" href="https://docs.python.org/3/" target="_blank" rel="noopener">Open resource →</a>
+      </div>
+      <div class="note">
+        <span class="tag">Tutorials</span>
+        <h3>Real Python</h3>
+        <p>Clear, in-depth tutorials — beginner se intermediate concepts tak, real examples ke saath.</p>
+        <a class="open" href="https://realpython.com/" target="_blank" rel="noopener">Open resource →</a>
+      </div>
+      <div class="note">
+        <span class="tag">Course</span>
+        <h3>CS50's Intro to Python</h3>
+        <p>Harvard ka free course — problem sets ke saath deeply structured learning.</p>
+        <a class="open" href="https://cs50.harvard.edu/python/" target="_blank" rel="noopener">Open resource →</a>
+      </div>
+      <div class="note">
+        <span class="tag">Projects</span>
+        <h3>Automate the Boring Stuff</h3>
+        <p>Practical automation projects — files, excel, web scraping, sab kuch scripting se.</p>
+        <a class="open" href="https://automatetheboringstuff.com/" target="_blank" rel="noopener">Open resource →</a>
+      </div>
+    </div>
+  </section>
 
-// ---------- Constellation data ----------
-const points = [
-  { id:1, x:20, y:40, tag:"Pehli Mulaqat", msg:"Yaad hai wo pehli baar jab hum mile the? Kisko pata tha ki ek normal si mulaqat itni badi dosti ban jayegi." },
-  { id:2, x:35, y:30, tag:"Yaadgar Pal",   msg:"Wo saare random plans, wo bewaqoofiyan, wo trips — har pal tere saath aur bhi mazedaar ho jaata hai." },
-  { id:3, x:50, y:35, tag:"Bina Wajah Hasi", msg:"Sabse acchi baat — humein hasne ke liye kabhi wajah ki zaroorat nahi padi. Bas tu ho, aur hasi apne aap aa jaati hai." },
-  { id:4, x:65, y:30, tag:"Mushkil Mein Sahara", msg:"Jab bhi mushkil waqt aaya, tu bina bole samajh gaya aur saath khada raha. Wo cheez bhoolti nahi." },
-  { id:5, x:80, y:40, tag:"Bina Bole Samajh", msg:"Kuch dost aise hote hain jinhe cheezein explain nahi karni padti — tu unme se ek hai." },
-  { id:6, x:50, y:80, tag:"Hamesha Ka Saath", msg:"Aur ab, aage bhi — chahe kuch bhi ho jaaye, yeh dosti hamesha waise ki waisi hi rahegi." }
-];
+  <!-- ============ JAVA ============ -->
+  <section id="java" class="reveal">
+    <div class="section-head">
+      <span class="eyebrow">oop, dsa, placements</span>
+      <h2>Java</h2>
+      <p>College DSA aur placement prep ke liye most-used resources.</p>
+    </div>
+    <div class="board">
+      <div class="note">
+        <span class="tag">Docs</span>
+        <h3>Oracle Java Docs</h3>
+        <p>Official documentation — syntax aur standard library ka authoritative source.</p>
+        <a class="open" href="https://docs.oracle.com/en/java/" target="_blank" rel="noopener">Open resource →</a>
+      </div>
+      <div class="note">
+        <span class="tag">Practice</span>
+        <h3>GeeksforGeeks Java</h3>
+        <p>DSA + Java concepts side by side — interview prep ke liye popular choice.</p>
+        <a class="open" href="https://www.geeksforgeeks.org/java/" target="_blank" rel="noopener">Open resource →</a>
+      </div>
+      <div class="note">
+        <span class="tag">Quick Ref</span>
+        <h3>W3Schools Java</h3>
+        <p>Fast syntax reminders — OOP concepts revise karne ke liye quick jagah.</p>
+        <a class="open" href="https://www.w3schools.com/java/" target="_blank" rel="noopener">Open resource →</a>
+      </div>
+    </div>
+  </section>
 
-const edges = [[1,2],[2,3],[3,4],[4,5],[5,6],[6,1]];
+  <!-- ============ CLAUDE AI ============ -->
+  <section id="claude" class="reveal">
+    <div class="section-head">
+      <span class="eyebrow">notes + prompting</span>
+      <h2>Claude AI Notes</h2>
+      <p>Claude ko sirf answers ke liye use mat karo — use effectively use karna seekho.</p>
+    </div>
+    <div class="board">
+      <div class="note">
+        <span class="tag">Docs</span>
+        <h3>Anthropic Docs</h3>
+        <p>Claude models, features aur usage ki official aur sabse reliable jagah.</p>
+        <a class="open" href="https://docs.claude.com/" target="_blank" rel="noopener">Open resource →</a>
+      </div>
+      <div class="note">
+        <span class="tag">Guide</span>
+        <h3>Prompt Engineering Overview</h3>
+        <p>Claude se better output nikalne ke liye clear, structured prompting techniques.</p>
+        <a class="open" href="https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview" target="_blank" rel="noopener">Open resource →</a>
+      </div>
+      <div class="note">
+        <span class="tag">Community</span>
+        <h3>Prompting Guide</h3>
+        <p>Different prompting techniques ka community-maintained reference, examples ke saath.</p>
+        <a class="open" href="https://www.promptingguide.ai/" target="_blank" rel="noopener">Open resource →</a>
+      </div>
+    </div>
+  </section>
 
-const holder = document.getElementById('holder');
-const linesSvg = document.getElementById('linesSvg');
-const progressRow = document.getElementById('progressRow');
-const bubble = document.getElementById('bubble');
-const bubbleTag = document.getElementById('bubbleTag');
-const bubbleText = document.getElementById('bubbleText');
+  <!-- ============ CHEAT SHEETS ============ -->
+  <section id="notes" class="reveal">
+    <div class="section-head">
+      <span class="eyebrow">save these, thank us later</span>
+      <h2>Quick Cheat Sheets</h2>
+      <p>Exam se pehle wale panic moments ke liye — one-glance syntax reminders.</p>
+    </div>
+    <div class="cheat-grid">
+      <div class="cheat-card">
+        <div class="cheat-head"><span><span class="lang-dot" style="background:var(--yellow)"></span>Python</span></div>
+        <pre>squares = [x**2 for x in range(10)]
+with open("data.txt") as f:
+    lines = f.readlines()</pre>
+      </div>
+      <div class="cheat-card">
+        <div class="cheat-head"><span><span class="lang-dot" style="background:var(--mint)"></span>Java</span></div>
+        <pre>public static void main(String[] args) {
+    System.out.println("Hello, World");
+}</pre>
+      </div>
+      <div class="cheat-card">
+        <div class="cheat-head"><span><span class="lang-dot" style="background:var(--pink)"></span>CSS</span></div>
+        <pre>.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}</pre>
+      </div>
+      <div class="cheat-card">
+        <div class="cheat-head"><span><span class="lang-dot" style="background:var(--lavender)"></span>Claude Prompt</span></div>
+        <pre>"Explain recursion using a
+real hostel-life example,
+then show Python code."</pre>
+      </div>
+    </div>
+  </section>
 
-const litSet = new Set();
+  <!-- ============ MINI GAME ============ -->
+  <section id="game" class="reveal">
+    <div class="section-head">
+      <span class="eyebrow">zero js, zero mercy</span>
+      <h2>Squash the Bugs 🐛</h2>
+      <p>Har bug pe click karo, ship karne se pehle sabko khatam karo. Purely CSS — na koi JS, na koi excuse.</p>
+    </div>
+    <div class="bug-game">
+      <div class="bug">
+        <input type="checkbox" id="bug1" class="bug-checkbox">
+        <label for="bug1" class="bug-label">
+          <span class="bug-icon">🐛</span>
+          <span class="bug-squashed">💥</span>
+        </label>
+      </div>
+      <div class="bug">
+        <input type="checkbox" id="bug2" class="bug-checkbox">
+        <label for="bug2" class="bug-label">
+          <span class="bug-icon">🐛</span>
+          <span class="bug-squashed">💥</span>
+        </label>
+      </div>
+      <div class="bug">
+        <input type="checkbox" id="bug3" class="bug-checkbox">
+        <label for="bug3" class="bug-label">
+          <span class="bug-icon">🐛</span>
+          <span class="bug-squashed">💥</span>
+        </label>
+      </div>
+      <div class="bug">
+        <input type="checkbox" id="bug4" class="bug-checkbox">
+        <label for="bug4" class="bug-label">
+          <span class="bug-icon">🐛</span>
+          <span class="bug-squashed">💥</span>
+        </label>
+      </div>
+      <div class="bug">
+        <input type="checkbox" id="bug5" class="bug-checkbox">
+        <label for="bug5" class="bug-label">
+          <span class="bug-icon">🐛</span>
+          <span class="bug-squashed">💥</span>
+        </label>
+      </div>
+      <div class="bug">
+        <input type="checkbox" id="bug6" class="bug-checkbox">
+        <label for="bug6" class="bug-label">
+          <span class="bug-icon">🐛</span>
+          <span class="bug-squashed">💥</span>
+        </label>
+      </div>
+      <div class="bug">
+        <input type="checkbox" id="bug7" class="bug-checkbox">
+        <label for="bug7" class="bug-label">
+          <span class="bug-icon">🐛</span>
+          <span class="bug-squashed">💥</span>
+        </label>
+      </div>
+      <div class="bug">
+        <input type="checkbox" id="bug8" class="bug-checkbox">
+        <label for="bug8" class="bug-label">
+          <span class="bug-icon">🐛</span>
+          <span class="bug-squashed">💥</span>
+        </label>
+      </div>
+      <p class="bug-hint">psst — sirf click karna hai, koi timer nahi hai 😌</p>
+      <div class="bug-win">🎉 Zero bugs. 100% vibes. Code compiles. Ship it! (Reload page to play again)</div>
+    </div>
+  </section>
 
-// progress dots
-points.forEach(p=>{
-  const dot = document.createElement('div');
-  dot.className = 'progress-dot';
-  dot.id = 'dot-'+p.id;
-  progressRow.appendChild(dot);
-});
+  <!-- ============ MINI GAME 2 ============ -->
+  <section id="game2" class="reveal">
+    <div class="section-head">
+      <span class="eyebrow">single player, still zero js</span>
+      <h2>Beat the Deadline ⏰</h2>
+      <p>Ek move chuno — dekho deadline ko harra paate ho ya deadline tumhe.</p>
+    </div>
+    <div class="dl-game">
+      <div class="dl-choices">
+        <input type="radio" name="dl" id="dl-code" class="dl-radio">
+        <label for="dl-code" class="dl-choice">💻<span>Code</span></label>
+        <input type="radio" name="dl" id="dl-coffee" class="dl-radio">
+        <label for="dl-coffee" class="dl-choice">☕<span>Coffee</span></label>
+        <input type="radio" name="dl" id="dl-sleep" class="dl-radio">
+        <label for="dl-sleep" class="dl-choice">😴<span>Sleep</span></label>
+      </div>
+      <p class="dl-hint">apna move chuno, result turant reveal hoga</p>
+      <div class="dl-result dl-result-code">✅ You win! Submission hui 2 minute pehle deadline se. Legendary move.</div>
+      <div class="dl-result dl-result-coffee">☕ Deadline wins. Coffee break thoda zyada lamba ho gaya, submit karna reh gaya.</div>
+      <div class="dl-result dl-result-sleep">😴 Deadline wins. Alarm bhi haar gaya tumhare saath.</div>
+    </div>
+  </section>
 
-// draw edges (paths) first so stars sit above
-const pointMap = {};
-points.forEach(p=> pointMap[p.id] = p);
+  <!-- ============ DAILY LOCKER ============ -->
+  <section id="locker" class="reveal">
+    <div class="section-head">
+      <span class="eyebrow">unlock daily · new drop every day</span>
+      <h2>The Daily Locker 🔒</h2>
+      <p>Password daalo, locker khulega, aur andar milega aaj ka dev tip ya fact — date ke hisaab se rozana naya.</p>
+    </div>
+    <div class="locker-wrap">
+      <div class="locker-box">
+        <div class="locker-content">
+          <div class="locker-content-head">📬 Today's Dev Drop</div>
+          <p class="locker-news-text" id="lockerNewsText"></p>
+          <span class="locker-date" id="lockerDate"></span>
+          <button class="locker-btn-small" onclick="lockAgain()">Lock again</button>
+        </div>
+        <div class="locker-face" id="lockerFace">
+          <div class="locker-icon">🔒</div>
+          <input type="password" id="lockerInput" class="locker-input" placeholder="Enter password" onkeydown="if(event.key==='Enter') tryUnlock();">
+          <button class="locker-btn" onclick="tryUnlock()">Unlock</button>
+          <p class="locker-hint">Hint: code run karne se pehle jo karte ho 👀 (7 letters)</p>
+          <p class="locker-error" id="lockerError"></p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-edges.forEach(([a,b])=>{
-  const pa = pointMap[a], pb = pointMap[b];
-  const path = document.createElementNS('http://www.w3.org/2000/svg','path');
-  const x1 = pa.x/100*400, y1 = pa.y/100*400;
-  const x2 = pb.x/100*400, y2 = pb.y/100*400;
-  path.setAttribute('d', `M ${x1} ${y1} L ${x2} ${y2}`);
-  path.dataset.a = a;
-  path.dataset.b = b;
-  linesSvg.appendChild(path);
-});
+  <!-- ============ MEME BREAK ============ -->
+  <section class="meme-break reveal">
+    <blockquote>"It works on my machine" is not a valid submission, but we respect the confidence.</blockquote>
+    <span>— every TA, every semester</span>
+  </section>
 
-// star icon svg (5-point star)
-function starPolygonPoints(cx,cy,outer,inner,points5=5){
-  let pts = [];
-  const step = Math.PI / points5;
-  for(let i=0;i<points5*2;i++){
-    const r = (i%2===0) ? outer : inner;
-    const angle = i*step - Math.PI/2;
-    pts.push(`${cx + r*Math.cos(angle)},${cy + r*Math.sin(angle)}`);
-  }
-  return pts.join(' ');
-}
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="foot-brand">
+      CodeVault
+      <p>Ek jagah, saare resources. Made for the batch that keeps 40 tabs open and still asks "bhai notes hai kya".</p>
+    </div>
+    <div class="foot-cols">
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#webdev">Web Dev</a></li>
+          <li><a href="#python">Python</a></li>
+          <li><a href="#java">Java</a></li>
+          <li><a href="#claude">Claude AI</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>More</h4>
+        <ul>
+          <li><a href="#notes">Cheat sheets</a></li>
+          <li><a href="#home">Back to top</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">Built with HTML + CSS only, zero JS, and questionable amounts of chai. © 2026 Chitrangna.</div>
+  </footer>
 
-points.forEach(p=>{
-  const btn = document.createElement('button');
-  btn.className = 'star-btn';
-  btn.style.left = p.x + '%';
-  btn.style.top = p.y + '%';
-  btn.setAttribute('aria-label', p.tag);
-  btn.id = 'star-'+p.id;
+  <a href="#home" class="to-top" aria-label="Back to top">↑</a>
 
-  const glow = document.createElement('div');
-  glow.className = 'glow';
-  btn.appendChild(glow);
+  <script>
+    const dailyDrops = [
+      "Ctrl+Shift+T reopens your last closed browser tab — lifesaver during 2am research spirals.",
+      "Python mein print(1 == True) result deta hai True — bool actually int ka subclass hai.",
+      "Java ka original naam 'Oak' tha, coffee-drinking brainstorm session ke baad rename hua.",
+      "MDN ka search seedha URL se bhi ho sakta hai: developer.mozilla.org/search?q=your-query",
+      "CSS ka gap property ab sirf flexbox nahi, grid mein bhi kaam karta hai.",
+      "Claude se structured output chahiye toh XML tags use karne ko kaho — output messy nahi aata.",
+      "console.table() try karo agli baar array debug karte waqt — console.log se zyada readable hai.",
+      "Python shell mein _ last executed expression ko store karta hai automatically.",
+      "Git tip: git commit --amend last commit message fix karta hai, push se pehle.",
+      "Java ka String pool memory optimize karta hai — same literal strings ek hi jagah store hoti hain.",
+      "CSS ka :has() selector ne bina JS ke conditional styling possible bana di hai.",
+      "Prompting tip: Claude se kaho 'think step by step' — complex problems pe accuracy improve hoti hai.",
+      "VS Code shortcut: Ctrl+D select karta hai next matching word — multi-cursor editing ke liye best.",
+      "Python ka easter egg: terminal mein import this likh ke dekho.",
+      "Pehla computer bug literally ek real moth tha jo relay mein fasa tha, 1947 mein.",
+      "CSS variables (--custom-property) runtime pe update ho sakte hain, SASS variables nahi hote.",
+      "Java interview tip: == reference compare karta hai, .equals() value compare karta hai.",
+      "Chrome DevTools mein $0 last inspected element ko refer karta hai console mein.",
+      "Claude ko prompt mein example input/output do — few-shot examples se output quality improve hoti hai.",
+      "VS Code shortcut: Alt+Shift+F pura file auto-format kar deta hai ek click mein."
+    ];
 
-  const svgNS = 'http://www.w3.org/2000/svg';
-  const svg = document.createElementNS(svgNS,'svg');
-  svg.setAttribute('viewBox','0 0 40 40');
-  const poly = document.createElementNS(svgNS,'polygon');
-  poly.setAttribute('points', starPolygonPoints(20,20,17,7));
-  svg.appendChild(poly);
-  btn.appendChild(svg);
-
-  const label = document.createElement('div');
-  label.className = 'star-label';
-  label.textContent = p.tag;
-  label.style.opacity = '0';
-  btn.appendChild(label);
-
-  btn.addEventListener('click', ()=> igniteStar(p.id));
-  btn.addEventListener('mouseenter', ()=> label.style.opacity = '0.9');
-  btn.addEventListener('mouseleave', ()=> label.style.opacity = '0');
-
-  holder.appendChild(btn);
-});
-
-let bubbleTimeout;
-function showBubble(p){
-  clearTimeout(bubbleTimeout);
-  bubbleTag.textContent = p.tag;
-  bubbleText.textContent = p.msg;
-  bubble.classList.add('show');
-  bubbleTimeout = setTimeout(()=> bubble.classList.remove('show'), 4200);
-}
-
-function igniteStar(id){
-  if(litSet.has(id)) {
-    const p = pointMap[id];
-    showBubble(p);
-    return;
-  }
-  litSet.add(id);
-  document.getElementById('star-'+id).classList.add('lit');
-  document.getElementById('dot-'+id).classList.add('lit');
-  showBubble(pointMap[id]);
-
-  edges.forEach(([a,b])=>{
-    if(litSet.has(a) && litSet.has(b)){
-      const path = linesSvg.querySelector(`path[data-a="${a}"][data-b="${b}"], path[data-a="${b}"][data-b="${a}"]`);
-      if(path) path.classList.add('drawn');
+    function getDailyIndex(){
+      const start = new Date(2026, 0, 1);
+      const now = new Date();
+      const diffDays = Math.floor((now - start) / 86400000);
+      return ((diffDays % dailyDrops.length) + dailyDrops.length) % dailyDrops.length;
     }
-  });
 
-  if(litSet.size === points.length){
-    setTimeout(triggerFinale, 900);
-  }
-}
+    function showDailyDrop(){
+      const idx = getDailyIndex();
+      document.getElementById('lockerNewsText').textContent = dailyDrops[idx];
+      const today = new Date();
+      document.getElementById('lockerDate').textContent = today.toLocaleDateString('en-IN', { day:'numeric', month:'long', year:'numeric' });
+    }
 
-// ---------- Finale ----------
-const finale = document.getElementById('finale');
-const closeFinale = document.getElementById('closeFinale');
+    function tryUnlock(){
+      const input = document.getElementById('lockerInput');
+      const face = document.getElementById('lockerFace');
+      const errorEl = document.getElementById('lockerError');
+      const val = input.value.trim().toLowerCase();
 
-function triggerFinale(){
-  finale.classList.add('show');
-  launchConfetti();
-}
-closeFinale.addEventListener('click', ()=>{
-  finale.classList.remove('show');
-});
+      if(val === 'compile'){
+        errorEl.textContent = '';
+        showDailyDrop();
+        face.classList.add('open');
+      } else {
+        errorEl.textContent = 'Galat password, dubara try karo 🔁';
+        face.classList.remove('shake');
+        void face.offsetWidth;
+        face.classList.add('shake');
+      }
+    }
 
-// ---------- Confetti ----------
-const canvas = document.getElementById('confetti');
-const ctx = canvas.getContext('2d');
-function resizeCanvas(){
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-resizeCanvas();
-window.addEventListener('resize', resizeCanvas);
-
-const confettiColors = ['#f5b841','#ff7a68','#4fc0b8','#f7f1e6'];
-let particles = [];
-
-function launchConfetti(){
-  particles = [];
-  const count = window.innerWidth < 500 ? 90 : 160;
-  for(let i=0;i<count;i++){
-    particles.push({
-      x: canvas.width/2,
-      y: canvas.height*0.35,
-      vx: (Math.random()-0.5)*10,
-      vy: (Math.random()-1.6)*10,
-      size: Math.random()*6+4,
-      color: confettiColors[Math.floor(Math.random()*confettiColors.length)],
-      rot: Math.random()*360,
-      vrot: (Math.random()-0.5)*10,
-      life: 0,
-      maxLife: 140 + Math.random()*60
-    });
-  }
-  requestAnimationFrame(animateConfetti);
-}
-
-function animateConfetti(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  let alive = false;
-  particles.forEach(p=>{
-    if(p.life > p.maxLife) return;
-    alive = true;
-    p.vy += 0.18;
-    p.x += p.vx;
-    p.y += p.vy;
-    p.rot += p.vrot;
-    p.life++;
-    const opacity = Math.max(0, 1 - p.life/p.maxLife);
-    ctx.save();
-    ctx.translate(p.x,p.y);
-    ctx.rotate(p.rot * Math.PI/180);
-    ctx.globalAlpha = opacity;
-    ctx.fillStyle = p.color;
-    ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size*0.6);
-    ctx.restore();
-  });
-  if(alive){
-    requestAnimationFrame(animateConfetti);
-  } else {
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-  }
-}
-</script>
+    function lockAgain(){
+      const face = document.getElementById('lockerFace');
+      face.classList.remove('open');
+      document.getElementById('lockerInput').value = '';
+      document.getElementById('lockerError').textContent = '';
+    }
+  </script>
 
 </body>
 </html>
