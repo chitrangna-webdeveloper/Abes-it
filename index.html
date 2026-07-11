@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harsh ke liye ✨</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Baloo+2:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sky-deep:#161232;
+    --sky-mid:#231a4d;
+    --gold:#f5b841;
+    --coral:#ff7a68;
+    --teal:#4fc0b8;
+    --cream:#f7f1e6;
+    --line-dim:rgba(245,184,65,0.22);
+  }
+
+  *{box-sizing:border-box;}
+
+  html,body{
+    margin:0;
+    padding:0;
+    width:100%;
+    min-height:100%;
+    background:radial-gradient(ellipse at 50% -10%, var(--sky-mid), var(--sky-deep) 60%);
+    color:var(--cream);
+    font-family:'Baloo 2', sans-serif;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3,.display{
+    font-family:'Fredoka', sans-serif;
+  }
+
+  #stars-bg{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+  }
+  #stars-bg span{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:var(--cream);
+    border-radius:50%;
+    opacity:0.4;
+    animation:twinkle 3.5s ease-in-out infinite;
+  }
+  @keyframes twinkle{
+    0%,100%{opacity:0.15; transform:scale(1);}
+    50%{opacity:0.9; transform:scale(1.6);}
+  }
+
+  .wrap{
+    position:relative;
+    z-index:1;
+    max-width:880px;
+    margin:0 auto;
+    padding:56px 20px 100px;
+    text-align:center;
+  }
+
+  .eyebrow{
+    letter-spacing:0.3em;
+    text-transform:uppercase;
+    font-size:12px;
+    color:var(--teal);
+    font-weight:600;
+    margin-bottom:14px;
+  }
+
+  h1.title{
+    font-size:clamp(32px, 6vw, 56px);
+    font-weight:700;
+    margin:0 0 10px;
+    line-height:1.15;
+    background:linear-gradient(90deg, var(--gold), var(--coral));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+
+  .subtitle{
+    font-size:clamp(15px,2.4vw,18px);
+    color:rgba(247,241,230,0.75);
+    max-width:520px;
+    margin:0 auto 8px;
+    line-height:1.6;
+  }
+
+  .hint{
+    margin-top:6px;
+    font-size:14px;
+    color:var(--gold);
+    opacity:0.85;
+    font-weight:500;
+  }
+
+  .progress-row{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    margin:22px 0 8px;
+  }
+  .progress-dot{
+    width:8px;height:8px;border-radius:50%;
+    background:rgba(245,241,230,0.2);
+    transition:all .3s ease;
+  }
+  .progress-dot.lit{
+    background:var(--gold);
+    box-shadow:0 0 8px var(--gold);
+  }
+
+  /* Constellation */
+  .constellation-holder{
+    position:relative;
+    width:100%;
+    max-width:520px;
+    margin:30px auto 10px;
+    aspect-ratio:1/1;
+  }
+
+  svg.lines{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+  }
+  svg.lines path{
+    fill:none;
+    stroke:var(--gold);
+    stroke-width:1.6;
+    stroke-linecap:round;
+    stroke-dasharray:400;
+    stroke-dashoffset:400;
+    opacity:0;
+    filter:drop-shadow(0 0 4px rgba(245,184,65,0.6));
+    transition:opacity .4s ease;
+  }
+  svg.lines path.drawn{
+    opacity:1;
+    animation:drawline 1s ease forwards;
+  }
+  @keyframes drawline{
+    to{stroke-dashoffset:0;}
+  }
+
+  .star-btn{
+    position:absolute;
+    width:46px;
+    height:46px;
+    transform:translate(-50%,-50%);
+    background:transparent;
+    border:none;
+    cursor:pointer;
+    padding:0;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .star-btn .glow{
+    position:absolute;
+    inset:0;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(245,184,65,0.35), transparent 70%);
+    opacity:0;
+    transition:opacity .4s ease;
+  }
+  .star-btn.lit .glow{opacity:1;}
+
+  .star-btn svg{
+    width:100%;
+    height:100%;
+    position:relative;
+    z-index:2;
+  }
+  .star-btn svg polygon{
+    fill:rgba(247,241,230,0.35);
+    stroke:rgba(247,241,230,0.5);
+    stroke-width:1;
+    transition:fill .3s ease, stroke .3s ease, transform .3s ease;
+    transform-origin:center;
+  }
+  .star-btn:hover svg polygon{
+    transform:scale(1.15);
+  }
+  .star-btn.lit svg polygon{
+    fill:var(--gold);
+    stroke:var(--gold);
+    animation:pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{filter:drop-shadow(0 0 2px var(--gold));}
+    50%{filter:drop-shadow(0 0 10px var(--gold));}
+  }
+
+  .star-label{
+    position:absolute;
+    top:56px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:11px;
+    white-space:nowrap;
+    color:rgba(247,241,230,0.55);
+    font-weight:500;
+    pointer-events:none;
+  }
+
+  /* Message bubble */
+  .message-bubble{
+    position:fixed;
+    left:50%;
+    bottom:36px;
+    transform:translateX(-50%) translateY(20px);
+    max-width:88vw;
+    width:380px;
+    background:rgba(35,26,77,0.95);
+    border:1px solid rgba(245,184,65,0.3);
+    border-radius:16px;
+    padding:18px 20px;
+    box-shadow:0 12px 40px rgba(0,0,0,0.4);
+    opacity:0;
+    pointer-events:none;
+    transition:all .35s cubic-bezier(.2,.8,.2,1);
+    z-index:10;
+    text-align:left;
+  }
+  .message-bubble.show{
+    opacity:1;
+    transform:translateX(-50%) translateY(0);
+  }
+  .message-bubble .tag{
+    font-size:11px;
+    color:var(--teal);
+    text-transform:uppercase;
+    letter-spacing:0.15em;
+    font-weight:600;
+    margin-bottom:6px;
+  }
+  .message-bubble p{
+    margin:0;
+    font-size:15.5px;
+    line-height:1.55;
+    color:var(--cream);
+  }
+
+  /* Finale */
+  .finale{
+    position:fixed;
+    inset:0;
+    z-index:30;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    background:radial-gradient(ellipse at 50% 30%, rgba(255,122,104,0.15), rgba(22,18,50,0.97) 65%);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .6s ease;
+  }
+  .finale.show{
+    opacity:1;
+    pointer-events:auto;
+  }
+  .finale-card{
+    max-width:520px;
+    text-align:center;
+    transform:scale(0.9);
+    transition:transform .6s cubic-bezier(.2,.8,.2,1);
+  }
+  .finale.show .finale-card{
+    transform:scale(1);
+  }
+  .finale-card .big-heart{
+    font-size:46px;
+    margin-bottom:6px;
+    display:inline-block;
+    animation:beat 1.4s ease-in-out infinite;
+  }
+  @keyframes beat{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.15);}
+  }
+  .finale-card h2{
+    font-size:clamp(26px,5vw,38px);
+    margin:8px 0 16px;
+    color:var(--gold);
+  }
+  .finale-card p{
+    font-size:16.5px;
+    line-height:1.75;
+    color:rgba(247,241,230,0.9);
+    margin:0 0 10px;
+  }
+  .finale-card .sign{
+    margin-top:20px;
+    font-size:14px;
+    color:var(--teal);
+    letter-spacing:0.08em;
+  }
+  .close-finale{
+    margin-top:26px;
+    background:none;
+    border:1px solid rgba(245,184,65,0.4);
+    color:var(--gold);
+    padding:10px 22px;
+    border-radius:30px;
+    font-family:'Baloo 2', sans-serif;
+    font-size:14px;
+    cursor:pointer;
+    transition:all .25s ease;
+  }
+  .close-finale:hover{
+    background:rgba(245,184,65,0.12);
+  }
+
+  canvas#confetti{
+    position:fixed;
+    inset:0;
+    z-index:31;
+    pointer-events:none;
+  }
+
+  footer{
+    position:relative;
+    z-index:1;
+    text-align:center;
+    padding-bottom:30px;
+    font-size:12px;
+    color:rgba(247,241,230,0.35);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<div id="stars-bg"></div>
+
+<div class="wrap">
+  <div class="eyebrow">Ek chhota sa digital tohfa</div>
+  <h1 class="title">Harsh, tere liye ✨</h1>
+  <p class="subtitle">Neeche 6 sitare hain — har ek ek yaad chhupaye baithe hai. Sabko chhoo lo, aur dekho kya banta hai.</p>
+  <p class="hint">👆 star par tap/click karo</p>
+
+  <div class="progress-row" id="progressRow"></div>
+
+  <div class="constellation-holder" id="holder">
+    <svg class="lines" viewBox="0 0 400 400" id="linesSvg"></svg>
+    <!-- stars injected by JS -->
+  </div>
+</div>
+
+<footer>banaya gaya thoda pyaar, thoda code se — dosti ke naam</footer>
+
+<div class="message-bubble" id="bubble">
+  <div class="tag" id="bubbleTag">Yaad</div>
+  <p id="bubbleText"></p>
+</div>
+
+<div class="finale" id="finale">
+  <div class="finale-card">
+    <span class="big-heart">💛</span>
+    <h2>Yeh Dosti Hamesha Chamakti Rahegi</h2>
+    <p>Harsh, tu bas ek dost nahi — mera sabse bharosemand saathi hai. Chahe waqt kaisa bhi ho, tu hamesha waise ka waisa acha dost bana rahega, aur main bhi.</p>
+    <p>Yeh sitare, yeh yaadein — inki jagah kabhi koi nahi le sakta. Thank you mere saath hone ke liye. 🤍</p>
+    <div class="sign">— hamesha ke liye tera dost</div>
+    <button class="close-finale" id="closeFinale">Dobara dekhein</button>
+  </div>
+</div>
+
+<canvas id="confetti"></canvas>
+
+<script>
+// ---------- Background twinkling stars ----------
+const starsBg = document.getElementById('stars-bg');
+const bgCount = window.innerWidth < 500 ? 45 : 90;
+for(let i=0;i<bgCount;i++){
+  const s = document.createElement('span');
+  s.style.left = Math.random()*100 + '%';
+  s.style.top = Math.random()*100 + '%';
+  const size = Math.random()*2 + 1;
+  s.style.width = size+'px';
+  s.style.height = size+'px';
+  s.style.animationDelay = (Math.random()*3.5)+'s';
+  s.style.animationDuration = (2.5 + Math.random()*3)+'s';
+  starsBg.appendChild(s);
+}
+
+// ---------- Constellation data ----------
+const points = [
+  { id:1, x:20, y:40, tag:"Pehli Mulaqat", msg:"Yaad hai wo pehli baar jab hum mile the? Kisko pata tha ki ek normal si mulaqat itni badi dosti ban jayegi." },
+  { id:2, x:35, y:30, tag:"Yaadgar Pal",   msg:"Wo saare random plans, wo bewaqoofiyan, wo trips — har pal tere saath aur bhi mazedaar ho jaata hai." },
+  { id:3, x:50, y:35, tag:"Bina Wajah Hasi", msg:"Sabse acchi baat — humein hasne ke liye kabhi wajah ki zaroorat nahi padi. Bas tu ho, aur hasi apne aap aa jaati hai." },
+  { id:4, x:65, y:30, tag:"Mushkil Mein Sahara", msg:"Jab bhi mushkil waqt aaya, tu bina bole samajh gaya aur saath khada raha. Wo cheez bhoolti nahi." },
+  { id:5, x:80, y:40, tag:"Bina Bole Samajh", msg:"Kuch dost aise hote hain jinhe cheezein explain nahi karni padti — tu unme se ek hai." },
+  { id:6, x:50, y:80, tag:"Hamesha Ka Saath", msg:"Aur ab, aage bhi — chahe kuch bhi ho jaaye, yeh dosti hamesha waise ki waisi hi rahegi." }
+];
+
+const edges = [[1,2],[2,3],[3,4],[4,5],[5,6],[6,1]];
+
+const holder = document.getElementById('holder');
+const linesSvg = document.getElementById('linesSvg');
+const progressRow = document.getElementById('progressRow');
+const bubble = document.getElementById('bubble');
+const bubbleTag = document.getElementById('bubbleTag');
+const bubbleText = document.getElementById('bubbleText');
+
+const litSet = new Set();
+
+// progress dots
+points.forEach(p=>{
+  const dot = document.createElement('div');
+  dot.className = 'progress-dot';
+  dot.id = 'dot-'+p.id;
+  progressRow.appendChild(dot);
+});
+
+// draw edges (paths) first so stars sit above
+const pointMap = {};
+points.forEach(p=> pointMap[p.id] = p);
+
+edges.forEach(([a,b])=>{
+  const pa = pointMap[a], pb = pointMap[b];
+  const path = document.createElementNS('http://www.w3.org/2000/svg','path');
+  const x1 = pa.x/100*400, y1 = pa.y/100*400;
+  const x2 = pb.x/100*400, y2 = pb.y/100*400;
+  path.setAttribute('d', `M ${x1} ${y1} L ${x2} ${y2}`);
+  path.dataset.a = a;
+  path.dataset.b = b;
+  linesSvg.appendChild(path);
+});
+
+// star icon svg (5-point star)
+function starPolygonPoints(cx,cy,outer,inner,points5=5){
+  let pts = [];
+  const step = Math.PI / points5;
+  for(let i=0;i<points5*2;i++){
+    const r = (i%2===0) ? outer : inner;
+    const angle = i*step - Math.PI/2;
+    pts.push(`${cx + r*Math.cos(angle)},${cy + r*Math.sin(angle)}`);
+  }
+  return pts.join(' ');
+}
+
+points.forEach(p=>{
+  const btn = document.createElement('button');
+  btn.className = 'star-btn';
+  btn.style.left = p.x + '%';
+  btn.style.top = p.y + '%';
+  btn.setAttribute('aria-label', p.tag);
+  btn.id = 'star-'+p.id;
+
+  const glow = document.createElement('div');
+  glow.className = 'glow';
+  btn.appendChild(glow);
+
+  const svgNS = 'http://www.w3.org/2000/svg';
+  const svg = document.createElementNS(svgNS,'svg');
+  svg.setAttribute('viewBox','0 0 40 40');
+  const poly = document.createElementNS(svgNS,'polygon');
+  poly.setAttribute('points', starPolygonPoints(20,20,17,7));
+  svg.appendChild(poly);
+  btn.appendChild(svg);
+
+  const label = document.createElement('div');
+  label.className = 'star-label';
+  label.textContent = p.tag;
+  label.style.opacity = '0';
+  btn.appendChild(label);
+
+  btn.addEventListener('click', ()=> igniteStar(p.id));
+  btn.addEventListener('mouseenter', ()=> label.style.opacity = '0.9');
+  btn.addEventListener('mouseleave', ()=> label.style.opacity = '0');
+
+  holder.appendChild(btn);
+});
+
+let bubbleTimeout;
+function showBubble(p){
+  clearTimeout(bubbleTimeout);
+  bubbleTag.textContent = p.tag;
+  bubbleText.textContent = p.msg;
+  bubble.classList.add('show');
+  bubbleTimeout = setTimeout(()=> bubble.classList.remove('show'), 4200);
+}
+
+function igniteStar(id){
+  if(litSet.has(id)) {
+    const p = pointMap[id];
+    showBubble(p);
+    return;
+  }
+  litSet.add(id);
+  document.getElementById('star-'+id).classList.add('lit');
+  document.getElementById('dot-'+id).classList.add('lit');
+  showBubble(pointMap[id]);
+
+  edges.forEach(([a,b])=>{
+    if(litSet.has(a) && litSet.has(b)){
+      const path = linesSvg.querySelector(`path[data-a="${a}"][data-b="${b}"], path[data-a="${b}"][data-b="${a}"]`);
+      if(path) path.classList.add('drawn');
+    }
+  });
+
+  if(litSet.size === points.length){
+    setTimeout(triggerFinale, 900);
+  }
+}
+
+// ---------- Finale ----------
+const finale = document.getElementById('finale');
+const closeFinale = document.getElementById('closeFinale');
+
+function triggerFinale(){
+  finale.classList.add('show');
+  launchConfetti();
+}
+closeFinale.addEventListener('click', ()=>{
+  finale.classList.remove('show');
+});
+
+// ---------- Confetti ----------
+const canvas = document.getElementById('confetti');
+const ctx = canvas.getContext('2d');
+function resizeCanvas(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+const confettiColors = ['#f5b841','#ff7a68','#4fc0b8','#f7f1e6'];
+let particles = [];
+
+function launchConfetti(){
+  particles = [];
+  const count = window.innerWidth < 500 ? 90 : 160;
+  for(let i=0;i<count;i++){
+    particles.push({
+      x: canvas.width/2,
+      y: canvas.height*0.35,
+      vx: (Math.random()-0.5)*10,
+      vy: (Math.random()-1.6)*10,
+      size: Math.random()*6+4,
+      color: confettiColors[Math.floor(Math.random()*confettiColors.length)],
+      rot: Math.random()*360,
+      vrot: (Math.random()-0.5)*10,
+      life: 0,
+      maxLife: 140 + Math.random()*60
+    });
+  }
+  requestAnimationFrame(animateConfetti);
+}
+
+function animateConfetti(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  let alive = false;
+  particles.forEach(p=>{
+    if(p.life > p.maxLife) return;
+    alive = true;
+    p.vy += 0.18;
+    p.x += p.vx;
+    p.y += p.vy;
+    p.rot += p.vrot;
+    p.life++;
+    const opacity = Math.max(0, 1 - p.life/p.maxLife);
+    ctx.save();
+    ctx.translate(p.x,p.y);
+    ctx.rotate(p.rot * Math.PI/180);
+    ctx.globalAlpha = opacity;
+    ctx.fillStyle = p.color;
+    ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size*0.6);
+    ctx.restore();
+  });
+  if(alive){
+    requestAnimationFrame(animateConfetti);
+  } else {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+  }
+}
+</script>
+
+</body>
+</html>
