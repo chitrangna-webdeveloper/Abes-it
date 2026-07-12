@@ -3,867 +3,408 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CodeVault — Resources that actually slap</title>
+<title>CodeVault — my dev resources</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  /* ============ TOKENS ============ */
   :root{
-    --bg:#0F1115;
-    --surface:#171A21;
-    --surface-2:#1E222B;
-    --ink:#F5F3EE;
-    --ink-dim:#9CA0AC;
-    --pink:#FF5D8F;
-    --yellow:#FFD23F;
-    --mint:#5DD8C4;
-    --lavender:#B892FF;
-    --line: rgba(245,243,238,0.10);
-    --font-display:'Space Grotesk', sans-serif;
-    --font-body:'Inter', sans-serif;
+    --bg:#FFF9E8;
+    --surface:#FFFFFF;
+    --surface-2:#FFF0B8;
+    --ink:#181A1F;
+    --ink-dim:#4A4E58;
+    --blue:#3E8FF0;
+    --blue-2:#FFD400;
+    --pink:#E8392B;
+    --yellow:#FFD400;
+    --mint:#33C48A;
+    --line: #181A1F;
+    --shadow: 5px 5px 0 var(--ink);
+    --font-display:'Bangers', sans-serif;
+    --font-head:'Baloo 2', sans-serif;
+    --font-body:'Baloo 2', sans-serif;
     --font-mono:'JetBrains Mono', monospace;
   }
+
+  body.light{ /* legacy hook, theme now defaults light */ }
 
   *{ box-sizing:border-box; margin:0; padding:0; }
   html{ scroll-behavior:smooth; }
   body{
     background:var(--bg);
+    background-image: radial-gradient(rgba(24,26,31,0.12) 1.4px, transparent 1.4px);
+    background-size: 22px 22px;
+    background-attachment: fixed;
     color:var(--ink);
     font-family:var(--font-body);
-    line-height:1.5;
-    overflow-x:hidden;
-    background-image:
-      radial-gradient(circle at 1px 1px, rgba(245,243,238,0.045) 1px, transparent 0);
-    background-size: 26px 26px;
+    line-height:1.6;
   }
   a{ color:inherit; text-decoration:none; }
   ul{ list-style:none; }
-  img{ max-width:100%; display:block; }
-  section{ padding: 90px 8vw; position:relative; }
-  h1,h2,h3{ font-family:var(--font-display); }
-  :focus-visible{ outline:3px solid var(--yellow); outline-offset:3px; }
+  .icon{ width:20px; height:20px; stroke:currentColor; stroke-width:2; fill:none; stroke-linecap:round; stroke-linejoin:round; vertical-align:-5px; }
+  section{ padding: 70px 8vw; }
+  h1,h2{ font-family:var(--font-display); letter-spacing:0.03em; }
+  h3{ font-family:var(--font-head); font-weight:700; }
+  :focus-visible{ outline:2px solid var(--pink); outline-offset:3px; }
 
   .eyebrow{
     font-family:var(--font-mono);
-    font-size:0.8rem;
-    letter-spacing:0.08em;
-    text-transform:uppercase;
-    color:var(--ink-dim);
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    margin-bottom:14px;
+    font-size:0.76rem;
+    letter-spacing:0.03em;
+    color:var(--ink);
+    margin-bottom:10px;
+    display:inline-block;
+    background:var(--yellow);
+    border:2px solid var(--ink);
+    padding:5px 12px;
+    border-radius:999px;
+    box-shadow:3px 3px 0 var(--ink);
   }
-  .eyebrow::before{ content:"//"; color:var(--pink); }
 
-  .section-head{ max-width:640px; margin-bottom:48px; }
-  .section-head h2{ font-size:clamp(1.8rem, 3vw, 2.6rem); font-weight:700; margin-bottom:12px; }
-  .section-head p{ color:var(--ink-dim); font-size:1.05rem; }
+  .section-head{ max-width:600px; margin-bottom:36px; }
+  .section-head h2{ font-size:clamp(1.9rem, 3vw, 2.6rem); margin-bottom:8px; color:var(--pink); -webkit-text-stroke:1px var(--ink); }
+  .section-head p{ color:var(--ink-dim); font-size:1rem; font-family:var(--font-head); }
 
-  /* ============ NAV (editor tab bar vibe) ============ */
+  /* ============ NAV — comic flat header ============ */
   .nav-wrap{
     position:sticky; top:0; z-index:100;
-    padding: 18px 8vw;
-    background:rgba(15,17,21,0.82);
-    backdrop-filter: blur(10px);
-    border-bottom:1px solid var(--line);
+    padding: 16px 8vw;
+    background:var(--surface);
+    border-bottom:3px solid var(--ink);
     display:flex; align-items:center; justify-content:space-between;
   }
-  .nav-brand{ display:flex; align-items:center; gap:10px; font-family:var(--font-display); font-weight:700; font-size:1.15rem; }
-  .nav-brand .dots{ display:flex; gap:5px; }
-  .nav-brand .dots span{ width:9px; height:9px; border-radius:50%; display:inline-block; }
-  .nav-brand .dots span:nth-child(1){ background:var(--pink); }
-  .nav-brand .dots span:nth-child(2){ background:var(--yellow); }
-  .nav-brand .dots span:nth-child(3){ background:var(--mint); }
-
+  .nav-brand{ font-family:var(--font-display); font-weight:700; font-size:1.5rem; letter-spacing:0.02em; display:flex; align-items:center; gap:10px; color:var(--pink); -webkit-text-stroke:1px var(--ink); }
+  .nav-hamburger{ font-size:1.2rem; cursor:pointer; -webkit-text-stroke:0; color:var(--ink); }
   .nav-toggle-checkbox{ display:none; }
-  .nav-toggle-label{
-    display:none; font-size:1.5rem; cursor:pointer; user-select:none;
-    background:none; border:none; color:var(--ink);
+  .nav-toggle-label{ display:none; font-size:1.3rem; cursor:pointer; background:none; border:none; color:var(--ink); }
+  .nav-links{ display:flex; gap:24px; font-size:0.95rem; font-weight:600; align-items:center; font-family:var(--font-head); }
+  .nav-links a{ color:var(--ink); transition: transform .15s; display:inline-block; }
+  .nav-links a:hover{ transform:translateY(-2px); }
+  .nav-cta{
+    background:var(--mint); color:var(--ink) !important; padding:9px 18px; border-radius:999px;
+    font-size:0.85rem; border:2px solid var(--ink); box-shadow:3px 3px 0 var(--ink);
   }
-  .nav-links{ display:flex; gap:32px; font-size:0.95rem; font-weight:500; }
-  .nav-links a{ position:relative; padding:6px 0; color:var(--ink-dim); transition: color .25s; }
-  .nav-links a:hover{ color:var(--ink); }
-  .nav-links a::after{
-    content:""; position:absolute; left:0; bottom:0; width:0; height:2px;
-    background:var(--pink); transition: width .3s;
-  }
-  .nav-links a:hover::after{ width:100%; }
 
-  /* ============ HERO ============ */
-  .hero{
-    padding-top: 90px; padding-bottom: 60px;
-    display:grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items:center;
-    min-height: 78vh;
+  /* ============ HERO — scrapbook collage like the portfolio card ============ */
+  .hero-wrap{ padding: 0; }
+  .profile-row{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 8vw; border-bottom:3px solid var(--ink);
   }
-  .hero-copy .eyebrow{ margin-bottom:20px; }
-  .hero h1{
-    font-size: clamp(2.4rem, 5.2vw, 4.2rem);
-    line-height:1.05; font-weight:700; letter-spacing:-0.02em;
+  .profile-row .who{ display:flex; align-items:center; gap:14px; }
+  .profile-avatar{
+    width:48px; height:48px; border-radius:50%; background:var(--yellow);
+    display:flex; align-items:center; justify-content:center; font-size:1.3rem;
+    border:2px solid var(--ink);
   }
-  .typed{
-    display:inline-block; overflow:hidden; white-space:nowrap;
-    border-right: 4px solid var(--pink);
-    width:0; max-width:100%;
-    animation: typing 2.6s steps(28,end) 0.3s forwards, blink 0.75s step-end infinite;
-    vertical-align:bottom;
-  }
-  @keyframes typing{ from{width:0} to{width:100%} }
-  @keyframes blink{ 50%{ border-color:transparent } }
+  .profile-row .who h2{ font-size:1.2rem; font-family:var(--font-head); }
+  .profile-row .who span{ color:var(--ink-dim); font-size:0.85rem; font-family:var(--font-mono); }
+  .profile-menu{ font-size:1.2rem; color:var(--ink); cursor:pointer; }
 
-  .hero-copy p.lede{
-    margin-top:22px; font-size:1.15rem; color:var(--ink-dim); max-width:520px;
+  .collage{
+    position:relative; max-width:640px; margin:50px auto 30px;
+    height:380px;
   }
-  .hero-ctas{ display:flex; gap:16px; margin-top:34px; flex-wrap:wrap; }
+  .collage-item{ background:#fff; border:2.5px solid var(--ink); box-shadow:var(--shadow); border-radius:10px; padding:10px; text-align:center; position:absolute; }
+  .collage-item.photo{ width:150px; }
+  .collage-item.photo .ph{
+    width:100%; height:130px; border-radius:4px; display:flex; align-items:center; justify-content:center;
+    font-size:2rem; margin-bottom:8px; border:2px solid var(--ink);
+  }
+  .collage-item.photo .cap{ font-family:var(--font-mono); font-size:0.7rem; color:var(--ink-dim); }
+  .collage-item.swatch{ width:110px; padding:0; overflow:hidden; }
+  .collage-item.swatch .sw{ height:80px; border-bottom:2px solid var(--ink); }
+  .collage-item.swatch .lbl{ padding:8px; font-family:var(--font-mono); font-size:0.65rem; text-align:left; }
+  .collage-item.sticker{ width:auto; padding:12px 15px; font-size:1.6rem; border-radius:50%; }
+  .collage-item.note{ width:130px; text-align:left; font-family:var(--font-mono); font-size:0.68rem; color:var(--ink-dim); }
+  .collage-item.note .note-title{ font-size:0.7rem; color:var(--ink); margin-bottom:6px; font-weight:700; }
+
+  .c1{ top:0; left:2%; transform:rotate(-8deg); z-index:2; }
+  .c2{ top:6%; left:36%; transform:rotate(3deg); z-index:3; }
+  .c3{ top:2%; right:0; transform:rotate(7deg); z-index:2; }
+  .c4{ bottom:6%; left:14%; transform:rotate(-5deg); z-index:1; }
+  .c5{ bottom:0; right:8%; transform:rotate(6deg); z-index:2; }
+  .c6{ top:42%; left:0; transform:rotate(-10deg); z-index:1; }
+  .c7{ bottom:12%; left:46%; transform:rotate(4deg); z-index:4; }
+
+  .hero-intro{
+    max-width:560px; margin:0 auto 60px; text-align:center; padding:0 6vw;
+    font-size:1.1rem; line-height:1.75; color:var(--ink); font-family:var(--font-head);
+  }
+  .hero-intro a{ color:var(--pink); text-decoration:underline; }
+  .hero-ctas{ display:flex; gap:14px; margin-top:22px; justify-content:center; flex-wrap:wrap; }
   .btn{
-    font-family:var(--font-mono); font-weight:500; font-size:0.95rem;
-    padding:14px 26px; border-radius:6px; border:1px solid transparent;
+    font-family:var(--font-head); font-weight:700; font-size:0.92rem;
+    padding:12px 22px; border-radius:999px; border:2.5px solid var(--ink);
     display:inline-flex; align-items:center; gap:8px; cursor:pointer;
-    transition: transform .2s ease, box-shadow .2s ease;
+    box-shadow:4px 4px 0 var(--ink);
+    transition: transform .12s ease, box-shadow .12s ease;
   }
-  .btn:hover{ transform:translateY(-3px); }
-  .btn-solid{ background:var(--pink); color:#191114; }
-  .btn-solid:hover{ box-shadow:0 10px 26px -8px rgba(255,93,143,0.55); }
-  .btn-ghost{ border-color:var(--line); color:var(--ink); }
-  .btn-ghost:hover{ border-color:var(--lavender); box-shadow:0 10px 26px -10px rgba(184,146,255,0.4); }
+  .btn:hover{ transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--ink); }
+  .btn:active{ transform:translate(2px,2px); box-shadow:1px 1px 0 var(--ink); }
+  .btn-solid{ background:var(--pink); color:#fff; }
+  .btn-ghost{ background:var(--yellow); color:var(--ink); }
 
-  .hero-stickers{ position:relative; height:100%; min-height:340px; }
-  .sticker{
-    position:absolute; font-family:var(--font-mono); font-size:0.85rem;
-    background:var(--surface-2); border:1px solid var(--line);
-    padding:10px 16px; border-radius:8px; box-shadow:0 12px 30px -12px rgba(0,0,0,0.6);
-    animation: float 6s ease-in-out infinite;
-  }
-  .sticker--1{ top:6%; left:10%; color:var(--yellow); rotate:-6deg; animation-delay:0s;}
-  .sticker--2{ top:34%; left:48%; color:var(--mint); rotate:4deg; animation-delay:1.2s;}
-  .sticker--3{ top:60%; left:6%; color:var(--pink); rotate:-3deg; animation-delay:2.1s;}
-  .sticker--4{ top:78%; left:52%; color:var(--lavender); rotate:5deg; animation-delay:0.6s;}
-  @keyframes float{ 0%,100%{ transform:translateY(0px);} 50%{ transform:translateY(-14px);} }
-
-  /* ============ TICKER ============ */
-  .ticker{
-    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
-    background:var(--surface); overflow:hidden; padding:16px 0;
-  }
-  .ticker-track{
-    display:flex; width:max-content; gap:48px;
-    animation: scrollTicker 28s linear infinite;
-    font-family:var(--font-mono); font-size:0.95rem; color:var(--ink-dim);
-    white-space:nowrap;
-  }
-  .ticker-track span{ display:flex; align-items:center; gap:10px; }
-  @keyframes scrollTicker{ from{ transform:translateX(0);} to{ transform:translateX(-50%);} }
-
-  /* ============ REVEAL (progressive scroll animation) ============ */
-  .reveal{
-    animation: fadeUp 1s cubic-bezier(.2,.7,.2,1) both;
-    animation-timeline: view();
-    animation-range: entry 0% cover 35%;
-  }
-  @keyframes fadeUp{ from{ opacity:0; transform:translateY(36px);} to{ opacity:1; transform:translateY(0);} }
-
-  /* ============ RESOURCE GRID (corkboard notes) ============ */
+  /* ============ RESOURCE CARDS — like portfolio list cards ============ */
   .board{
-    display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
-    gap:28px;
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+    gap:18px;
   }
   .note{
-    background:var(--surface); border:1px solid var(--line); border-radius:4px;
-    padding:26px 24px 24px; position:relative;
-    transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
-    transform: rotate(var(--tilt, -1.5deg));
+    background:var(--surface); border:2.5px solid var(--ink); border-radius:16px;
+    padding:22px 20px; box-shadow:var(--shadow);
+    transition: transform .15s ease, box-shadow .15s ease;
   }
-  .note:nth-child(2n){ --tilt:1.5deg; }
-  .note:nth-child(3n){ --tilt:-0.8deg; }
-  .note::before{
-    content:""; position:absolute; top:-9px; left:24px; width:16px; height:16px;
-    border-radius:50%; background: var(--accent, var(--pink));
-    box-shadow:0 4px 8px rgba(0,0,0,0.4);
+  .note:hover{ transform:translate(-3px,-3px); box-shadow:8px 8px 0 var(--ink); }
+  .note-top{ display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+  .note-badge{
+    width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center;
+    font-size:1.3rem; background:var(--accent-bg, #FFF3D6); color:var(--accent, var(--pink));
+    border:2px solid var(--ink);
   }
-  .note:hover{
-    transform: rotate(0deg) translateY(-8px);
-    box-shadow: 0 22px 40px -18px rgba(0,0,0,0.55);
-    border-color: var(--accent, var(--pink));
-  }
+  .note h3{ font-size:1.1rem; }
   .note .tag{
-    font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.05em;
-    color: var(--accent, var(--pink)); text-transform:uppercase; margin-bottom:10px; display:block;
+    font-family:var(--font-mono); font-size:0.7rem; color:var(--ink-dim); text-transform:uppercase;
   }
-  .note h3{ font-size:1.2rem; margin-bottom:10px; }
-  .note p{ color:var(--ink-dim); font-size:0.92rem; margin-bottom:18px; }
+  .note p{ color:var(--ink-dim); font-size:0.9rem; margin-bottom:16px; }
   .note a.open{
-    font-family:var(--font-mono); font-size:0.85rem; color:var(--ink);
+    font-family:var(--font-head); font-weight:700; font-size:0.85rem; color:var(--accent, var(--pink));
     display:inline-flex; align-items:center; gap:6px;
-    border-bottom:1px solid var(--accent, var(--pink));
-    padding-bottom:2px; transition: gap .2s;
   }
-  .note a.open:hover{ gap:11px; }
 
-  #webdev .note{ --accent: var(--pink); }
-  #python .note{ --accent: var(--yellow); }
-  #java .note{ --accent: var(--mint); }
-  #claude .note{ --accent: var(--lavender); }
+  #webdev .note{ --accent: var(--pink); --accent-bg: #FFE9F0; }
+  #python .note{ --accent: var(--yellow); --accent-bg: #FFF3E0; }
+  #java .note{ --accent: var(--mint); --accent-bg: #E4F9F3; }
+  #claude .note{ --accent: var(--blue); --accent-bg: #EAF1FF; }
 
-  /* ============ CHEAT SHEET / NOTES ============ */
+  /* ============ CHEAT SHEETS ============ */
   .cheat-grid{
-    display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:24px;
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:18px;
   }
   .cheat-card{
-    background:var(--surface-2); border:1px solid var(--line); border-radius:8px; overflow:hidden;
+    background:#1B1E2E; border:2.5px solid var(--ink); border-radius:16px; overflow:hidden; box-shadow:var(--shadow);
   }
   .cheat-card .cheat-head{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:12px 18px; border-bottom:1px solid var(--line);
-    font-family:var(--font-mono); font-size:0.82rem; color:var(--ink-dim);
+    padding:12px 16px; border-bottom:2px solid var(--ink);
+    font-family:var(--font-mono); font-size:0.78rem; color:#C7CBE0;
   }
   .cheat-card pre{
-    padding:18px; font-family:var(--font-mono); font-size:0.85rem; color:var(--mint);
+    padding:16px; font-family:var(--font-mono); font-size:0.8rem; color:#7FE7CB;
     overflow-x:auto; line-height:1.6;
   }
-  .cheat-card .cheat-head .lang-dot{ width:8px; height:8px; border-radius:50%; background:var(--pink); margin-right:8px; display:inline-block; }
 
-  /* ============ MINI GAME: SQUASH THE BUGS ============ */
-  .bug-game{
-    position:relative;
-    display:grid; grid-template-columns:repeat(auto-fit, minmax(90px,1fr));
-    gap:22px; background:var(--surface); border:1px solid var(--line);
-    border-radius:14px; padding:44px 36px;
-  }
-  .bug{ display:flex; justify-content:center; }
-  .bug-checkbox{ position:absolute; opacity:0; width:0; height:0; }
-  .bug-label{
-    width:74px; height:74px; border-radius:50%; cursor:pointer;
-    background:var(--surface-2); border:1px solid var(--line);
-    display:flex; align-items:center; justify-content:center;
-    font-size:2rem; position:relative; overflow:hidden;
-    transition: transform .25s ease, background .25s ease, border-color .25s ease;
-  }
-  .bug-label:hover{ transform:scale(1.08) rotate(-4deg); border-color:var(--pink); }
-  .bug-icon{ transition: opacity .25s ease, transform .4s ease; }
-  .bug-squashed{
-    display:none; position:absolute; inset:0; align-items:center; justify-content:center;
-  }
-  .bug-checkbox:checked ~ .bug-label{
-    background:rgba(255,93,143,0.14); border-color:var(--pink); cursor:default;
-    transform:scale(0.94);
-  }
-  .bug-checkbox:checked ~ .bug-label:hover{ transform:scale(0.94); }
-  .bug-checkbox:checked ~ .bug-label .bug-icon{ opacity:0; transform:scale(0) rotate(90deg); }
-  .bug-checkbox:checked ~ .bug-label .bug-squashed{ display:flex; animation:splat .35s ease; }
-  @keyframes splat{ from{ transform:scale(0) rotate(-20deg); opacity:0;} to{ transform:scale(1) rotate(0); opacity:1;} }
-
-  .bug-win{
-    grid-column:1/-1; display:none; text-align:center; padding:22px;
-    border-radius:10px; border:1px solid var(--mint); color:var(--mint);
-    background:rgba(93,216,196,0.10); font-family:var(--font-mono); font-size:0.95rem;
-    animation: fadeUp .5s ease;
-  }
-  .bug-game:has(#bug1:checked):has(#bug2:checked):has(#bug3:checked):has(#bug4:checked):has(#bug5:checked):has(#bug6:checked):has(#bug7:checked):has(#bug8:checked) .bug-win{
-    display:block;
-  }
-  .bug-hint{
-    grid-column:1/-1; text-align:center; font-family:var(--font-mono);
-    font-size:0.82rem; color:var(--ink-dim);
-  }
-  .bug-game:has(#bug1:checked):has(#bug2:checked):has(#bug3:checked):has(#bug4:checked):has(#bug5:checked):has(#bug6:checked):has(#bug7:checked):has(#bug8:checked) .bug-hint{
-    display:none;
-  }
-
-  /* ============ MINI GAME 2: BEAT THE DEADLINE (single player) ============ */
-  .dl-game{
-    display:flex; flex-direction:column; align-items:center; gap:24px;
-    background:var(--surface); border:1px solid var(--line); border-radius:14px;
-    padding:44px 32px;
-  }
-  .dl-choices{ display:flex; gap:16px; }
-  .dl-radio{ position:absolute; opacity:0; width:0; height:0; }
-  .dl-choice{
-    width:84px; height:96px; border-radius:12px; background:var(--surface-2);
-    border:1px solid var(--line); display:flex; flex-direction:column; align-items:center;
-    justify-content:center; gap:8px; font-size:2rem; cursor:pointer;
-    transition: transform .25s ease, border-color .25s ease, background .25s ease;
-  }
-  .dl-choice span{ font-family:var(--font-mono); font-size:0.68rem; color:var(--ink-dim); }
-  .dl-choice:hover{ transform:translateY(-5px); border-color:var(--lavender); }
-  .dl-radio:checked + .dl-choice{
-    border-color:var(--pink); background:rgba(255,93,143,0.14); transform:translateY(-3px);
-  }
-  .dl-hint{ font-family:var(--font-mono); font-size:0.85rem; color:var(--ink-dim); text-align:center; }
-  .dl-radio:checked ~ .dl-hint{ display:none; }
-  .dl-result{
-    display:none; text-align:center; padding:20px 26px; border-radius:10px;
-    border:1px solid var(--line); font-family:var(--font-mono); font-size:0.92rem;
-    max-width:480px; animation: fadeUp .4s ease;
-  }
-  #dl-code:checked ~ .dl-result-code{ display:block; border-color:var(--mint); color:var(--mint); }
-  #dl-coffee:checked ~ .dl-result-coffee{ display:block; border-color:var(--pink); color:var(--pink); }
-  #dl-sleep:checked ~ .dl-result-sleep{ display:block; border-color:var(--pink); color:var(--pink); }
-
-  /* ============ DAILY LOCKER ============ */
+  /* ============ LOCKER (kept, minimal) ============ */
   .locker-wrap{ display:flex; justify-content:center; }
-  .locker-box{ position:relative; width:360px; max-width:100%; min-height:340px; perspective:1200px; }
-  .locker-content{
-    background:var(--surface-2); border:1px solid var(--line); border-radius:16px;
-    padding:36px 28px; text-align:center; display:flex; flex-direction:column;
-    align-items:center; gap:14px; min-height:340px; justify-content:center;
+  .locker-card{
+    background:var(--surface); border:2.5px solid var(--ink); border-radius:18px;
+    padding:32px 28px; text-align:center; max-width:360px; width:100%; box-shadow:var(--shadow);
   }
-  .locker-content-head{
-    font-family:var(--font-mono); font-size:0.8rem; color:var(--lavender);
-    text-transform:uppercase; letter-spacing:0.06em;
-  }
-  .locker-news-text{ font-size:1.05rem; line-height:1.6; max-width:300px; }
-  .locker-date{ font-family:var(--font-mono); font-size:0.78rem; color:var(--ink-dim); }
-  .locker-btn-small{
-    margin-top:6px; font-family:var(--font-mono); font-size:0.82rem;
-    color:var(--ink-dim); background:none; border:1px solid var(--line);
-    padding:8px 16px; border-radius:6px; cursor:pointer; transition: border-color .25s, color .25s;
-  }
-  .locker-btn-small:hover{ border-color:var(--pink); color:var(--ink); }
-
-  .locker-face{
-    position:absolute; inset:0; background:var(--surface); border:1px solid var(--line);
-    border-radius:16px; padding:36px 28px; display:flex; flex-direction:column;
-    align-items:center; gap:14px; justify-content:center;
-    transform-origin:left center; transform-style:preserve-3d; backface-visibility:hidden;
-    transition: transform .8s cubic-bezier(.2,.8,.2,1), opacity .6s ease .1s;
-  }
-  .locker-icon{ font-size:2.6rem; }
+  .locker-icon{ font-size:1.8rem; margin-bottom:8px; }
   .locker-input{
-    width:100%; max-width:220px; font-family:var(--font-mono); font-size:0.95rem;
-    background:var(--bg); border:1px solid var(--line); color:var(--ink);
-    padding:12px 14px; border-radius:8px; text-align:center;
+    width:100%; max-width:220px; font-family:var(--font-mono); font-size:0.9rem;
+    background:var(--surface-2); border:2px solid var(--ink); color:var(--ink);
+    padding:10px 12px; border-radius:10px; text-align:center; margin:14px 0 8px;
   }
-  .locker-input:focus{ outline:none; border-color:var(--lavender); }
+  .locker-input:focus{ outline:none; border-color:var(--pink); }
   .locker-btn{
-    font-family:var(--font-mono); font-weight:500; font-size:0.9rem;
-    padding:12px 24px; border-radius:6px; border:none; background:var(--pink);
-    color:#191114; cursor:pointer; transition: transform .2s ease;
+    font-family:var(--font-head); font-weight:700; font-size:0.9rem;
+    padding:10px 22px; border-radius:999px; border:2px solid var(--ink); background:var(--mint);
+    color:var(--ink); cursor:pointer; box-shadow:3px 3px 0 var(--ink);
   }
-  .locker-btn:hover{ transform:translateY(-3px); }
-  .locker-hint{ font-family:var(--font-mono); font-size:0.75rem; color:var(--ink-dim); }
-  .locker-error{ font-family:var(--font-mono); font-size:0.78rem; color:var(--pink); min-height:1em; }
-
-  .locker-face.open{ transform:rotateY(-108deg); opacity:0; pointer-events:none; }
-  .locker-face.shake{ animation: lockerShake .4s ease; }
-  @keyframes lockerShake{
-    0%,100%{ transform:translateX(0); }
-    20%{ transform:translateX(-8px); }
-    40%{ transform:translateX(8px); }
-    60%{ transform:translateX(-6px); }
-    80%{ transform:translateX(6px); }
-  }
-
-  /* ============ QUOTE / MEME BREAK ============ */
-  .meme-break{
-    text-align:center; padding:70px 8vw;
-    background: linear-gradient(180deg, transparent, rgba(184,146,255,0.06), transparent);
-  }
-  .meme-break blockquote{
-    font-family:var(--font-display); font-weight:600;
-    font-size:clamp(1.4rem,3vw,2.2rem); max-width:760px; margin:0 auto 14px;
-  }
-  .meme-break span{ font-family:var(--font-mono); color:var(--ink-dim); font-size:0.9rem; }
+  .locker-hint{ font-family:var(--font-mono); font-size:0.72rem; color:var(--ink-dim); margin-top:10px; }
+  .locker-error{ font-family:var(--font-mono); font-size:0.75rem; color:var(--pink); min-height:1.2em; margin-top:6px; }
+  .locker-result{ display:none; }
+  .locker-result.show{ display:block; }
+  .locker-result p{ font-size:1rem; line-height:1.6; margin:8px 0; }
+  .locker-result .locker-date{ font-family:var(--font-mono); font-size:0.75rem; color:var(--ink-dim); }
 
   /* ============ FOOTER ============ */
   footer{
-    border-top:1px solid var(--line); padding: 50px 8vw 30px;
+    border-top:3px solid var(--ink); padding: 44px 8vw 26px;
     display:flex; flex-wrap:wrap; gap:30px; justify-content:space-between; align-items:flex-start;
   }
-  footer .foot-brand{ font-family:var(--font-display); font-weight:700; font-size:1.2rem; max-width:320px; }
-  footer .foot-brand p{ font-family:var(--font-body); font-weight:400; color:var(--ink-dim); font-size:0.9rem; margin-top:10px; }
-  .foot-cols{ display:flex; gap:60px; flex-wrap:wrap; }
-  .foot-cols h4{ font-family:var(--font-mono); font-size:0.8rem; color:var(--ink-dim); text-transform:uppercase; margin-bottom:14px; letter-spacing:0.05em; }
-  .foot-cols ul li{ margin-bottom:9px; font-size:0.9rem; }
+  footer .foot-brand{ font-family:var(--font-display); font-size:1.6rem; max-width:300px; color:var(--pink); -webkit-text-stroke:1px var(--ink); }
+  footer .foot-brand p{ font-family:var(--font-head); font-weight:400; color:var(--ink-dim); font-size:0.88rem; margin-top:8px; -webkit-text-stroke:0; }
+  .foot-cols{ display:flex; gap:50px; flex-wrap:wrap; }
+  .foot-cols h4{ font-family:var(--font-mono); font-size:0.76rem; color:var(--ink-dim); text-transform:uppercase; margin-bottom:12px; }
+  .foot-cols ul li{ margin-bottom:8px; font-size:0.9rem; font-family:var(--font-head); }
   .foot-cols ul li a:hover{ color:var(--pink); }
   .foot-bottom{
-    text-align:center; padding-top:30px; margin-top:30px; border-top:1px solid var(--line);
-    font-family:var(--font-mono); font-size:0.78rem; color:var(--ink-dim); width:100%;
+    text-align:center; padding-top:26px; margin-top:26px; border-top:2px solid var(--ink);
+    font-family:var(--font-mono); font-size:0.74rem; color:var(--ink-dim); width:100%;
   }
 
-  /* ============ BACK TO TOP ============ */
-  .to-top{
-    position:fixed; bottom:26px; right:26px; z-index:90;
+  /* ============ FLOATING BUTTONS ============ */
+  .float-btns{
+    position:fixed; bottom:24px; right:24px; z-index:90;
+    display:flex; flex-direction:column; gap:10px;
+  }
+  .float-btn{
     width:46px; height:46px; border-radius:50%;
-    background:var(--surface-2); border:1px solid var(--line);
-    display:flex; align-items:center; justify-content:center;
-    font-size:1.1rem; box-shadow:0 10px 24px -10px rgba(0,0,0,0.6);
-    transition: transform .25s, border-color .25s;
+    background:var(--yellow); border:2.5px solid var(--ink); color:var(--ink);
+    display:flex; align-items:center; justify-content:center; box-shadow:3px 3px 0 var(--ink);
+    font-size:1.05rem; cursor:pointer; transition: transform .15s;
   }
-  .to-top:hover{ transform:translateY(-4px); border-color:var(--pink); }
+  .float-btn:hover{ transform:translate(-2px,-2px); box-shadow:5px 5px 0 var(--ink); }
 
-  /* ============ RESPONSIVE ============ */
+  /* sticky notes panel */
+  .notes-panel{
+    position:fixed; bottom:136px; right:24px; z-index:95;
+    width:260px; max-height:60vh; overflow-y:auto;
+    background:var(--surface); border:2.5px solid var(--ink); border-radius:14px;
+    box-shadow:var(--shadow); padding:16px; display:none; flex-direction:column; gap:10px;
+  }
+  .notes-panel.open{ display:flex; }
+  .notes-panel h4{ font-family:var(--font-head); font-size:0.95rem; margin-bottom:2px; }
+  .notes-input-row{ display:flex; gap:6px; }
+  .notes-input{
+    flex:1; font-family:var(--font-body); font-size:0.85rem;
+    border:2px solid var(--ink); border-radius:8px; padding:8px 10px;
+    background:var(--surface-2); color:var(--ink);
+  }
+  .notes-add{
+    font-family:var(--font-head); font-weight:700; border:2px solid var(--ink); border-radius:8px;
+    background:var(--mint); padding:8px 12px; cursor:pointer; box-shadow:2px 2px 0 var(--ink);
+  }
+  .sticky-note{
+    background:var(--yellow); border:2px solid var(--ink); border-radius:6px;
+    padding:10px 12px; font-family:var(--font-head); font-size:0.85rem;
+    box-shadow:3px 3px 0 var(--ink); position:relative;
+  }
+  .sticky-note:nth-child(3n){ background:#B7F0D6; }
+  .sticky-note:nth-child(3n+1){ background:#FFD400; }
+  .sticky-note:nth-child(3n+2){ background:#FFB7C5; }
+  .sticky-note .del{
+    position:absolute; top:4px; right:6px; cursor:pointer; font-size:0.75rem; color:var(--ink-dim);
+  }
+  .sticky-note .edit{
+    position:absolute; top:3px; right:24px; cursor:pointer; font-size:0.72rem;
+  }
+  .sticky-note{ padding-right:44px; }
+  .notes-empty{ font-family:var(--font-mono); font-size:0.78rem; color:var(--ink-dim); }
+
+  /* dark mode override */
+  body.dark{
+    --bg:#12141F;
+    --surface:#1B1E2E;
+    --surface-2:#22263A;
+    --ink:#F1F2F8;
+    --ink-dim:#B7BBCB;
+    --line: #F1F2F8;
+    --shadow: 5px 5px 0 var(--ink);
+  }
+  body.dark .cheat-card{ background:#0E1019; }
+  body.dark .note-badge{ background:#22263A; }
+
+  /* ============ PRELOADER — interactive locker ============ */
+  #preloader{
+    position:fixed; inset:0; z-index:999;
+    background: var(--blue);
+    background-image: radial-gradient(rgba(255,255,255,0.18) 1.6px, transparent 1.6px);
+    background-size: 20px 20px;
+    display:flex; align-items:center; justify-content:center;
+    transition: opacity .6s ease, visibility .6s ease;
+  }
+  #preloader.hide{ opacity:0; visibility:hidden; pointer-events:none; }
+  .preloader-card{
+    background:#fff; border:3px solid var(--ink); border-radius:24px; padding:44px 40px; text-align:center;
+    box-shadow:7px 7px 0 var(--ink); max-width:280px; cursor:pointer;
+    user-select:none;
+  }
+  .preloader-lock{
+    font-size:2.8rem; display:inline-block; transition: transform .5s ease;
+  }
+  .preloader-card.unlocking .preloader-lock{ transform: rotate(-18deg) scale(1.15); }
+  .preloader-card p{ font-family:var(--font-head); font-weight:700; font-size:0.95rem; color:var(--ink); margin-top:14px; }
+  .preloader-card .pl-sub{ font-size:0.72rem; margin-top:6px; color:var(--ink-dim); font-family:var(--font-mono); }
+  .preloader-bar{
+    margin-top:16px; height:6px; border-radius:999px; background:var(--surface-2);
+    border:1.5px solid var(--ink); overflow:hidden;
+  }
+  .preloader-bar-fill{
+    height:100%; width:0%; background:var(--pink);
+    transition: width .5s ease;
+  }
+
   @media (max-width: 860px){
-    .hero{ grid-template-columns:1fr; min-height:auto; }
-    .hero-stickers{ min-height:220px; margin-top:20px; }
     .nav-links{
-      display:none; position:absolute; top:100%; left:0; right:0;
-      background:var(--surface); flex-direction:column; padding:20px 8vw; gap:18px;
-      border-bottom:1px solid var(--line);
+      display:none; position:absolute; top:64px; left:5vw; right:5vw;
+      background:var(--surface); flex-direction:column; padding:18px; gap:14px;
+      border-radius:16px; box-shadow:var(--shadow);
     }
     .nav-toggle-checkbox:checked ~ .nav-links{ display:flex; }
     .nav-toggle-label{ display:block; }
-    section{ padding:60px 6vw; }
+    section{ padding:52px 6vw; }
+    .collage{
+      height:auto; display:flex; flex-wrap:wrap; justify-content:center; gap:14px; padding:0 4vw;
+    }
+    .collage-item{ position:static !important; transform:none !important; }
   }
 
-  @media (prefers-reduced-motion: reduce){
-    *{ animation:none !important; transition:none !important; }
-    .typed{ width:100%; border-right:none; }
-  }
+  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; } }
 </style>
 </head>
 <body>
 
-  <!-- ============ NAV ============ -->
-  <div class="nav-wrap">
-    <div class="nav-brand">
-      <span class="dots"><span></span><span></span><span></span></span>
-      CodeVault
+  <!-- ============ PRELOADER ============ -->
+  <div id="preloader">
+    <div class="preloader-card" id="preloader-card" onclick="unlockPreloader()">
+      <span class="preloader-lock" id="preloader-lock"><svg viewBox="0 0 24 24" class="icon" style="width:42px;height:42px;"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>
+      <p id="preloader-text">Chalo chalo, tap karo!</p>
+      <div class="pl-sub">CodeVault load ho raha hai</div>
+      <div class="preloader-bar"><div class="preloader-bar-fill" id="preloader-fill"></div></div>
     </div>
+  </div>
+
+  <div class="nav-wrap">
+    <div class="nav-brand"><span class="nav-hamburger"><svg viewBox="0 0 24 24" class="icon" style="width:20px;height:20px;vertical-align:-3px;"><path d="M3 6h18M3 12h18M3 18h18"/></svg></span>CodeVault</div>
     <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
-    <label for="nav-toggle" class="nav-toggle-label">☰</label>
+    <label for="nav-toggle" class="nav-toggle-label"><svg viewBox="0 0 24 24" class="icon" style="width:22px;height:22px;vertical-align:-4px;"><path d="M3 6h18M3 12h18M3 18h18"/></svg></label>
     <ul class="nav-links">
       <li><a href="#webdev">Web Dev</a></li>
       <li><a href="#python">Python</a></li>
       <li><a href="#java">Java</a></li>
       <li><a href="#claude">Claude AI</a></li>
       <li><a href="#notes">Cheat Sheets</a></li>
-      <li><a href="#game">Mini Game</a></li>
-      <li><a href="#game2">Deadline</a></li>
       <li><a href="#locker">Locker</a></li>
+      <li><a href="mailto:chitrangna.dev@gmail.com" class="nav-cta">Say hi</a></li>
     </ul>
   </div>
 
-  <!-- ============ HERO ============ -->
-  <section class="hero" id="home">
-    <div class="hero-copy">
-      <span class="eyebrow">for cs students, by the syllabus that failed us</span>
-      <h1>Stop googling<br><span class="typed">"how to center a div"</span></h1>
-      <p class="lede">Web dev, Python, Java aur Claude AI ke best free resources — sab ek jagah pinned, so you can actually build stuff instead of drowning in 40 open tabs.</p>
-      <div class="hero-ctas">
-        <a href="#webdev" class="btn btn-solid">Explore resources →</a>
-        <a href="#claude" class="btn btn-ghost">Claude AI notes</a>
+  <div class="hero-wrap" id="home">
+    <div class="profile-row">
+      <div class="who">
+        <div class="profile-avatar"><svg viewBox="0 0 24 24" class="icon" style="width:22px;height:22px;"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M2 20h20"/></svg></div>
+        <div>
+          <h2>Chitrangna</h2>
+          <span>1st year · still figuring it out</span>
+        </div>
       </div>
+      <div class="profile-menu"><svg viewBox="0 0 24 24" class="icon" style="width:20px;height:20px;vertical-align:-4px;"><circle cx="5" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg></div>
     </div>
-    <div class="hero-stickers">
-      <div class="sticker sticker--1">console.log("no cap")</div>
-      <div class="sticker sticker--2">git commit -m "fixed bug 🙏"</div>
-      <div class="sticker sticker--3">assignment due in 6hrs 🔥</div>
-      <div class="sticker sticker--4">import antigravity 🚀</div>
-    </div>
-  </section>
 
-  <!-- ============ TICKER ============ -->
-  <div class="ticker">
-    <div class="ticker-track">
-      <span>🔥 trending in the DSA lab</span>
-      <span>☕ coffee &gt; sleep, fight me</span>
-      <span>🐍 print("python &gt; everything")</span>
-      <span>💻 undefined is not a person, it's a bug</span>
-      <span>📌 notes pinned, deadlines ignored</span>
-      <span>🤖 asked Claude, it actually helped fr</span>
-      <span>🔥 trending in the DSA lab</span>
-      <span>☕ coffee &gt; sleep, fight me</span>
-      <span>🐍 print("python &gt; everything")</span>
-      <span>💻 undefined is not a person, it's a bug</span>
-      <span>📌 notes pinned, deadlines ignored</span>
-      <span>🤖 asked Claude, it actually helped fr</span>
+    <p class="hero-intro">
+      Hello, I'm Chitrangna — first year college mein hoon, abhi seekh hi rahi hoon full-stack dev banna. Ye page wahi links hain jo mujhe actually samajh aaye, taaki main dobara wahi 40 tabs na kholoon. <a href="https://chitrangna.netlify.app">More about me →</a>
+    </p>
+    <div class="hero-ctas">
+      <a href="#webdev" class="btn btn-solid">dekho kya hai →</a>
+      <a href="#claude" class="btn btn-ghost">Claude AI wala part</a>
     </div>
   </div>
 
-  <!-- ============ WEB DEV ============ -->
-  <section id="webdev" class="reveal">
+  <section id="webdev">
     <div class="section-head">
-      <span class="eyebrow">html · css · js</span>
       <h2>Web Development</h2>
-      <p>Wahi resources jinse actually seekha ja sakta hai — no fluff, direct build karna seekho.</p>
+      <p>First year mein abhi HTML-CSS-JS shuru kiya hai, ye 3 tabs hamesha khuli rehti hain.</p>
     </div>
     <div class="board">
       <div class="note">
-        <span class="tag">Docs</span>
-        <h3>MDN Web Docs</h3>
-        <p>HTML, CSS, JS ka sabse trusted reference. Jab bhi kuch stuck ho, yahi pehle check karo.</p>
-        <a class="open" href="https://developer.mozilla.org/" target="_blank" rel="noopener">Open resource →</a>
+        <div class="note-top"><div class="note-badge"><svg viewBox="0 0 24 24" class="icon" style="width:20px;height:20px;"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v16H6.5A2.5 2.5 0 0 0 4 20.5"/><path d="M4 4.5v16A2.5 2.5 0 0 0 6.5 23H20"/></svg></div><div><h3>MDN Web Docs</h3><span class="tag">Docs</span></div></div>
+        <p>HTML, CSS, JS ki sabse reliable aur detailed reference.</p>
+        <a href="https://developer.mozilla.org" class="open">Open →</a>
       </div>
       <div class="note">
-        <span class="tag">Course</span>
-        <h3>freeCodeCamp</h3>
-        <p>Free full curriculum — HTML/CSS se leke full stack projects tak, certificates ke saath.</p>
-        <a class="open" href="https://www.freecodecamp.org/" target="_blank" rel="noopener">Open resource →</a>
-      </div>
-      <div class="note">
-        <span class="tag">Path</span>
-        <h3>The Odin Project</h3>
-        <p>Project-based learning path jo real developer jaisa sochna sikhata hai.</p>
-        <a class="open" href="https://www.theodinproject.com/" target="_blank" rel="noopener">Open resource →</a>
-      </div>
-      <div class="note">
-        <span class="tag">Deep Dive</span>
-        <h3>JavaScript.info</h3>
-        <p>JS ko surface level nahi, andar tak samjhata hai — from basics to async/await.</p>
-        <a class="open" href="https://javascript.info/" target="_blank" rel="noopener">Open resource →</a>
-      </div>
-      <div class="note">
-        <span class="tag">CSS</span>
-        <h3>Josh Comeau's CSS blog</h3>
-        <p>CSS ko interactive demos ke saath explain karta hai — animations samajhne ke liye best.</p>
-        <a class="open" href="https://www.joshwcomeau.com/css/" target="_blank" rel="noopener">Open resource →</a>
-      </div>
-      <div class="note">
-        <span class="tag">Quick Ref</span>
-        <h3>W3Schools</h3>
-        <p>Fast syntax lookup ke liye handy — exam se ek raat pehle wale saathi.</p>
-        <a class="open" href="https://www.w3schools.com/" target="_blank" rel="noopener">Open resource →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ PYTHON ============ -->
-  <section id="python" class="reveal">
-    <div class="section-head">
-      <span class="eyebrow">scripts, data, everything</span>
-      <h2>Python</h2>
-      <p>Beginner se automation aur data tak — sab kuch cover karne wale resources.</p>
-    </div>
-    <div class="board">
-      <div class="note">
-        <span class="tag">Docs</span>
-        <h3>Official Python Docs</h3>
-        <p>Sabse accurate source — jab koi library ka doubt ho, straight yahin aao.</p>
-        <a class="open" href="https://docs.python.org/3/" target="_blank" rel="noopener">Open resource →</a>
-      </div>
-      <div class="note">
-        <span class="tag">Tutorials</span>
-        <h3>Real Python</h3>
-        <p>Clear, in-depth tutorials — beginner se intermediate concepts tak, real examples ke saath.</p>
-        <a class="open" href="https://realpython.com/" target="_blank" rel="noopener">Open resource →</a>
-      </div>
-      <div class="note">
-        <span class="tag">Course</span>
-        <h3>CS50's Intro to Python</h3>
-        <p>Harvard ka free course — problem sets ke saath deeply structured learning.</p>
-        <a class="open" href="https://cs50.harvard.edu/python/" target="_blank" rel="noopener">Open resource →</a>
-      </div>
-      <div class="note">
-        <span class="tag">Projects</span>
-        <h3>Automate the Boring Stuff</h3>
-        <p>Practical automation projects — files, excel, web scraping, sab kuch scripting se.</p>
-        <a class="open" href="https://automatetheboringstuff.com/" target="_blank" rel="noopener">Open resource →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ JAVA ============ -->
-  <section id="java" class="reveal">
-    <div class="section-head">
-      <span class="eyebrow">oop, dsa, placements</span>
-      <h2>Java</h2>
-      <p>College DSA aur placement prep ke liye most-used resources.</p>
-    </div>
-    <div class="board">
-      <div class="note">
-        <span class="tag">Docs</span>
-        <h3>Oracle Java Docs</h3>
-        <p>Official documentation — syntax aur standard library ka authoritative source.</p>
-        <a class="open" href="https://docs.oracle.com/en/java/" target="_blank" rel="noopener">Open resource →</a>
-      </div>
-      <div class="note">
-        <span class="tag">Practice</span>
-        <h3>GeeksforGeeks Java</h3>
-        <p>DSA + Java concepts side by side — interview prep ke liye popular choice.</p>
-        <a class="open" href="https://www.geeksforgeeks.org/java/" target="_blank" rel="noopener">Open resource →</a>
-      </div>
-      <div class="note">
-        <span class="tag">Quick Ref</span>
-        <h3>W3Schools Java</h3>
-        <p>Fast syntax reminders — OOP concepts revise karne ke liye quick jagah.</p>
-        <a class="open" href="https://www.w3schools.com/java/" target="_blank" rel="noopener">Open resource →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ CLAUDE AI ============ -->
-  <section id="claude" class="reveal">
-    <div class="section-head">
-      <span class="eyebrow">notes + prompting</span>
-      <h2>Claude AI Notes</h2>
-      <p>Claude ko sirf answers ke liye use mat karo — use effectively use karna seekho.</p>
-    </div>
-    <div class="board">
-      <div class="note">
-        <span class="tag">Docs</span>
-        <h3>Anthropic Docs</h3>
-        <p>Claude models, features aur usage ki official aur sabse reliable jagah.</p>
-        <a class="open" href="https://docs.claude.com/" target="_blank" rel="noopener">Open resource →</a>
-      </div>
-      <div class="note">
-        <span class="tag">Guide</span>
-        <h3>Prompt Engineering Overview</h3>
-        <p>Claude se better output nikalne ke liye clear, structured prompting techniques.</p>
-        <a class="open" href="https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview" target="_blank" rel="noopener">Open resource →</a>
-      </div>
-      <div class="note">
-        <span class="tag">Community</span>
-        <h3>Prompting Guide</h3>
-        <p>Different prompting techniques ka community-maintained reference, examples ke saath.</p>
-        <a class="open" href="https://www.promptingguide.ai/" target="_blank" rel="noopener">Open resource →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ CHEAT SHEETS ============ -->
-  <section id="notes" class="reveal">
-    <div class="section-head">
-      <span class="eyebrow">save these, thank us later</span>
-      <h2>Quick Cheat Sheets</h2>
-      <p>Exam se pehle wale panic moments ke liye — one-glance syntax reminders.</p>
-    </div>
-    <div class="cheat-grid">
-      <div class="cheat-card">
-        <div class="cheat-head"><span><span class="lang-dot" style="background:var(--yellow)"></span>Python</span></div>
-        <pre>squares = [x**2 for x in range(10)]
-with open("data.txt") as f:
-    lines = f.readlines()</pre>
-      </div>
-      <div class="cheat-card">
-        <div class="cheat-head"><span><span class="lang-dot" style="background:var(--mint)"></span>Java</span></div>
-        <pre>public static void main(String[] args) {
-    System.out.println("Hello, World");
-}</pre>
-      </div>
-      <div class="cheat-card">
-        <div class="cheat-head"><span><span class="lang-dot" style="background:var(--pink)"></span>CSS</span></div>
-        <pre>.center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}</pre>
-      </div>
-      <div class="cheat-card">
-        <div class="cheat-head"><span><span class="lang-dot" style="background:var(--lavender)"></span>Claude Prompt</span></div>
-        <pre>"Explain recursion using a
-real hostel-life example,
-then show Python code."</pre>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ MINI GAME ============ -->
-  <section id="game" class="reveal">
-    <div class="section-head">
-      <span class="eyebrow">zero js, zero mercy</span>
-      <h2>Squash the Bugs 🐛</h2>
-      <p>Har bug pe click karo, ship karne se pehle sabko khatam karo. Purely CSS — na koi JS, na koi excuse.</p>
-    </div>
-    <div class="bug-game">
-      <div class="bug">
-        <input type="checkbox" id="bug1" class="bug-checkbox">
-        <label for="bug1" class="bug-label">
-          <span class="bug-icon">🐛</span>
-          <span class="bug-squashed">💥</span>
-        </label>
-      </div>
-      <div class="bug">
-        <input type="checkbox" id="bug2" class="bug-checkbox">
-        <label for="bug2" class="bug-label">
-          <span class="bug-icon">🐛</span>
-          <span class="bug-squashed">💥</span>
-        </label>
-      </div>
-      <div class="bug">
-        <input type="checkbox" id="bug3" class="bug-checkbox">
-        <label for="bug3" class="bug-label">
-          <span class="bug-icon">🐛</span>
-          <span class="bug-squashed">💥</span>
-        </label>
-      </div>
-      <div class="bug">
-        <input type="checkbox" id="bug4" class="bug-checkbox">
-        <label for="bug4" class="bug-label">
-          <span class="bug-icon">🐛</span>
-          <span class="bug-squashed">💥</span>
-        </label>
-      </div>
-      <div class="bug">
-        <input type="checkbox" id="bug5" class="bug-checkbox">
-        <label for="bug5" class="bug-label">
-          <span class="bug-icon">🐛</span>
-          <span class="bug-squashed">💥</span>
-        </label>
-      </div>
-      <div class="bug">
-        <input type="checkbox" id="bug6" class="bug-checkbox">
-        <label for="bug6" class="bug-label">
-          <span class="bug-icon">🐛</span>
-          <span class="bug-squashed">💥</span>
-        </label>
-      </div>
-      <div class="bug">
-        <input type="checkbox" id="bug7" class="bug-checkbox">
-        <label for="bug7" class="bug-label">
-          <span class="bug-icon">🐛</span>
-          <span class="bug-squashed">💥</span>
-        </label>
-      </div>
-      <div class="bug">
-        <input type="checkbox" id="bug8" class="bug-checkbox">
-        <label for="bug8" class="bug-label">
-          <span class="bug-icon">🐛</span>
-          <span class="bug-squashed">💥</span>
-        </label>
-      </div>
-      <p class="bug-hint">psst — sirf click karna hai, koi timer nahi hai 😌</p>
-      <div class="bug-win">🎉 Zero bugs. 100% vibes. Code compiles. Ship it! (Reload page to play again)</div>
-    </div>
-  </section>
-
-  <!-- ============ MINI GAME 2 ============ -->
-  <section id="game2" class="reveal">
-    <div class="section-head">
-      <span class="eyebrow">single player, still zero js</span>
-      <h2>Beat the Deadline ⏰</h2>
-      <p>Ek move chuno — dekho deadline ko harra paate ho ya deadline tumhe.</p>
-    </div>
-    <div class="dl-game">
-      <div class="dl-choices">
-        <input type="radio" name="dl" id="dl-code" class="dl-radio">
-        <label for="dl-code" class="dl-choice">💻<span>Code</span></label>
-        <input type="radio" name="dl" id="dl-coffee" class="dl-radio">
-        <label for="dl-coffee" class="dl-choice">☕<span>Coffee</span></label>
-        <input type="radio" name="dl" id="dl-sleep" class="dl-radio">
-        <label for="dl-sleep" class="dl-choice">😴<span>Sleep</span></label>
-      </div>
-      <p class="dl-hint">apna move chuno, result turant reveal hoga</p>
-      <div class="dl-result dl-result-code">✅ You win! Submission hui 2 minute pehle deadline se. Legendary move.</div>
-      <div class="dl-result dl-result-coffee">☕ Deadline wins. Coffee break thoda zyada lamba ho gaya, submit karna reh gaya.</div>
-      <div class="dl-result dl-result-sleep">😴 Deadline wins. Alarm bhi haar gaya tumhare saath.</div>
-    </div>
-  </section>
-
-  <!-- ============ DAILY LOCKER ============ -->
-  <section id="locker" class="reveal">
-    <div class="section-head">
-      <span class="eyebrow">unlock daily · new drop every day</span>
-      <h2>The Daily Locker 🔒</h2>
-      <p>Password daalo, locker khulega, aur andar milega aaj ka dev tip ya fact — date ke hisaab se rozana naya.</p>
-    </div>
-    <div class="locker-wrap">
-      <div class="locker-box">
-        <div class="locker-content">
-          <div class="locker-content-head">📬 Today's Dev Drop</div>
-          <p class="locker-news-text" id="lockerNewsText"></p>
-          <span class="locker-date" id="lockerDate"></span>
-          <button class="locker-btn-small" onclick="lockAgain()">Lock again</button>
-        </div>
-        <div class="locker-face" id="lockerFace">
-          <div class="locker-icon">🔒</div>
-          <input type="password" id="lockerInput" class="locker-input" placeholder="Enter password" onkeydown="if(event.key==='Enter') tryUnlock();">
-          <button class="locker-btn" onclick="tryUnlock()">Unlock</button>
-          <p class="locker-hint">Hint: code run karne se pehle jo karte ho 👀 (7 letters)</p>
-          <p class="locker-error" id="lockerError"></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ MEME BREAK ============ -->
-  <section class="meme-break reveal">
-    <blockquote>"It works on my machine" is not a valid submission, but we respect the confidence.</blockquote>
-    <span>— every TA, every semester</span>
-  </section>
-
-  <!-- ============ FOOTER ============ -->
-  <footer>
-    <div class="foot-brand">
-      CodeVault
-      <p>Ek jagah, saare resources. Made for the batch that keeps 40 tabs open and still asks "bhai notes hai kya".</p>
-    </div>
-    <div class="foot-cols">
-      <div>
-        <h4>Resources</h4>
-        <ul>
-          <li><a href="#webdev">Web Dev</a></li>
-          <li><a href="#python">Python</a></li>
-          <li><a href="#java">Java</a></li>
-          <li><a href="#claude">Claude AI</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>More</h4>
-        <ul>
-          <li><a href="#notes">Cheat sheets</a></li>
-          <li><a href="#home">Back to top</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="foot-bottom">Built with HTML + CSS only, zero JS, and questionable amounts of chai. © 2026 Chitrangna.</div>
-  </footer>
-
-  <a href="#home" class="to-top" aria-label="Back to top">↑</a>
-
-  <script>
-    const dailyDrops = [
-      "Ctrl+Shift+T reopens your last closed browser tab — lifesaver during 2am research spirals.",
-      "Python mein print(1 == True) result deta hai True — bool actually int ka subclass hai.",
-      "Java ka original naam 'Oak' tha, coffee-drinking brainstorm session ke baad rename hua.",
-      "MDN ka search seedha URL se bhi ho sakta hai: developer.mozilla.org/search?q=your-query",
-      "CSS ka gap property ab sirf flexbox nahi, grid mein bhi kaam karta hai.",
-      "Claude se structured output chahiye toh XML tags use karne ko kaho — output messy nahi aata.",
-      "console.table() try karo agli baar array debug karte waqt — console.log se zyada readable hai.",
-      "Python shell mein _ last executed expression ko store karta hai automatically.",
-      "Git tip: git commit --amend last commit message fix karta hai, push se pehle.",
-      "Java ka String pool memory optimize karta hai — same literal strings ek hi jagah store hoti hain.",
-      "CSS ka :has() selector ne bina JS ke conditional styling possible bana di hai.",
-      "Prompting tip: Claude se kaho 'think step by step' — complex problems pe accuracy improve hoti hai.",
-      "VS Code shortcut: Ctrl+D select karta hai next matching word — multi-cursor editing ke liye best.",
-      "Python ka easter egg: terminal mein import this likh ke dekho.",
-      "Pehla computer bug literally ek real moth tha jo relay mein fasa tha, 1947 mein.",
-      "CSS variables (--custom-property) runtime pe update ho sakte hain, SASS variables nahi hote.",
-      "Java interview tip: == reference compare karta hai, .equals() value compare karta hai.",
-      "Chrome DevTools mein $0 last inspected element ko refer karta hai console mein.",
-      "Claude ko prompt mein example input/output do — few-shot examples se output quality improve hoti hai.",
-      "VS Code shortcut: Alt+Shift+F pura file auto-format kar deta hai ek click mein."
-    ];
-
-    function getDailyIndex(){
-      const start = new Date(2026, 0, 1);
-      const now = new Date();
-      const diffDays = Math.floor((now - start) / 86400000);
-      return ((diffDays % dailyDrops.length) + dailyDrops.length) % dailyDrops.length;
-    }
-
-    function showDailyDrop(){
-      const idx = getDailyIndex();
-      document.getElementById('lockerNewsText').textContent = dailyDrops[idx];
-      const today = new Date();
-      document.getElementById('lockerDate').textContent = today.toLocaleDateString('en-IN', { day:'numeric', month:'long', year:'numeric' });
-    }
-
-    function tryUnlock(){
-      const input = document.getElementById('lockerInput');
-      const face = document.getElementById('lockerFace');
-      const errorEl = document.getElementById('lockerError');
-      const val = input.value.trim().toLowerCase();
-
-      if(val === 'compile'){
-        errorEl.textContent = '';
-        showDailyDrop();
-        face.classList.add('open');
-      } else {
-        errorEl.textContent = 'Galat password, dubara try karo 🔁';
-        face.classList.remove('shake');
-        void face.offsetWidth;
-        face.classList.add('shake');
-      }
-    }
-
-    function lockAgain(){
-      const face = document.getElementById('lockerFace');
-      face.classList.remove('open');
-      document.getElementById('lockerInput').value = '';
-      document.getElementById('lockerError').textContent = '';
-    }
-  </script>
-
-</body>
-</html>
+        <div class="note-top"><div class="note-badge"><svg viewBox="0 0 24 24" class="icon" style="width:20px;height:20px;"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5"/></svg></div><div><h3>freeCodeCamp</h3><span class="tag">Course</span></div></div>
+        <p>Structured, free, project-based web dev curriculum.</p>
+        <a href="https://www.freecodecamp.org" cl
