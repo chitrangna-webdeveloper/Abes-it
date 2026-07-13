@@ -284,6 +284,35 @@
   .sticky-note{ padding-right:44px; }
   .notes-empty{ font-family:var(--font-mono); font-size:0.78rem; color:var(--ink-dim); }
 
+  /* chat widget */
+  .chat-panel{
+    position:fixed; bottom:192px; right:24px; z-index:96;
+    width:280px; max-height:60vh;
+    background:var(--surface); border:2.5px solid var(--ink); border-radius:14px;
+    box-shadow:var(--shadow); display:none; flex-direction:column; overflow:hidden;
+  }
+  .chat-panel.open{ display:flex; }
+  .chat-head{
+    padding:12px 14px; border-bottom:2px solid var(--ink); font-family:var(--font-head);
+    font-weight:700; font-size:0.9rem; background:var(--yellow);
+  }
+  .chat-messages{ flex:1; overflow-y:auto; padding:12px; display:flex; flex-direction:column; gap:8px; max-height:280px; }
+  .chat-msg{
+    font-family:var(--font-body); font-size:0.85rem; padding:8px 12px; border-radius:10px;
+    border:2px solid var(--ink); max-width:85%;
+  }
+  .chat-msg.bot{ background:var(--surface-2); align-self:flex-start; }
+  .chat-msg.user{ background:var(--mint); color:var(--ink); align-self:flex-end; }
+  .chat-input-row{ display:flex; gap:6px; padding:10px; border-top:2px solid var(--ink); }
+  .chat-input{
+    flex:1; font-family:var(--font-body); font-size:0.85rem; border:2px solid var(--ink);
+    border-radius:8px; padding:8px 10px; background:var(--surface-2); color:var(--ink);
+  }
+  .chat-send{
+    font-family:var(--font-head); font-weight:700; border:2px solid var(--ink); border-radius:8px;
+    background:var(--pink); color:#fff; padding:8px 12px; cursor:pointer; box-shadow:2px 2px 0 var(--ink);
+  }
+
   /* dark mode override */
   body.dark{
     --bg:#12141F;
@@ -358,7 +387,7 @@
   </div>
 
   <div class="nav-wrap">
-    <div class="nav-brand"><span class="nav-hamburger"><svg viewBox="0 0 24 24" class="icon" style="width:20px;height:20px;vertical-align:-3px;"><path d="M3 6h18M3 12h18M3 18h18"/></svg></span>CodeVault</div>
+    <div class="nav-brand">CodeVault</div>
     <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
     <label for="nav-toggle" class="nav-toggle-label"><svg viewBox="0 0 24 24" class="icon" style="width:22px;height:22px;vertical-align:-4px;"><path d="M3 6h18M3 12h18M3 18h18"/></svg></label>
     <ul class="nav-links">
@@ -578,8 +607,20 @@ evens = [x for x in nums if x % 2 == 0]</pre>
     <div id="notes-list"></div>
   </div>
 
+  <div class="chat-panel" id="chat-panel">
+    <div class="chat-head">CodeVault Assistant</div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="chat-msg bot">Hii! Web dev, Python, Java ya Claude AI ke baare mein kuch poochho, main resources suggest kar dungi.</div>
+    </div>
+    <div class="chat-input-row">
+      <input type="text" id="chat-input" class="chat-input" placeholder="type something..." onkeydown="if(event.key==='Enter') sendChat()">
+      <button class="chat-send" onclick="sendChat()">→</button>
+    </div>
+  </div>
+
   <div class="float-btns">
     <button class="float-btn" id="theme-btn" onclick="toggleTheme()" title="Toggle dark/light"><svg viewBox="0 0 24 24" class="icon" id="theme-icon" style="width:19px;height:19px;vertical-align:-2px;"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></svg></button>
+    <button class="float-btn" onclick="toggleChatPanel()" title="Chat assistant"><svg viewBox="0 0 24 24" class="icon" style="width:19px;height:19px;vertical-align:-2px;"><path d="M4 4h16v11H8l-4 4V4Z"/></svg></button>
     <button class="float-btn" id="notes-btn" onclick="toggleNotesPanel()" title="Sticky notes"><svg viewBox="0 0 24 24" class="icon" style="width:19px;height:19px;vertical-align:-2px;"><path d="M7 2h7l5 5v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z"/><path d="M14 2v5h5"/><path d="M8 13h8M8 17h5"/></svg></button>
     <button class="float-btn" onclick="scrollToTop()" title="Back to top">↑</button>
   </div>
@@ -619,6 +660,67 @@ evens = [x for x in nums if x % 2 == 0]</pre>
       document.body.classList.toggle('dark');
       const icon = document.getElementById('theme-icon');
       icon.innerHTML = document.body.classList.contains('dark') ? sunIcon : moonIcon;
+    }
+
+    function toggleChatPanel(){
+      document.getElementById('chat-panel').classList.toggle('open');
+    }
+
+    function chatReply(msg){
+      const m = msg.toLowerCase();
+      const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+
+      if(m.includes('python')) return pick([
+        "Python ke liye #python section dekho — official docs, LeetCode aur CS50P hai wahan.",
+        "Python try kar rahi ho? #python section mein saara kaam ka stuff pinned hai."
+      ]);
+      if(m.includes('java') && !m.includes('javascript')) return pick([
+        "Java ke liye #java section mein Oracle docs, W3Schools aur HackerRank pinned hain.",
+        "OOP samajhna hai? #java section check karo, wahi resources hain jo mujhe kaam aaye."
+      ]);
+      if(m.includes('web') || m.includes('html') || m.includes('css') || m.includes('javascript') || m.includes('js')) return pick([
+        "Web dev ke liye #webdev section mein MDN, freeCodeCamp aur Frontend Mentor hai.",
+        "HTML-CSS-JS ke liye #webdev section dekho, sab kaam ka hai wahan."
+      ]);
+      if(m.includes('claude') || m.includes('ai')) return pick([
+        "Claude AI ke resources #claude section mein hain — docs, prompting guide, support.",
+        "AI wala kaam? #claude section mein docs aur prompting guide dono hain."
+      ]);
+      if(m.includes('cheat') || m.includes('syntax')) return pick([
+        "Cheat sheets #notes section mein hain — flexbox, array methods, list comprehensions.",
+        "Syntax bhool gayi? #notes section mein quick cheat sheets hain."
+      ]);
+      if(m.includes('locker') || m.includes('code')) return pick([
+        "Daily Locker mein ek chhota easter egg hai, code try karo!",
+        "Locker try kiya kya? Ek hint hai wahan already."
+      ]);
+      if(m.includes('hi') || m.includes('hello') || m.includes('hey')) return pick([
+        "Heyy! Bata, kaunsa resource dhoondh rahi ho?",
+        "Hii! Kya seekhna hai aaj?"
+      ]);
+      if(m.includes('thanks') || m.includes('thank')) return pick([
+        "Koi baat nahi! Aur kuch chahiye to poochho.",
+        "Anytime! Aur kuch help chahiye?"
+      ]);
+      return pick([
+        "Hmm, abhi mujhe iska exact jawab nahi pata — par webdev, python, java ya claude section try karo, kaam ka mil jayega.",
+        "Yeh wala mujhe nahi pata, par is baare mein GC ke owner Harsh se puch lena, wahi asli GOAT hai.",
+        "Iska jawab mere paas nahi hai abhi, upar ke sections mein dekh lo shayad mil jaye."
+      ]);
+    }
+
+    function sendChat(){
+      const input = document.getElementById('chat-input');
+      const val = input.value.trim();
+      if(!val) return;
+      const box = document.getElementById('chat-messages');
+      box.insertAdjacentHTML('beforeend', `<div class="chat-msg user">${escapeHtml(val)}</div>`);
+      input.value = '';
+      box.scrollTop = box.scrollHeight;
+      setTimeout(() => {
+        box.insertAdjacentHTML('beforeend', `<div class="chat-msg bot">${escapeHtml(chatReply(val))}</div>`);
+        box.scrollTop = box.scrollHeight;
+      }, 400);
     }
 
     function toggleNotesPanel(){
