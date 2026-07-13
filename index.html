@@ -1714,4 +1714,1684 @@ evens = [x for x in nums if x % 2 == 0]</pre>
     }
   </script>
 </body>
+</html>  .c2{ top:6%; left:36%; transform:rotate(3deg); z-index:3; }
+  .c3{ top:2%; right:0; transform:rotate(7deg); z-index:2; }
+  .c4{ bottom:6%; left:14%; transform:rotate(-5deg); z-index:1; }
+  .c5{ bottom:0; right:8%; transform:rotate(6deg); z-index:2; }
+  .c6{ top:42%; left:0; transform:rotate(-10deg); z-index:1; }
+  .c7{ bottom:12%; left:46%; transform:rotate(4deg); z-index:4; }
+
+  .hero-intro{
+    max-width:560px; margin:0 auto 60px; text-align:center; padding:0 6vw;
+    font-size:1.1rem; line-height:1.75; color:var(--ink); font-family:var(--font-head);
+  }
+  .hero-intro a{ color:var(--pink); text-decoration:underline; }
+  .hero-ctas{ display:flex; gap:14px; margin-top:22px; justify-content:center; flex-wrap:wrap; }
+  .btn{
+    font-family:var(--font-head); font-weight:700; font-size:0.92rem;
+    padding:12px 22px; border-radius:999px; border:2.5px solid var(--ink);
+    display:inline-flex; align-items:center; gap:8px; cursor:pointer;
+    box-shadow:4px 4px 0 var(--ink);
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .btn:hover{ transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--ink); }
+  .btn:active{ transform:translate(2px,2px); box-shadow:1px 1px 0 var(--ink); }
+  .btn-solid{ background:var(--pink); color:#fff; }
+  .btn-ghost{ background:var(--yellow); color:var(--ink); }
+
+  /* ============ RESOURCE CARDS — like portfolio list cards ============ */
+  .board{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+    gap:18px;
+  }
+  .note{
+    background:var(--surface); border:2.5px solid var(--ink); border-radius:16px;
+    padding:22px 20px; box-shadow:var(--shadow);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .note:hover{ transform:translate(-3px,-3px); box-shadow:8px 8px 0 var(--ink); }
+  .note-top{ display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+  .note-badge{
+    width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center;
+    font-size:1.3rem; background:var(--accent-bg, #FFF3D6); color:var(--accent, var(--pink));
+    border:2px solid var(--ink);
+  }
+  .note h3{ font-size:1.1rem; }
+  .note .tag{
+    font-family:var(--font-mono); font-size:0.7rem; color:var(--ink-dim); text-transform:uppercase;
+  }
+  .note p{ color:var(--ink-dim); font-size:0.9rem; margin-bottom:16px; }
+  .note a.open{
+    font-family:var(--font-head); font-weight:700; font-size:0.85rem; color:var(--accent, var(--pink));
+    display:inline-flex; align-items:center; gap:6px;
+  }
+
+  #webdev .note{ --accent: var(--pink); --accent-bg: #FFE9F0; }
+  #python .note{ --accent: var(--yellow); --accent-bg: #FFF3E0; }
+  #java .note{ --accent: var(--mint); --accent-bg: #E4F9F3; }
+  #claude .note{ --accent: var(--blue); --accent-bg: #EAF1FF; }
+
+  /* ============ CHEAT SHEETS ============ */
+  .cheat-grid{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:18px;
+  }
+  .cheat-card{
+    background:#1B1E2E; border:2.5px solid var(--ink); border-radius:16px; overflow:hidden; box-shadow:var(--shadow);
+  }
+  .cheat-card .cheat-head{
+    padding:12px 16px; border-bottom:2px solid var(--ink);
+    font-family:var(--font-mono); font-size:0.78rem; color:#C7CBE0;
+  }
+  .cheat-card pre{
+    padding:16px; font-family:var(--font-mono); font-size:0.8rem; color:#7FE7CB;
+    overflow-x:auto; line-height:1.6;
+  }
+
+  /* ============ LOCKER (kept, minimal) ============ */
+  .locker-wrap{ display:flex; justify-content:center; }
+  .locker-card{
+    background:var(--surface); border:2.5px solid var(--ink); border-radius:18px;
+    padding:32px 28px; text-align:center; max-width:360px; width:100%; box-shadow:var(--shadow);
+  }
+  .locker-icon{ font-size:1.8rem; margin-bottom:8px; }
+  .locker-input{
+    width:100%; max-width:220px; font-family:var(--font-mono); font-size:0.9rem;
+    background:var(--surface-2); border:2px solid var(--ink); color:var(--ink);
+    padding:10px 12px; border-radius:10px; text-align:center; margin:14px 0 8px;
+  }
+  .locker-input:focus{ outline:none; border-color:var(--pink); }
+  .locker-btn{
+    font-family:var(--font-head); font-weight:700; font-size:0.9rem;
+    padding:10px 22px; border-radius:999px; border:2px solid var(--ink); background:var(--mint);
+    color:var(--ink); cursor:pointer; box-shadow:3px 3px 0 var(--ink);
+  }
+  .locker-hint{ font-family:var(--font-mono); font-size:0.72rem; color:var(--ink-dim); margin-top:10px; }
+  .locker-error{ font-family:var(--font-mono); font-size:0.75rem; color:var(--pink); min-height:1.2em; margin-top:6px; }
+  .locker-result{ display:none; }
+  .locker-result.show{ display:block; }
+  .locker-result p{ font-size:1rem; line-height:1.6; margin:8px 0; }
+  .locker-result .locker-date{ font-family:var(--font-mono); font-size:0.75rem; color:var(--ink-dim); }
+
+  /* ============ FOOTER ============ */
+  footer{
+    border-top:3px solid var(--ink); padding: 44px 8vw 26px;
+    display:flex; flex-wrap:wrap; gap:30px; justify-content:space-between; align-items:flex-start;
+  }
+  footer .foot-brand{ font-family:var(--font-display); font-size:1.6rem; max-width:300px; color:var(--pink); -webkit-text-stroke:1px var(--ink); }
+  footer .foot-brand p{ font-family:var(--font-head); font-weight:400; color:var(--ink-dim); font-size:0.88rem; margin-top:8px; -webkit-text-stroke:0; }
+  .foot-cols{ display:flex; gap:50px; flex-wrap:wrap; }
+  .foot-cols h4{ font-family:var(--font-mono); font-size:0.76rem; color:var(--ink-dim); text-transform:uppercase; margin-bottom:12px; }
+  .foot-cols ul li{ margin-bottom:8px; font-size:0.9rem; font-family:var(--font-head); }
+  .foot-cols ul li a:hover{ color:var(--pink); }
+  .foot-bottom{
+    text-align:center; padding-top:26px; margin-top:26px; border-top:2px solid var(--ink);
+    font-family:var(--font-mono); font-size:0.74rem; color:var(--ink-dim); width:100%;
+  }
+
+  /* ============ FLOATING BUTTONS ============ */
+  .float-btns{
+    position:fixed; bottom:24px; right:24px; z-index:90;
+    display:flex; flex-direction:column-reverse; align-items:flex-end; gap:0;
+  }
+  .fab-main{
+    width:50px; height:50px; border-radius:50%;
+    background:var(--pink); border:2.5px solid var(--ink); color:#fff;
+    display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow);
+    font-size:1.2rem; cursor:pointer; transition: transform .25s ease; z-index:2;
+  }
+  .fab-main svg{ transition: transform .25s ease; }
+  .fab-main.open svg{ transform: rotate(45deg); }
+  .fab-menu{
+    display:flex; flex-direction:column; align-items:flex-end; gap:10px;
+    max-height:0; overflow:hidden; opacity:0;
+    transition: max-height .3s ease, opacity .3s ease, margin .3s ease;
+    margin-bottom:0;
+  }
+  .fab-menu.open{ max-height:400px; opacity:1; margin-bottom:12px; }
+  .float-btn{
+    width:46px; height:46px; border-radius:50%;
+    background:var(--yellow); border:2.5px solid var(--ink); color:var(--ink);
+    display:flex; align-items:center; justify-content:center; box-shadow:3px 3px 0 var(--ink);
+    font-size:1.05rem; cursor:pointer; transition: transform .15s;
+  }
+  .float-btn:hover{ transform:translate(-2px,-2px); box-shadow:5px 5px 0 var(--ink); }
+
+  /* sticky notes panel */
+  .notes-panel{
+    position:fixed; bottom:198px; right:24px; z-index:95;
+    width:260px; max-height:60vh; overflow-y:auto;
+    background:var(--surface); border:2.5px solid var(--ink); border-radius:14px;
+    box-shadow:var(--shadow); padding:16px; display:none; flex-direction:column; gap:10px;
+  }
+  .notes-panel.open{ display:flex; }
+  .notes-panel h4{ font-family:var(--font-head); font-size:0.95rem; margin-bottom:2px; }
+  .notes-input-row{ display:flex; gap:6px; }
+  .notes-input{
+    flex:1; font-family:var(--font-body); font-size:0.85rem;
+    border:2px solid var(--ink); border-radius:8px; padding:8px 10px;
+    background:var(--surface-2); color:var(--ink);
+  }
+  .notes-add{
+    font-family:var(--font-head); font-weight:700; border:2px solid var(--ink); border-radius:8px;
+    background:var(--mint); padding:8px 12px; cursor:pointer; box-shadow:2px 2px 0 var(--ink);
+  }
+  .sticky-note{
+    background:var(--yellow); border:2px solid var(--ink); border-radius:6px;
+    padding:10px 12px; font-family:var(--font-head); font-size:0.85rem;
+    box-shadow:3px 3px 0 var(--ink); position:relative;
+  }
+  .sticky-note:nth-child(3n){ background:#B7F0D6; }
+  .sticky-note:nth-child(3n+1){ background:#FFD400; }
+  .sticky-note:nth-child(3n+2){ background:#FFB7C5; }
+  .sticky-note .del{
+    position:absolute; top:4px; right:6px; cursor:pointer; font-size:0.75rem; color:var(--ink-dim);
+  }
+  .sticky-note .edit{
+    position:absolute; top:3px; right:24px; cursor:pointer; font-size:0.72rem;
+  }
+  .sticky-note{ padding-right:44px; }
+  .notes-empty{ font-family:var(--font-mono); font-size:0.78rem; color:var(--ink-dim); }
+
+  /* chat widget */
+  .chat-panel{
+    position:fixed; bottom:254px; right:24px; z-index:96;
+    width:280px; max-height:60vh;
+    background:var(--surface); border:2.5px solid var(--ink); border-radius:14px;
+    box-shadow:var(--shadow); display:none; flex-direction:column; overflow:hidden;
+  }
+  .chat-panel.open{ display:flex; }
+  .chat-head{
+    padding:12px 14px; border-bottom:2px solid var(--ink); font-family:var(--font-head);
+    font-weight:700; font-size:0.9rem; background:var(--yellow);
+  }
+  .chat-messages{ flex:1; overflow-y:auto; padding:12px; display:flex; flex-direction:column; gap:8px; max-height:280px; }
+  .chat-msg{
+    font-family:var(--font-body); font-size:0.85rem; padding:8px 12px; border-radius:10px;
+    border:2px solid var(--ink); max-width:85%;
+  }
+  .chat-msg.bot{ background:var(--surface-2); align-self:flex-start; }
+  .chat-msg.user{ background:var(--mint); color:var(--ink); align-self:flex-end; }
+  .chat-input-row{ display:flex; gap:6px; padding:10px; border-top:2px solid var(--ink); }
+  .chat-input{
+    flex:1; font-family:var(--font-body); font-size:0.85rem; border:2px solid var(--ink);
+    border-radius:8px; padding:8px 10px; background:var(--surface-2); color:var(--ink);
+  }
+  .chat-send{
+    font-family:var(--font-head); font-weight:700; border:2px solid var(--ink); border-radius:8px;
+    background:var(--pink); color:#fff; padding:8px 12px; cursor:pointer; box-shadow:2px 2px 0 var(--ink);
+  }
+
+  /* tic tac toe game */
+  .ttt-backdrop{
+    position:fixed; inset:0; z-index:150; background:rgba(24,26,31,0.55);
+    display:none; align-items:center; justify-content:center;
+  }
+  .ttt-backdrop.open{ display:flex; }
+  .ttt-panel{
+    position:relative; width:280px;
+    background:var(--surface); border:2.5px solid var(--ink); border-radius:14px;
+    box-shadow:8px 8px 0 var(--ink); display:flex; flex-direction:column; gap:12px; padding:20px;
+    text-align:center;
+  }
+  .ttt-close{
+    position:absolute; top:10px; right:10px; width:26px; height:26px; border-radius:50%;
+    border:2px solid var(--ink); background:var(--surface-2); cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .ttt-panel h4{ font-family:var(--font-head); font-size:0.95rem; }
+  .ttt-board{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:6px; justify-content:center;
+  }
+  .ttt-cell{
+    width:60px; height:60px; border:2.5px solid var(--ink); border-radius:8px;
+    background:var(--surface-2); font-family:var(--font-display); font-size:1.6rem;
+    display:flex; align-items:center; justify-content:center; cursor:pointer;
+    transition: transform .1s ease;
+  }
+  .ttt-cell:hover:not(:disabled){ transform:scale(1.05); background:var(--surface); }
+  .ttt-cell:disabled{ cursor:default; }
+  .ttt-cell.x{ color:var(--pink); }
+  .ttt-cell.o{ color:var(--blue); }
+  .ttt-result{ font-family:var(--font-head); font-size:0.9rem; min-height:1.4em; }
+  .ttt-score{ font-family:var(--font-mono); font-size:0.75rem; color:var(--ink-dim); display:flex; justify-content:center; gap:14px; }
+  .ttt-buttons{ display:flex; justify-content:center; gap:14px; }
+  .ttt-link-btn{
+    font-family:var(--font-mono); font-size:0.72rem; color:var(--ink-dim); background:none;
+    border:none; text-decoration:underline; cursor:pointer;
+  }
+
+  /* dark mode override */
+  body.dark{
+    --bg:#12141F;
+    --surface:#1B1E2E;
+    --surface-2:#22263A;
+    --ink:#F1F2F8;
+    --ink-dim:#B7BBCB;
+    --line: #F1F2F8;
+    --shadow: 5px 5px 0 var(--ink);
+  }
+  body.dark .cheat-card{ background:#0E1019; }
+  body.dark .note-badge{ background:#22263A; }
+
+  /* ============ PRELOADER — interactive locker ============ */
+  #preloader{
+    position:fixed; inset:0; z-index:999;
+    background: var(--blue);
+    background-image: radial-gradient(rgba(255,255,255,0.18) 1.6px, transparent 1.6px);
+    background-size: 20px 20px;
+    display:flex; align-items:center; justify-content:center;
+    transition: opacity .6s ease, visibility .6s ease;
+  }
+  #preloader.hide{ opacity:0; visibility:hidden; pointer-events:none; }
+  .preloader-card{
+    background:#fff; border:3px solid var(--ink); border-radius:24px; padding:44px 40px; text-align:center;
+    box-shadow:7px 7px 0 var(--ink); max-width:280px; cursor:pointer;
+    user-select:none;
+  }
+  .preloader-lock{
+    font-size:2.8rem; display:inline-block; transition: transform .5s ease;
+  }
+  .preloader-card.unlocking .preloader-lock{ transform: rotate(-18deg) scale(1.15); }
+  .preloader-card p{ font-family:var(--font-head); font-weight:700; font-size:0.95rem; color:var(--ink); margin-top:14px; }
+  .preloader-card .pl-sub{ font-size:0.72rem; margin-top:6px; color:var(--ink-dim); font-family:var(--font-mono); }
+  .preloader-bar{
+    margin-top:16px; height:6px; border-radius:999px; background:var(--surface-2);
+    border:1.5px solid var(--ink); overflow:hidden;
+  }
+  .preloader-bar-fill{
+    height:100%; width:0%; background:var(--pink);
+    transition: width .5s ease;
+  }
+
+  @media (max-width: 860px){
+    .nav-links{
+      display:none; position:absolute; top:64px; left:5vw; right:5vw;
+      background:var(--surface); flex-direction:column; padding:18px; gap:14px;
+      border-radius:16px; box-shadow:var(--shadow);
+    }
+    .nav-toggle-checkbox:checked ~ .nav-links{ display:flex; }
+    .nav-toggle-label{ display:block; }
+    section{ padding:52px 6vw; }
+    .collage{
+      height:auto; display:flex; flex-wrap:wrap; justify-content:center; gap:14px; padding:0 4vw;
+    }
+    .collage-item{ position:static !important; transform:none !important; }
+  }
+
+  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; } }
+</style>
+</head>
+<body>
+
+  <!-- ============ PRELOADER ============ -->
+  <div id="preloader">
+    <div class="preloader-card" id="preloader-card" onclick="unlockPreloader()">
+      <span class="preloader-lock" id="preloader-lock"><svg viewBox="0 0 24 24" class="icon" style="width:42px;height:42px;"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>
+      <p id="preloader-text">Chalo chalo, tap karo!</p>
+      <div class="pl-sub">CodeVault load ho raha hai</div>
+      <div class="preloader-bar"><div class="preloader-bar-fill" id="preloader-fill"></div></div>
+    </div>
+  </div>
+
+  <div class="nav-wrap">
+    <div class="nav-brand">CodeVault</div>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
+    <label for="nav-toggle" class="nav-toggle-label"><svg viewBox="0 0 24 24" class="icon" style="width:22px;height:22px;vertical-align:-4px;"><path d="M3 6h18M3 12h18M3 18h18"/></svg></label>
+    <ul class="nav-links">
+      <li><a href="#webdev">Web Dev</a></li>
+      <li><a href="#python">Python</a></li>
+      <li><a href="#java">Java</a></li>
+      <li><a href="#claude">Claude AI</a></li>
+      <li><a href="#notes">Cheat Sheets</a></li>
+      <li><a href="#locker">Locker</a></li>
+      <li><a href="mailto:chitrangna.dev@gmail.com" class="nav-cta">Say hi</a></li>
+    </ul>
+  </div>
+
+  <div class="hero-wrap" id="home">
+    <div class="profile-row">
+      <div class="who">
+        <div class="profile-avatar"><svg viewBox="0 0 24 24" class="icon" style="width:22px;height:22px;"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M2 20h20"/></svg></div>
+        <div>
+          <h2>Chitrangna</h2>
+          <span>1st year · still figuring it out</span>
+        </div>
+      </div>
+      <div class="profile-menu"><svg viewBox="0 0 24 24" class="icon" style="width:20px;height:20px;vertical-align:-4px;"><circle cx="5" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg></div>
+    </div>
+
+    <p class="hero-intro">
+      Hello, I'm Chitrangna — first year college mein hoon, abhi seekh hi rahi hoon full-stack dev banna. Ye page wahi links hain jo mujhe actually samajh aaye, taaki main dobara wahi 40 tabs na kholoon. <a href="https://chitrangna.netlify.app">More about me →</a>
+    </p>
+    <div class="hero-ctas">
+      <a href="#webdev" class="btn btn-solid">dekho kya hai →</a>
+      <a href="#claude" class="btn btn-ghost">Claude AI wala part</a>
+    </div>
+  </div>
+
+  <section id="webdev">
+    <div class="section-head">
+      <h2>Web Development</h2>
+      <p>First year mein abhi HTML-CSS-JS shuru kiya hai, ye 3 tabs hamesha khuli rehti hain.</p>
+    </div>
+    <div class="board">
+      <div class="note">
+        <div class="note-top"><div class="note-badge"><svg viewBox="0 0 24 24" class="icon" style="width:20px;height:20px;"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v16H6.5A2.5 2.5 0 0 0 4 20.5"/><path d="M4 4.5v16A2.5 2.5 0 0 0 6.5 23H20"/></svg></div><div><h3>MDN Web Docs</h3><span class="tag">Docs</span></div></div>
+        <p>HTML, CSS, JS ki sabse reliable aur detailed reference.</p>
+        <a href="https://developer.mozilla.org" class="open">Open →</a>
+      </div>
+      <div class="note">
+        <div class="note-top"><div class="note-badge"><svg viewBox="0 0 24 24" class="icon" style="width:20px;height:20px;"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5"/></svg></div><div><h3>freeCodeCamp</h3><span class="tag">Course</span></div></div>
+        <p>Structured, free, project-based web dev curriculum.</p>
+        <a href="https://www.freecodecamp.org" class="open">Open →</a>
+      </div>
+      <div class="note">
+        <div class="note-top"><div class="note-badge"><svg viewBox="0 0 24 24" class="icon" style="width:20px;height:20px;"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/></svg></div><div><h3>Frontend Mentor</h3><span class="tag">Practice</span></div></div>
+        <p>Real design challenges to build your portfolio projects.</p>
+        <a href="https://www.frontendmentor.io" class="open">Open →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="python">
+    <div class="section-head">
+      <h2>Python</h2>
+      <p>Semester ki first language yahi hai, abhi basics pe hi hoon.</p>
+    </div>
+    <div class="board">
+      <div class="note">
+        <div class="note-top"><div class="note-badge"><svg viewBox="0 0 24 24" class="icon" style="width:20px;height:20px;"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v16H6.5A2.5 2.5 0 0 0 4 20.5"/><path d="M4 4.5v16A2.5 2.5 0 0 0 6.5 23H20"/></svg></div><div><h3>Python Official Docs</h3><span class="tag">Docs</span></div></div>
+        <p>Direct from the source — clean and always up to date.</p>
+        <a href="https://docs.python.org/3/" class="open">Open →</a>
+      </div>
+      <div class="note">
+        <div class="note-top"><div class="note-badge"><svg viewBox="0 0 24 24" class="icon" style="width:20px;height:20px;"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div><div><h3>LeetCode</h3><span class="tag">Practice</span></div></div>
+        <p>DSA practice for interviews and stronger fundamentals.</p>
+        <a href="https://leetcode.com" class="open">Open →</a>
+      </div>
+      <div class="note">
+        <div class="note-top"><div class="note-badge"><svg viewBox="0 0 24 24" class="icon" style="width:20px;height:20px;"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5"/></svg></div><div><h3>CS50P</h3><span class="tag">Course</span></div></div>
+        <p>Harvard's intro to programming with Python, free.</p>
+        <a href="https://cs50.harvard.edu/python/" class="open">Open →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="java">
+    <div class="section-head">
+      <h2>Java</h2>
+      <p>OOP abhi naya naya samajh aana shuru hua hai, ye resources first-year mein kaam aaye.</p>
+    </div>
+    <div class="board">
+      <div class="note">
+        <div class="note-top"><div class="note-badge"><svg viewBox="0 0 24 24" class="icon" style="width:20px;height:20px;"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v16H6.5A2.5 2.5 0 0 0 4 20.5"/><path d="M4 4.5v16A2.5 2.5 0 0 0 6.5 23H20"/></svg></div><div><h3>Oracle Java Docs</h3><span class="tag">Docs</span></div></div>
+        <p>Official API reference for Java.</p>
+        <a href="https://docs.oracle.com/en/java/" class="open">Open →</a>
+      </div>
+      <div class="note">
+        <div class="note-top"><div class="note-badge"><svg viewBox="0 0 24 24" class="icon" style="width:20px;height:20px;"><path d="m4 16 1-4L15.5 2.5a2 2 0 0 1 2.8 0l1.2 1.2a2 2 0 0 1 0 2.8L9 17l-4 1Z"/><path d="m13.5 4.5 3 3"/></svg></div><div><h3>W3Schools Java</h3><span class="tag">Tutorial</span></div></div>
+        <p>Quick syntax reference and beginner-friendly examples.</p>
+        <a href="https://www.w3schools.com/java/" class="open">Open →</a>
+      </div>
+      <div class="note">
+        <div class="note-top"><div class="note-badge"><svg viewBox="0 0 24 24" class="icon" style="width:20px;height:20px;"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div><div><h3>HackerRank Java</h3><span class="tag">Practice</span></div></div>
+        <p>Problem sets to sharpen OOP and logic building.</p>
+        <a href="https://www.hackerrank.com/domains/java" class="open">Open →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="claude">
+    <div class="section-head">
+      <h2>Claude AI</h2>
+      <p>First year ke assignments se lekar README polish karne tak, isi se hota hai sab kuch.</p>
+    </div>
+    <div class="board">
+      <div class="note">
+        <div class="note-top"><div class="note-badge"><svg viewBox="0 0 24 24" class="icon" style="width:20px;height:20px;"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v16H6.5A2.5 2.5 0 0 0 4 20.5"/><path d="M4 4.5v16A2.5 2.5 0 0 0 6.5 23H20"/></svg></div><div><h3>Claude Docs</h3><span class="tag">Docs</span></div></div>
+        <p>API reference, prompting guide, and platform docs.</p>
+        <a href="https://docs.claude.com" class="open">Open →</a>
+      </div>
+      <div class="note">
+        <div class="note-top"><div class="note-badge"><svg viewBox="0 0 24 24" class="icon" style="width:20px;height:20px;"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.5.4.8 1 .8 1.6V17h6.4v-.7c0-.6.3-1.2.8-1.6A7 7 0 0 0 12 2Z"/></svg></div><div><h3>Prompt Engineering</h3><span class="tag">Guide</span></div></div>
+        <p>Best practices for writing clear, effective prompts.</p>
+        <a href="https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview" class="open">Open →</a>
+      </div>
+      <div class="note">
+        <div class="note-top"><div class="note-badge"><svg viewBox="0 0 24 24" class="icon" style="width:20px;height:20px;"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="m4.9 4.9 4.2 4.2M14.9 14.9l4.2 4.2M19.1 4.9l-4.2 4.2M9.1 14.9l-4.2 4.2"/></svg></div><div><h3>Claude Support</h3><span class="tag">Support</span></div></div>
+        <p>How-tos and troubleshooting for the Claude apps.</p>
+        <a href="https://support.claude.com" class="open">Open →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="notes">
+    <div class="section-head">
+      <h2>Cheat Sheets</h2>
+      <p>Wahi 3 syntax jo har 2 mahine mein bhool jaati hoon.</p>
+    </div>
+    <div class="cheat-grid">
+      <div class="cheat-card">
+        <div class="cheat-head">flexbox.css</div>
+        <pre>.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}</pre>
+      </div>
+      <div class="cheat-card">
+        <div class="cheat-head">array_methods.js</div>
+        <pre>arr.map(x => x * 2)
+arr.filter(x => x > 5)
+arr.reduce((a,b) => a+b, 0)</pre>
+      </div>
+      <div class="cheat-card">
+        <div class="cheat-head">list_comp.py</div>
+        <pre>squares = [x**2 for x in range(10)]
+evens = [x for x in nums if x % 2 == 0]</pre>
+      </div>
+    </div>
+  </section>
+
+  <section id="locker">
+    <div class="section-head">
+      <h2>Daily Locker</h2>
+      <p>Chhota sa easter egg. Code daalo, kuch mera likha hua padho.</p>
+    </div>
+    <div class="locker-wrap">
+      <div class="locker-card">
+        <div id="locker-lock">
+          <div class="locker-icon"><svg viewBox="0 0 24 24" class="icon" style="width:28px;height:28px;"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+          <p>Aaj ka code kya hai?</p>
+          <input type="text" id="locker-input" class="locker-input" placeholder="code">
+          <br>
+          <button class="locker-btn" onclick="unlockLocker()">Unlock</button>
+          <div class="locker-error" id="locker-error"></div>
+          <div class="locker-hint">Hint: ye page kis language mein likha hai.</div>
+        </div>
+        <div id="locker-result" class="locker-result">
+          <div class="locker-icon"><svg viewBox="0 0 24 24" class="icon" style="width:28px;height:28px;"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-2"/></svg></div>
+          <p>Har bug ek life lesson hai jo mujhe 2am pe milta hai.</p>
+          <div class="locker-date" id="locker-date"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="foot-brand">
+      CodeVault
+      <p>Ye page maine banaya jab last time bookmarks dhundhte dhundhte 20 min waste ho gaye the.</p>
+    </div>
+    <div class="foot-cols">
+      <div>
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="#webdev">Web Dev</a></li>
+          <li><a href="#python">Python</a></li>
+          <li><a href="#java">Java</a></li>
+          <li><a href="#claude">Claude AI</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:chitrangna.dev@gmail.com">chitrangna.dev@gmail.com</a></li>
+          <li><a href="https://chitrangna.netlify.app">chitrangna.netlify.app</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">© 2026 — Chitrangna ne banaya, ek aur late night session mein.</div>
+  </footer>
+
+  <div class="notes-panel" id="notes-panel">
+    <h4><svg viewBox="0 0 24 24" class="icon" style="width:18px;height:18px;"><path d="M7 2h7l5 5v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z"/><path d="M14 2v5h5"/><path d="M8 13h8M8 17h5"/></svg> Sticky Notes</h4>
+    <div class="notes-input-row">
+      <input type="text" id="notes-input" class="notes-input" placeholder="quick note...">
+      <button class="notes-add" onclick="addNote()">Add</button>
+    </div>
+    <div id="notes-list"></div>
+  </div>
+
+  <div class="chat-panel" id="chat-panel">
+    <div class="chat-head">CodeVault Assistant</div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="chat-msg bot">Hii! Web dev, Python, Java ya Claude AI ke baare mein kuch poochho, main resources suggest kar dungi. Bore ho rahi ho to "joke" bhi likh sakti ho.</div>
+    </div>
+    <div class="chat-input-row">
+      <input type="text" id="chat-input" class="chat-input" placeholder="type something..." onkeydown="if(event.key==='Enter') sendChat()">
+      <button class="chat-send" onclick="sendChat()">→</button>
+    </div>
+  </div>
+
+  <div class="ttt-backdrop" id="ttt-backdrop" onclick="if(event.target===this) toggleTTTPanel()">
+    <div class="ttt-panel" id="ttt-panel">
+      <button class="ttt-close" onclick="toggleTTTPanel()" title="Close">
+        <svg viewBox="0 0 24 24" class="icon" style="width:13px;height:13px;stroke-width:2.4;"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+      <h4>Tic Tac Toe</h4>
+      <div class="ttt-board" id="ttt-board"></div>
+      <div class="ttt-result" id="ttt-result">Tum X ho, shuru karo</div>
+      <div class="ttt-score">
+        <span>Tum: <span id="ttt-win">0</span></span>
+        <span>Draw: <span id="ttt-draw">0</span></span>
+        <span>Main: <span id="ttt-lose">0</span></span>
+      </div>
+      <div class="ttt-buttons">
+        <button class="ttt-link-btn" onclick="newTTTGame()">Naya game</button>
+        <button class="ttt-link-btn" onclick="resetTTTScore()">Score reset</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="float-btns">
+    <button class="fab-main" id="fab-main" onclick="toggleFabMenu()" title="Menu">
+      <svg viewBox="0 0 24 24" class="icon" style="width:22px;height:22px; stroke:#fff;"><path d="M12 5v14M5 12h14"/></svg>
+    </button>
+    <div class="fab-menu" id="fab-menu">
+      <button class="float-btn" onclick="toggleTTTPanel()" title="Tic Tac Toe"><svg viewBox="0 0 24 24" class="icon" style="width:19px;height:19px;vertical-align:-2px;"><path d="M8 3v18M16 3v18M3 8h18M3 16h18"/></svg></button>
+      <button class="float-btn" id="theme-btn" onclick="toggleTheme()" title="Toggle dark/light"><svg viewBox="0 0 24 24" class="icon" id="theme-icon" style="width:19px;height:19px;vertical-align:-2px;"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></svg></button>
+      <button class="float-btn" onclick="toggleChatPanel()" title="Chat assistant"><svg viewBox="0 0 24 24" class="icon" style="width:19px;height:19px;vertical-align:-2px;"><path d="M4 4h16v11H8l-4 4V4Z"/></svg></button>
+      <button class="float-btn" id="notes-btn" onclick="toggleNotesPanel()" title="Sticky notes"><svg viewBox="0 0 24 24" class="icon" style="width:19px;height:19px;vertical-align:-2px;"><path d="M7 2h7l5 5v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z"/><path d="M14 2v5h5"/><path d="M8 13h8M8 17h5"/></svg></button>
+      <button class="float-btn" onclick="scrollToTop()" title="Back to top">↑</button>
+    </div>
+  </div>
+
+  <script>
+    // preloader locker
+    let unlocked = false;
+    function unlockPreloader(){
+      if(unlocked) return;
+      unlocked = true;
+      const card = document.getElementById('preloader-card');
+      const lock = document.getElementById('preloader-lock');
+      const text = document.getElementById('preloader-text');
+      const fill = document.getElementById('preloader-fill');
+      card.classList.add('unlocking');
+      lock.innerHTML = '<svg viewBox="0 0 24 24" class="icon" style="width:42px;height:42px;"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-2"/></svg>';
+      text.textContent = 'Ekdum ready!';
+      fill.style.width = '100%';
+      setTimeout(() => {
+        const pl = document.getElementById('preloader');
+        pl.classList.add('hide');
+        setTimeout(() => { pl.style.display = 'none'; }, 650);
+      }, 700);
+    }
+    // auto progress a little so it doesn't feel stuck if user waits
+    setTimeout(() => {
+      if(!unlocked) document.getElementById('preloader-fill').style.width = '55%';
+    }, 300);
+
+    function scrollToTop(){
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    const moonIcon = '<path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>';
+    const sunIcon = '<circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/>';
+    function toggleFabMenu(){
+      document.getElementById('fab-menu').classList.toggle('open');
+      document.getElementById('fab-main').classList.toggle('open');
+    }
+
+    function toggleTTTPanel(){
+      document.getElementById('ttt-backdrop').classList.toggle('open');
+    }
+
+    let tttBoard = Array(9).fill(null);
+    let tttOver = false;
+
+    function getTTTScore(){
+      try{ return JSON.parse(localStorage.getItem('codevault-ttt') || '{"win":0,"draw":0,"lose":0}'); }
+      catch(e){ return {win:0, draw:0, lose:0}; }
+    }
+    function saveTTTScore(score){ localStorage.setItem('codevault-ttt', JSON.stringify(score)); }
+    function renderTTTScore(){
+      const s = getTTTScore();
+      document.getElementById('ttt-win').textContent = s.win;
+      document.getElementById('ttt-draw').textContent = s.draw;
+      document.getElementById('ttt-lose').textContent = s.lose;
+    }
+    function resetTTTScore(){
+      saveTTTScore({win:0, draw:0, lose:0});
+      renderTTTScore();
+    }
+
+    const TTT_LINES = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+
+    function tttWinner(board){
+      for(const [a,b,c] of TTT_LINES){
+        if(board[a] && board[a] === board[b] && board[b] === board[c]) return board[a];
+      }
+      if(board.every(c => c)) return 'draw';
+      return null;
+    }
+
+    function renderTTTBoard(){
+      const el = document.getElementById('ttt-board');
+      el.innerHTML = tttBoard.map((v,i) =>
+        `<button class="ttt-cell ${v ? v.toLowerCase() : ''}" onclick="tttMove(${i})" ${v || tttOver ? 'disabled' : ''}>${v || ''}</button>`
+      ).join('');
+    }
+
+    function tttBestMove(){
+      const empty = tttBoard.map((v,i)=>v?null:i).filter(i => i !== null);
+      // try to win
+      for(const i of empty){
+        const copy = [...tttBoard]; copy[i] = 'O';
+        if(tttWinner(copy) === 'O') return i;
+      }
+      // block player
+      for(const i of empty){
+        const copy = [...tttBoard]; copy[i] = 'X';
+        if(tttWinner(copy) === 'X') return i;
+      }
+      if(!tttBoard[4]) return 4;
+      const corners = [0,2,6,8].filter(i => !tttBoard[i]);
+      if(corners.length) return corners[Math.floor(Math.random()*corners.length)];
+      return empty[Math.floor(Math.random()*empty.length)];
+    }
+
+    function tttMove(i){
+      if(tttBoard[i] || tttOver) return;
+      tttBoard[i] = 'X';
+      let w = tttWinner(tttBoard);
+      if(!w){
+        const cpuMove = tttBestMove();
+        if(cpuMove !== undefined) tttBoard[cpuMove] = 'O';
+        w = tttWinner(tttBoard);
+      }
+      renderTTTBoard();
+      if(w){
+        tttOver = true;
+        const score = getTTTScore();
+        let msg;
+        if(w === 'X'){ msg = 'Tum jeet gayi! 🎉'; score.win++; }
+        else if(w === 'O'){ msg = 'Main jeet gayi is baar!'; score.lose++; }
+        else { msg = "Draw! Koi nahi jeeta."; score.draw++; }
+        saveTTTScore(score);
+        renderTTTScore();
+        document.getElementById('ttt-result').textContent = msg;
+        renderTTTBoard();
+      } else {
+        document.getElementById('ttt-result').textContent = 'Tumhari baari hai';
+      }
+    }
+
+    function newTTTGame(){
+      tttBoard = Array(9).fill(null);
+      tttOver = false;
+      document.getElementById('ttt-result').textContent = 'Tum X ho, shuru karo';
+      renderTTTBoard();
+    }
+
+    renderTTTScore();
+    renderTTTBoard();
+
+    function toggleTheme(){
+      document.body.classList.toggle('dark');
+      const icon = document.getElementById('theme-icon');
+      icon.innerHTML = document.body.classList.contains('dark') ? sunIcon : moonIcon;
+    }
+
+    function toggleChatPanel(){
+      document.getElementById('chat-panel').classList.toggle('open');
+    }
+
+    function chatReply(msg){
+      const m = msg.toLowerCase();
+      const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+
+      const jokes = [
+        "Bug fix karne ka sabse reliable tareeka: sona, aur ye umeed rakhna ki subah tak khud thik ho jayega. (Nahi hoga.)",
+        "Semicolon bhool jaana first year ka rite of passage hai — poori raat isi mein nikal jaati hai.",
+        "Mera code kaam kar raha hai. Kyun? Mujhe nahi pata. Isse chheda mat, bas chalne do.",
+        "Debugging basically khud se 2 ghante fight karna hai, aur usme bhi haar jaana.",
+        "Assignment ka sabse mushkil part code likhna nahi, file ka naam decide karna hai — 'Final_FINAL_v2_REAL.py'.",
+        "Stack Overflow ek din ke liye band ho jaye, aadhi CS student population unemployed feel karegi.",
+        "'It works on my machine' — official first-year excuse, patent pending.",
+        "Git commit message 'fixed it' ke baad bhi kabhi kuch fix nahi hota.",
+        "4 saal CS padhne ke baad bhi sabse powerful skill Ctrl+Z hi hai.",
+        "Console.log() meri asli therapist hai, usse hi sab bata deti hoon.",
+        "Copy-paste ke baad bhi error aana — sabse bada plot twist of the semester.",
+        "Exam se ek din pehle syllabus khola to laga naya semester start ho gaya hai.",
+        "'Chalo aaj jaldi so jaate hain' — mera hi bola hua sabse bada jhooth, roz raat 2 baje.",
+        "Professor: 'Isme bug hai.' Main: 'Ye feature hai, samajh nahi aa raha aapko.'",
+        "Group project mein jo sabse zyada kaam karta hai, review mein usi ki sabse zyada class lagti hai."
+      ];
+
+      if(m.includes('joke') || m.includes('funny') || m.includes('hasao') || m.includes('hasa')) return pick(jokes);
+      if(m.includes('python')) return pick([
+        "Python ke liye #python section dekho — official docs, LeetCode aur CS50P hai wahan.",
+        "Python try kar rahi ho? #python section mein saara kaam ka stuff pinned hai."
+      ]);
+      if(m.includes('java') && !m.includes('javascript')) return pick([
+        "Java ke liye #java section mein Oracle docs, W3Schools aur HackerRank pinned hain.",
+        "OOP samajhna hai? #java section check karo, wahi resources hain jo mujhe kaam aaye."
+      ]);
+      if(m.includes('web') || m.includes('html') || m.includes('css') || m.includes('javascript') || m.includes('js')) return pick([
+        "Web dev ke liye #webdev section mein MDN, freeCodeCamp aur Frontend Mentor hai.",
+        "HTML-CSS-JS ke liye #webdev section dekho, sab kaam ka hai wahan."
+      ]);
+      if(m.includes('claude') || m.includes('ai')) return pick([
+        "Claude AI ke resources #claude section mein hain — docs, prompting guide, support.",
+        "AI wala kaam? #claude section mein docs aur prompting guide dono hain."
+      ]);
+      if(m.includes('cheat') || m.includes('syntax')) return pick([
+        "Cheat sheets #notes section mein hain — flexbox, array methods, list comprehensions.",
+        "Syntax bhool gayi? #notes section mein quick cheat sheets hain."
+      ]);
+      if(m.includes('locker') || m.includes('code')) return pick([
+        "Daily Locker mein ek chhota easter egg hai, code try karo!",
+        "Locker try kiya kya? Ek hint hai wahan already."
+      ]);
+      if(m.includes('hi') || m.includes('hello') || m.includes('hey')) return pick([
+        "Heyy! Bata, kaunsa resource dhoondh rahi ho?",
+        "Hii! Kya seekhna hai aaj?"
+      ]);
+      if(m.includes('thanks') || m.includes('thank')) return pick([
+        "Koi baat nahi! Aur kuch chahiye to poochho.",
+        "Anytime! Aur kuch help chahiye?"
+      ]);
+      return pick([
+        "Hmm, abhi mujhe iska exact jawab nahi pata — par webdev, python, java ya claude section try karo, kaam ka mil jayega.",
+        "Yeh wala mujhe nahi pata, par is baare mein GC ke owner Harsh se puch lena, wahi asli GOAT hai.",
+        "Iska jawab mere paas nahi hai abhi, upar ke sections mein dekh lo shayad mil jaye.",
+        "Aaj bidi to nahi pi na?",
+        "Aur kya resources chahiye? Bata do, dhoondh deti hoon.",
+        "Bhumi ko jaanti ho? Wow girl hai wo, meri taraf se bol dena.",
+        jokes[Math.floor(Math.random() * jokes.length)]
+      ]);
+    }
+
+    function sendChat(){
+      const input = document.getElementById('chat-input');
+      const val = input.value.trim();
+      if(!val) return;
+      const box = document.getElementById('chat-messages');
+      box.insertAdjacentHTML('beforeend', `<div class="chat-msg user">${escapeHtml(val)}</div>`);
+      input.value = '';
+      box.scrollTop = box.scrollHeight;
+      setTimeout(() => {
+        box.insertAdjacentHTML('beforeend', `<div class="chat-msg bot">${escapeHtml(chatReply(val))}</div>`);
+        box.scrollTop = box.scrollHeight;
+      }, 400);
+    }
+
+    function toggleNotesPanel(){
+      document.getElementById('notes-panel').classList.toggle('open');
+      renderNotes();
+    }
+
+    function getNotes(){
+      try{
+        return JSON.parse(localStorage.getItem('codevault-notes') || '[]');
+      } catch(e){ return []; }
+    }
+
+    function saveNotes(notes){
+      localStorage.setItem('codevault-notes', JSON.stringify(notes));
+    }
+
+    function addNote(){
+      const input = document.getElementById('notes-input');
+      const val = input.value.trim();
+      if(!val) return;
+      const notes = getNotes();
+      notes.unshift(val);
+      saveNotes(notes);
+      input.value = '';
+      renderNotes();
+    }
+
+    function deleteNote(i){
+      const notes = getNotes();
+      notes.splice(i,1);
+      saveNotes(notes);
+      renderNotes();
+    }
+
+    let editingIndex = null;
+
+    function editNote(i){
+      editingIndex = i;
+      renderNotes();
+    }
+
+    function saveEditedNote(i){
+      const input = document.getElementById('edit-input-' + i);
+      const notes = getNotes();
+      const val = input.value.trim();
+      if(val) notes[i] = val;
+      saveNotes(notes);
+      editingIndex = null;
+      renderNotes();
+    }
+
+    function renderNotes(){
+      const list = document.getElementById('notes-list');
+      const notes = getNotes();
+      if(notes.length === 0){
+        list.innerHTML = '<div class="notes-empty">Koi note nahi hai abhi, kuch likho!</div>';
+        return;
+      }
+      list.innerHTML = notes.map((n,i) => {
+        if(editingIndex === i){
+          return `<div class="sticky-note">
+            <input type="text" id="edit-input-${i}" class="notes-input" value="${escapeHtml(n)}" style="width:100%; margin-bottom:6px;">
+            <button class="notes-add" onclick="saveEditedNote(${i})">Save as note</button>
+          </div>`;
+        }
+        return `<div class="sticky-note">${escapeHtml(n)}
+          <span class="del" onclick="deleteNote(${i})"><svg viewBox="0 0 24 24" class="icon" style="width:13px;height:13px;stroke-width:2.4;"><path d="M18 6 6 18M6 6l12 12"/></svg></span>
+          <span class="edit" onclick="editNote(${i})"><svg viewBox="0 0 24 24" class="icon" style="width:13px;height:13px;stroke-width:2.2;"><path d="m4 16 1-4L15.5 2.5a2 2 0 0 1 2.8 0l1.2 1.2a2 2 0 0 1 0 2.8L9 17l-4 1Z"/></svg></span>
+        </div>`;
+      }).join('');
+    }
+
+    function escapeHtml(str){
+      const d = document.createElement('div');
+      d.textContent = str;
+      return d.innerHTML;
+    }
+
+    renderNotes();
+
+    function unlockLocker(){
+      const val = document.getElementById('locker-input').value.trim().toLowerCase();
+      const err = document.getElementById('locker-error');
+      if(val === 'javascript' || val === 'js'){
+        document.getElementById('locker-lock').style.display = 'none';
+        document.getElementById('locker-result').classList.add('show');
+        document.getElementById('locker-date').textContent = new Date().toDateString();
+        err.textContent = '';
+      } else {
+        err.textContent = 'Galat code, try again.';
+      }
+    }
+  </script>
+</body>
+</html>
+    background-size: 22px 22px;
+    background-attachment: fixed;
+    color:var(--ink);
+    font-family:var(--font-body);
+    line-height:1.6;
+  }
+  a{ color:inherit; text-decoration:none; }
+  ul{ list-style:none; }
+  .icon{ width:20px; height:20px; stroke:currentColor; stroke-width:2; fill:none; stroke-linecap:round; stroke-linejoin:round; vertical-align:-5px; }
+  section{ padding: 70px 8vw; }
+  h1,h2{ font-family:var(--font-display); letter-spacing:0.03em; }
+  h3{ font-family:var(--font-head); font-weight:700; }
+  :focus-visible{ outline:2px solid var(--pink); outline-offset:3px; }
+
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:0.76rem;
+    letter-spacing:0.03em;
+    color:var(--ink);
+    margin-bottom:10px;
+    display:inline-block;
+    background:var(--yellow);
+    border:2px solid var(--ink);
+    padding:5px 12px;
+    border-radius:999px;
+    box-shadow:3px 3px 0 var(--ink);
+  }
+
+  .section-head{ max-width:600px; margin-bottom:36px; }
+  .section-head h2{ font-size:clamp(1.9rem, 3vw, 2.6rem); margin-bottom:8px; color:var(--pink); -webkit-text-stroke:1px var(--ink); }
+  .section-head p{ color:var(--ink-dim); font-size:1rem; font-family:var(--font-head); }
+
+  /* ============ NAV — comic flat header ============ */
+  .nav-wrap{
+    position:sticky; top:0; z-index:100;
+    padding: 16px 8vw;
+    background:var(--surface);
+    border-bottom:3px solid var(--ink);
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .nav-brand{ font-family:var(--font-display); font-weight:700; font-size:1.5rem; letter-spacing:0.02em; display:flex; align-items:center; gap:10px; color:var(--pink); -webkit-text-stroke:1px var(--ink); }
+  .nav-hamburger{ font-size:1.2rem; cursor:pointer; -webkit-text-stroke:0; color:var(--ink); }
+  .nav-toggle-checkbox{ display:none; }
+  .nav-toggle-label{ display:none; font-size:1.3rem; cursor:pointer; background:none; border:none; color:var(--ink); }
+  .nav-links{ display:flex; gap:24px; font-size:0.95rem; font-weight:600; align-items:center; font-family:var(--font-head); }
+  .nav-links a{ color:var(--ink); transition: transform .15s; display:inline-block; }
+  .nav-links a:hover{ transform:translateY(-2px); }
+  .nav-cta{
+    background:var(--mint); color:var(--ink) !important; padding:9px 18px; border-radius:999px;
+    font-size:0.85rem; border:2px solid var(--ink); box-shadow:3px 3px 0 var(--ink);
+  }
+
+  /* ============ HERO — scrapbook collage like the portfolio card ============ */
+  .hero-wrap{ padding: 0; }
+  .profile-row{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 8vw; border-bottom:3px solid var(--ink);
+  }
+  .profile-row .who{ display:flex; align-items:center; gap:14px; }
+  .profile-avatar{
+    width:48px; height:48px; border-radius:50%; background:var(--yellow);
+    display:flex; align-items:center; justify-content:center; font-size:1.3rem;
+    border:2px solid var(--ink);
+  }
+  .profile-row .who h2{ font-size:1.2rem; font-family:var(--font-head); }
+  .profile-row .who span{ color:var(--ink-dim); font-size:0.85rem; font-family:var(--font-mono); }
+  .profile-menu{ font-size:1.2rem; color:var(--ink); cursor:pointer; }
+
+  .collage{
+    position:relative; max-width:640px; margin:50px auto 30px;
+    height:380px;
+  }
+  .collage-item{ background:#fff; border:2.5px solid var(--ink); box-shadow:var(--shadow); border-radius:10px; padding:10px; text-align:center; position:absolute; }
+  .collage-item.photo{ width:150px; }
+  .collage-item.photo .ph{
+    width:100%; height:130px; border-radius:4px; display:flex; align-items:center; justify-content:center;
+    font-size:2rem; margin-bottom:8px; border:2px solid var(--ink);
+  }
+  .collage-item.photo .cap{ font-family:var(--font-mono); font-size:0.7rem; color:var(--ink-dim); }
+  .collage-item.swatch{ width:110px; padding:0; overflow:hidden; }
+  .collage-item.swatch .sw{ height:80px; border-bottom:2px solid var(--ink); }
+  .collage-item.swatch .lbl{ padding:8px; font-family:var(--font-mono); font-size:0.65rem; text-align:left; }
+  .collage-item.sticker{ width:auto; padding:12px 15px; font-size:1.6rem; border-radius:50%; }
+  .collage-item.note{ width:130px; text-align:left; font-family:var(--font-mono); font-size:0.68rem; color:var(--ink-dim); }
+  .collage-item.note .note-title{ font-size:0.7rem; color:var(--ink); margin-bottom:6px; font-weight:700; }
+
+  .c1{ top:0; left:2%; transform:rotate(-8deg); z-index:2; }
+  .c2{ top:6%; left:36%; transform:rotate(3deg); z-index:3; }
+  .c3{ top:2%; right:0; transform:rotate(7deg); z-index:2; }
+  .c4{ bottom:6%; left:14%; transform:rotate(-5deg); z-index:1; }
+  .c5{ bottom:0; right:8%; transform:rotate(6deg); z-index:2; }
+  .c6{ top:42%; left:0; transform:rotate(-10deg); z-index:1; }
+  .c7{ bottom:12%; left:46%; transform:rotate(4deg); z-index:4; }
+
+  .hero-intro{
+    max-width:560px; margin:0 auto 60px; text-align:center; padding:0 6vw;
+    font-size:1.1rem; line-height:1.75; color:var(--ink); font-family:var(--font-head);
+  }
+  .hero-intro a{ color:var(--pink); text-decoration:underline; }
+  .hero-ctas{ display:flex; gap:14px; margin-top:22px; justify-content:center; flex-wrap:wrap; }
+  .btn{
+    font-family:var(--font-head); font-weight:700; font-size:0.92rem;
+    padding:12px 22px; border-radius:999px; border:2.5px solid var(--ink);
+    display:inline-flex; align-items:center; gap:8px; cursor:pointer;
+    box-shadow:4px 4px 0 var(--ink);
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .btn:hover{ transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--ink); }
+  .btn:active{ transform:translate(2px,2px); box-shadow:1px 1px 0 var(--ink); }
+  .btn-solid{ background:var(--pink); color:#fff; }
+  .btn-ghost{ background:var(--yellow); color:var(--ink); }
+
+  /* ============ RESOURCE CARDS — like portfolio list cards ============ */
+  .board{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+    gap:18px;
+  }
+  .note{
+    background:var(--surface); border:2.5px solid var(--ink); border-radius:16px;
+    padding:22px 20px; box-shadow:var(--shadow);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .note:hover{ transform:translate(-3px,-3px); box-shadow:8px 8px 0 var(--ink); }
+  .note-top{ display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+  .note-badge{
+    width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center;
+    font-size:1.3rem; background:var(--accent-bg, #FFF3D6); color:var(--accent, var(--pink));
+    border:2px solid var(--ink);
+  }
+  .note h3{ font-size:1.1rem; }
+  .note .tag{
+    font-family:var(--font-mono); font-size:0.7rem; color:var(--ink-dim); text-transform:uppercase;
+  }
+  .note p{ color:var(--ink-dim); font-size:0.9rem; margin-bottom:16px; }
+  .note a.open{
+    font-family:var(--font-head); font-weight:700; font-size:0.85rem; color:var(--accent, var(--pink));
+    display:inline-flex; align-items:center; gap:6px;
+  }
+
+  #webdev .note{ --accent: var(--pink); --accent-bg: #FFE9F0; }
+  #python .note{ --accent: var(--yellow); --accent-bg: #FFF3E0; }
+  #java .note{ --accent: var(--mint); --accent-bg: #E4F9F3; }
+  #claude .note{ --accent: var(--blue); --accent-bg: #EAF1FF; }
+
+  /* ============ CHEAT SHEETS ============ */
+  .cheat-grid{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:18px;
+  }
+  .cheat-card{
+    background:#1B1E2E; border:2.5px solid var(--ink); border-radius:16px; overflow:hidden; box-shadow:var(--shadow);
+  }
+  .cheat-card .cheat-head{
+    padding:12px 16px; border-bottom:2px solid var(--ink);
+    font-family:var(--font-mono); font-size:0.78rem; color:#C7CBE0;
+  }
+  .cheat-card pre{
+    padding:16px; font-family:var(--font-mono); font-size:0.8rem; color:#7FE7CB;
+    overflow-x:auto; line-height:1.6;
+  }
+
+  /* ============ LOCKER (kept, minimal) ============ */
+  .locker-wrap{ display:flex; justify-content:center; }
+  .locker-card{
+    background:var(--surface); border:2.5px solid var(--ink); border-radius:18px;
+    padding:32px 28px; text-align:center; max-width:360px; width:100%; box-shadow:var(--shadow);
+  }
+  .locker-icon{ font-size:1.8rem; margin-bottom:8px; }
+  .locker-input{
+    width:100%; max-width:220px; font-family:var(--font-mono); font-size:0.9rem;
+    background:var(--surface-2); border:2px solid var(--ink); color:var(--ink);
+    padding:10px 12px; border-radius:10px; text-align:center; margin:14px 0 8px;
+  }
+  .locker-input:focus{ outline:none; border-color:var(--pink); }
+  .locker-btn{
+    font-family:var(--font-head); font-weight:700; font-size:0.9rem;
+    padding:10px 22px; border-radius:999px; border:2px solid var(--ink); background:var(--mint);
+    color:var(--ink); cursor:pointer; box-shadow:3px 3px 0 var(--ink);
+  }
+  .locker-hint{ font-family:var(--font-mono); font-size:0.72rem; color:var(--ink-dim); margin-top:10px; }
+  .locker-error{ font-family:var(--font-mono); font-size:0.75rem; color:var(--pink); min-height:1.2em; margin-top:6px; }
+  .locker-result{ display:none; }
+  .locker-result.show{ display:block; }
+  .locker-result p{ font-size:1rem; line-height:1.6; margin:8px 0; }
+  .locker-result .locker-date{ font-family:var(--font-mono); font-size:0.75rem; color:var(--ink-dim); }
+
+  /* ============ FOOTER ============ */
+  footer{
+    border-top:3px solid var(--ink); padding: 44px 8vw 26px;
+    display:flex; flex-wrap:wrap; gap:30px; justify-content:space-between; align-items:flex-start;
+  }
+  footer .foot-brand{ font-family:var(--font-display); font-size:1.6rem; max-width:300px; color:var(--pink); -webkit-text-stroke:1px var(--ink); }
+  footer .foot-brand p{ font-family:var(--font-head); font-weight:400; color:var(--ink-dim); font-size:0.88rem; margin-top:8px; -webkit-text-stroke:0; }
+  .foot-cols{ display:flex; gap:50px; flex-wrap:wrap; }
+  .foot-cols h4{ font-family:var(--font-mono); font-size:0.76rem; color:var(--ink-dim); text-transform:uppercase; margin-bottom:12px; }
+  .foot-cols ul li{ margin-bottom:8px; font-size:0.9rem; font-family:var(--font-head); }
+  .foot-cols ul li a:hover{ color:var(--pink); }
+  .foot-bottom{
+    text-align:center; padding-top:26px; margin-top:26px; border-top:2px solid var(--ink);
+    font-family:var(--font-mono); font-size:0.74rem; color:var(--ink-dim); width:100%;
+  }
+
+  /* ============ FLOATING BUTTONS ============ */
+  .float-btns{
+    position:fixed; bottom:24px; right:24px; z-index:90;
+    display:flex; flex-direction:column; gap:10px;
+  }
+  .float-btn{
+    width:46px; height:46px; border-radius:50%;
+    background:var(--yellow); border:2.5px solid var(--ink); color:var(--ink);
+    display:flex; align-items:center; justify-content:center; box-shadow:3px 3px 0 var(--ink);
+    font-size:1.05rem; cursor:pointer; transition: transform .15s;
+  }
+  .float-btn:hover{ transform:translate(-2px,-2px); box-shadow:5px 5px 0 var(--ink); }
+
+  /* sticky notes panel */
+  .notes-panel{
+    position:fixed; bottom:136px; right:24px; z-index:95;
+    width:260px; max-height:60vh; overflow-y:auto;
+    background:var(--surface); border:2.5px solid var(--ink); border-radius:14px;
+    box-shadow:var(--shadow); padding:16px; display:none; flex-direction:column; gap:10px;
+  }
+  .notes-panel.open{ display:flex; }
+  .notes-panel h4{ font-family:var(--font-head); font-size:0.95rem; margin-bottom:2px; }
+  .notes-input-row{ display:flex; gap:6px; }
+  .notes-input{
+    flex:1; font-family:var(--font-body); font-size:0.85rem;
+    border:2px solid var(--ink); border-radius:8px; padding:8px 10px;
+    background:var(--surface-2); color:var(--ink);
+  }
+  .notes-add{
+    font-family:var(--font-head); font-weight:700; border:2px solid var(--ink); border-radius:8px;
+    background:var(--mint); padding:8px 12px; cursor:pointer; box-shadow:2px 2px 0 var(--ink);
+  }
+  .sticky-note{
+    background:var(--yellow); border:2px solid var(--ink); border-radius:6px;
+    padding:10px 12px; font-family:var(--font-head); font-size:0.85rem;
+    box-shadow:3px 3px 0 var(--ink); position:relative;
+  }
+  .sticky-note:nth-child(3n){ background:#B7F0D6; }
+  .sticky-note:nth-child(3n+1){ background:#FFD400; }
+  .sticky-note:nth-child(3n+2){ background:#FFB7C5; }
+  .sticky-note .del{
+    position:absolute; top:4px; right:6px; cursor:pointer; font-size:0.75rem; color:var(--ink-dim);
+  }
+  .sticky-note .edit{
+    position:absolute; top:3px; right:24px; cursor:pointer; font-size:0.72rem;
+  }
+  .sticky-note{ padding-right:44px; }
+  .notes-empty{ font-family:var(--font-mono); font-size:0.78rem; color:var(--ink-dim); }
+
+  /* chat widget */
+  .chat-panel{
+    position:fixed; bottom:192px; right:24px; z-index:96;
+    width:280px; max-height:60vh;
+    background:var(--surface); border:2.5px solid var(--ink); border-radius:14px;
+    box-shadow:var(--shadow); display:none; flex-direction:column; overflow:hidden;
+  }
+  .chat-panel.open{ display:flex; }
+  .chat-head{
+    padding:12px 14px; border-bottom:2px solid var(--ink); font-family:var(--font-head);
+    font-weight:700; font-size:0.9rem; background:var(--yellow);
+  }
+  .chat-messages{ flex:1; overflow-y:auto; padding:12px; display:flex; flex-direction:column; gap:8px; max-height:280px; }
+  .chat-msg{
+    font-family:var(--font-body); font-size:0.85rem; padding:8px 12px; border-radius:10px;
+    border:2px solid var(--ink); max-width:85%;
+  }
+  .chat-msg.bot{ background:var(--surface-2); align-self:flex-start; }
+  .chat-msg.user{ background:var(--mint); color:var(--ink); align-self:flex-end; }
+  .chat-input-row{ display:flex; gap:6px; padding:10px; border-top:2px solid var(--ink); }
+  .chat-input{
+    flex:1; font-family:var(--font-body); font-size:0.85rem; border:2px solid var(--ink);
+    border-radius:8px; padding:8px 10px; background:var(--surface-2); color:var(--ink);
+  }
+  .chat-send{
+    font-family:var(--font-head); font-weight:700; border:2px solid var(--ink); border-radius:8px;
+    background:var(--pink); color:#fff; padding:8px 12px; cursor:pointer; box-shadow:2px 2px 0 var(--ink);
+  }
+
+  /* dark mode override */
+  body.dark{
+    --bg:#12141F;
+    --surface:#1B1E2E;
+    --surface-2:#22263A;
+    --ink:#F1F2F8;
+    --ink-dim:#B7BBCB;
+    --line: #F1F2F8;
+    --shadow: 5px 5px 0 var(--ink);
+  }
+  body.dark .cheat-card{ background:#0E1019; }
+  body.dark .note-badge{ background:#22263A; }
+
+  /* ============ PRELOADER — interactive locker ============ */
+  #preloader{
+    position:fixed; inset:0; z-index:999;
+    background: var(--blue);
+    background-image: radial-gradient(rgba(255,255,255,0.18) 1.6px, transparent 1.6px);
+    background-size: 20px 20px;
+    display:flex; align-items:center; justify-content:center;
+    transition: opacity .6s ease, visibility .6s ease;
+  }
+  #preloader.hide{ opacity:0; visibility:hidden; pointer-events:none; }
+  .preloader-card{
+    background:#fff; border:3px solid var(--ink); border-radius:24px; padding:44px 40px; text-align:center;
+    box-shadow:7px 7px 0 var(--ink); max-width:280px; cursor:pointer;
+    user-select:none;
+  }
+  .preloader-lock{
+    font-size:2.8rem; display:inline-block; transition: transform .5s ease;
+  }
+  .preloader-card.unlocking .preloader-lock{ transform: rotate(-18deg) scale(1.15); }
+  .preloader-card p{ font-family:var(--font-head); font-weight:700; font-size:0.95rem; color:var(--ink); margin-top:14px; }
+  .preloader-card .pl-sub{ font-size:0.72rem; margin-top:6px; color:var(--ink-dim); font-family:var(--font-mono); }
+  .preloader-bar{
+    margin-top:16px; height:6px; border-radius:999px; background:var(--surface-2);
+    border:1.5px solid var(--ink); overflow:hidden;
+  }
+  .preloader-bar-fill{
+    height:100%; width:0%; background:var(--pink);
+    transition: width .5s ease;
+  }
+
+  @media (max-width: 860px){
+    .nav-links{
+      display:none; position:absolute; top:64px; left:5vw; right:5vw;
+      background:var(--surface); flex-direction:column; padding:18px; gap:14px;
+      border-radius:16px; box-shadow:var(--shadow);
+    }
+    .nav-toggle-checkbox:checked ~ .nav-links{ display:flex; }
+    .nav-toggle-label{ display:block; }
+    section{ padding:52px 6vw; }
+    .collage{
+      height:auto; display:flex; flex-wrap:wrap; justify-content:center; gap:14px; padding:0 4vw;
+    }
+    .collage-item{ position:static !important; transform:none !important; }
+  }
+
+  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; } }
+</style>
+</head>
+<body>
+
+  <!-- ============ PRELOADER ============ -->
+  <div id="preloader">
+    <div class="preloader-card" id="preloader-card" onclick="unlockPreloader()">
+      <span class="preloader-lock" id="preloader-lock"><svg viewBox="0 0 24 24" class="icon" style="width:42px;height:42px;"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>
+      <p id="preloader-text">Chalo chalo, tap karo!</p>
+      <div class="pl-sub">CodeVault load ho raha hai</div>
+      <div class="preloader-bar"><div class="preloader-bar-fill" id="preloader-fill"></div></div>
+    </div>
+  </div>
+
+  <div class="nav-wrap">
+    <div class="nav-brand">CodeVault</div>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
+    <label for="nav-toggle" class="nav-toggle-label"><svg viewBox="0 0 24 24" class="icon" style="width:22px;height:22px;vertical-align:-4px;"><path d="M3 6h18M3 12h18M3 18h18"/></svg></label>
+    <ul class="nav-links">
+      <li><a href="#webdev">Web Dev</a></li>
+      <li><a href="#python">Python</a></li>
+      <li><a href="#java">Java</a></li>
+      <li><a href="#claude">Claude AI</a></li>
+      <li><a href="#notes">Cheat Sheets</a></li>
+      <li><a href="#locker">Locker</a></li>
+      <li><a href="mailto:chitrangna.dev@gmail.com" class="nav-cta">Say hi</a></li>
+    </ul>
+  </div>
+
+  <div class="hero-wrap" id="home">
+    <div class="profile-row">
+      <div class="who">
+        <div class="profile-avatar"><svg viewBox="0 0 24 24" class="icon" style="width:22px;height:22px;"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M2 20h20"/></svg></div>
+        <div>
+          <h2>Chitrangna</h2>
+          <span>1st year · still figuring it out</span>
+        </div>
+      </div>
+      <div class="profile-menu"><svg viewBox="0 0 24 24" class="icon" style="width:20px;height:20px;vertical-align:-4px;"><circle cx="5" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg></div>
+    </div>
+
+    <p class="hero-intro">
+      Hello, I'm Chitrangna — first year college mein hoon, abhi seekh hi rahi hoon full-stack dev banna. Ye page wahi links hain jo mujhe actually samajh aaye, taaki main dobara wahi 40 tabs na kholoon. <a href="https://chitrangna.netlify.app">More about me →</a>
+    </p>
+    <div class="hero-ctas">
+      <a href="#webdev" class="btn btn-solid">dekho kya hai →</a>
+      <a href="#claude" class="btn btn-ghost">Claude AI wala part</a>
+    </div>
+  </div>
+
+  <section id="webdev">
+    <div class="section-head">
+      <h2>Web Development</h2>
+      <p>First year mein abhi HTML-CSS-JS shuru kiya hai, ye 3 tabs hamesha khuli rehti hain.</p>
+    </div>
+    <div class="board">
+      <div class="note">
+        <div class="note-top"><div class="note-badge"><svg viewBox="0 0 24 24" class="icon" style="width:20px;height:20px;"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v16H6.5A2.5 2.5 0 0 0 4 20.5"/><path d="M4 4.5v16A2.5 2.5 0 0 0 6.5 23H20"/></svg></div><div><h3>MDN Web Docs</h3><span class="tag">Docs</span></div></div>
+        <p>HTML, CSS, JS ki sabse reliable aur detailed reference.</p>
+        <a href="https://developer.mozilla.org" class="open">Open →</a>
+      </div>
+      <div class="note">
+        <div class="note-top"><div class="note-badge"><svg viewBox="0 0 24 24" class="icon" style="width:20px;height:20px;"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5"/></svg></div><div><h3>freeCodeCamp</h3><span class="tag">Course</span></div></div>
+        <p>Structured, free, project-based web dev curriculum.</p>
+        <a href="https://www.freecodecamp.org" class="open">Open →</a>
+      </div>
+      <div class="note">
+        <div class="note-top"><div class="note-badge"><svg viewBox="0 0 24 24" class="icon" style="width:20px;height:20px;"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/></svg></div><div><h3>Frontend Mentor</h3><span class="tag">Practice</span></div></div>
+        <p>Real design challenges to build your portfolio projects.</p>
+        <a href="https://www.frontendmentor.io" class="open">Open →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="python">
+    <div class="section-head">
+      <h2>Python</h2>
+      <p>Semester ki first language yahi hai, abhi basics pe hi hoon.</p>
+    </div>
+    <div class="board">
+      <div class="note">
+        <div class="note-top"><div class="note-badge"><svg viewBox="0 0 24 24" class="icon" style="width:20px;height:20px;"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v16H6.5A2.5 2.5 0 0 0 4 20.5"/><path d="M4 4.5v16A2.5 2.5 0 0 0 6.5 23H20"/></svg></div><div><h3>Python Official Docs</h3><span class="tag">Docs</span></div></div>
+        <p>Direct from the source — clean and always up to date.</p>
+        <a href="https://docs.python.org/3/" class="open">Open →</a>
+      </div>
+      <div class="note">
+        <div class="note-top"><div class="note-badge"><svg viewBox="0 0 24 24" class="icon" style="width:20px;height:20px;"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div><div><h3>LeetCode</h3><span class="tag">Practice</span></div></div>
+        <p>DSA practice for interviews and stronger fundamentals.</p>
+        <a href="https://leetcode.com" class="open">Open →</a>
+      </div>
+      <div class="note">
+        <div class="note-top"><div class="note-badge"><svg viewBox="0 0 24 24" class="icon" style="width:20px;height:20px;"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5"/></svg></div><div><h3>CS50P</h3><span class="tag">Course</span></div></div>
+        <p>Harvard's intro to programming with Python, free.</p>
+        <a href="https://cs50.harvard.edu/python/" class="open">Open →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="java">
+    <div class="section-head">
+      <h2>Java</h2>
+      <p>OOP abhi naya naya samajh aana shuru hua hai, ye resources first-year mein kaam aaye.</p>
+    </div>
+    <div class="board">
+      <div class="note">
+        <div class="note-top"><div class="note-badge"><svg viewBox="0 0 24 24" class="icon" style="width:20px;height:20px;"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v16H6.5A2.5 2.5 0 0 0 4 20.5"/><path d="M4 4.5v16A2.5 2.5 0 0 0 6.5 23H20"/></svg></div><div><h3>Oracle Java Docs</h3><span class="tag">Docs</span></div></div>
+        <p>Official API reference for Java.</p>
+        <a href="https://docs.oracle.com/en/java/" class="open">Open →</a>
+      </div>
+      <div class="note">
+        <div class="note-top"><div class="note-badge"><svg viewBox="0 0 24 24" class="icon" style="width:20px;height:20px;"><path d="m4 16 1-4L15.5 2.5a2 2 0 0 1 2.8 0l1.2 1.2a2 2 0 0 1 0 2.8L9 17l-4 1Z"/><path d="m13.5 4.5 3 3"/></svg></div><div><h3>W3Schools Java</h3><span class="tag">Tutorial</span></div></div>
+        <p>Quick syntax reference and beginner-friendly examples.</p>
+        <a href="https://www.w3schools.com/java/" class="open">Open →</a>
+      </div>
+      <div class="note">
+        <div class="note-top"><div class="note-badge"><svg viewBox="0 0 24 24" class="icon" style="width:20px;height:20px;"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div><div><h3>HackerRank Java</h3><span class="tag">Practice</span></div></div>
+        <p>Problem sets to sharpen OOP and logic building.</p>
+        <a href="https://www.hackerrank.com/domains/java" class="open">Open →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="claude">
+    <div class="section-head">
+      <h2>Claude AI</h2>
+      <p>First year ke assignments se lekar README polish karne tak, isi se hota hai sab kuch.</p>
+    </div>
+    <div class="board">
+      <div class="note">
+        <div class="note-top"><div class="note-badge"><svg viewBox="0 0 24 24" class="icon" style="width:20px;height:20px;"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v16H6.5A2.5 2.5 0 0 0 4 20.5"/><path d="M4 4.5v16A2.5 2.5 0 0 0 6.5 23H20"/></svg></div><div><h3>Claude Docs</h3><span class="tag">Docs</span></div></div>
+        <p>API reference, prompting guide, and platform docs.</p>
+        <a href="https://docs.claude.com" class="open">Open →</a>
+      </div>
+      <div class="note">
+        <div class="note-top"><div class="note-badge"><svg viewBox="0 0 24 24" class="icon" style="width:20px;height:20px;"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.5.4.8 1 .8 1.6V17h6.4v-.7c0-.6.3-1.2.8-1.6A7 7 0 0 0 12 2Z"/></svg></div><div><h3>Prompt Engineering</h3><span class="tag">Guide</span></div></div>
+        <p>Best practices for writing clear, effective prompts.</p>
+        <a href="https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview" class="open">Open →</a>
+      </div>
+      <div class="note">
+        <div class="note-top"><div class="note-badge"><svg viewBox="0 0 24 24" class="icon" style="width:20px;height:20px;"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="m4.9 4.9 4.2 4.2M14.9 14.9l4.2 4.2M19.1 4.9l-4.2 4.2M9.1 14.9l-4.2 4.2"/></svg></div><div><h3>Claude Support</h3><span class="tag">Support</span></div></div>
+        <p>How-tos and troubleshooting for the Claude apps.</p>
+        <a href="https://support.claude.com" class="open">Open →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="notes">
+    <div class="section-head">
+      <h2>Cheat Sheets</h2>
+      <p>Wahi 3 syntax jo har 2 mahine mein bhool jaati hoon.</p>
+    </div>
+    <div class="cheat-grid">
+      <div class="cheat-card">
+        <div class="cheat-head">flexbox.css</div>
+        <pre>.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}</pre>
+      </div>
+      <div class="cheat-card">
+        <div class="cheat-head">array_methods.js</div>
+        <pre>arr.map(x => x * 2)
+arr.filter(x => x > 5)
+arr.reduce((a,b) => a+b, 0)</pre>
+      </div>
+      <div class="cheat-card">
+        <div class="cheat-head">list_comp.py</div>
+        <pre>squares = [x**2 for x in range(10)]
+evens = [x for x in nums if x % 2 == 0]</pre>
+      </div>
+    </div>
+  </section>
+
+  <section id="locker">
+    <div class="section-head">
+      <h2>Daily Locker</h2>
+      <p>Chhota sa easter egg. Code daalo, kuch mera likha hua padho.</p>
+    </div>
+    <div class="locker-wrap">
+      <div class="locker-card">
+        <div id="locker-lock">
+          <div class="locker-icon"><svg viewBox="0 0 24 24" class="icon" style="width:28px;height:28px;"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+          <p>Aaj ka code kya hai?</p>
+          <input type="text" id="locker-input" class="locker-input" placeholder="code">
+          <br>
+          <button class="locker-btn" onclick="unlockLocker()">Unlock</button>
+          <div class="locker-error" id="locker-error"></div>
+          <div class="locker-hint">Hint: ye page kis language mein likha hai.</div>
+        </div>
+        <div id="locker-result" class="locker-result">
+          <div class="locker-icon"><svg viewBox="0 0 24 24" class="icon" style="width:28px;height:28px;"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-2"/></svg></div>
+          <p>Har bug ek life lesson hai jo mujhe 2am pe milta hai.</p>
+          <div class="locker-date" id="locker-date"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="foot-brand">
+      CodeVault
+      <p>Ye page maine banaya jab last time bookmarks dhundhte dhundhte 20 min waste ho gaye the.</p>
+    </div>
+    <div class="foot-cols">
+      <div>
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="#webdev">Web Dev</a></li>
+          <li><a href="#python">Python</a></li>
+          <li><a href="#java">Java</a></li>
+          <li><a href="#claude">Claude AI</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:chitrangna.dev@gmail.com">chitrangna.dev@gmail.com</a></li>
+          <li><a href="https://chitrangna.netlify.app">chitrangna.netlify.app</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">© 2026 — Chitrangna ne banaya, ek aur late night session mein.</div>
+  </footer>
+
+  <div class="notes-panel" id="notes-panel">
+    <h4><svg viewBox="0 0 24 24" class="icon" style="width:18px;height:18px;"><path d="M7 2h7l5 5v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z"/><path d="M14 2v5h5"/><path d="M8 13h8M8 17h5"/></svg> Sticky Notes</h4>
+    <div class="notes-input-row">
+      <input type="text" id="notes-input" class="notes-input" placeholder="quick note...">
+      <button class="notes-add" onclick="addNote()">Add</button>
+    </div>
+    <div id="notes-list"></div>
+  </div>
+
+  <div class="chat-panel" id="chat-panel">
+    <div class="chat-head">CodeVault Assistant</div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="chat-msg bot">Hii! Web dev, Python, Java ya Claude AI ke baare mein kuch poochho, main resources suggest kar dungi.</div>
+    </div>
+    <div class="chat-input-row">
+      <input type="text" id="chat-input" class="chat-input" placeholder="type something..." onkeydown="if(event.key==='Enter') sendChat()">
+      <button class="chat-send" onclick="sendChat()">→</button>
+    </div>
+  </div>
+
+  <div class="float-btns">
+    <button class="float-btn" id="theme-btn" onclick="toggleTheme()" title="Toggle dark/light"><svg viewBox="0 0 24 24" class="icon" id="theme-icon" style="width:19px;height:19px;vertical-align:-2px;"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></svg></button>
+    <button class="float-btn" onclick="toggleChatPanel()" title="Chat assistant"><svg viewBox="0 0 24 24" class="icon" style="width:19px;height:19px;vertical-align:-2px;"><path d="M4 4h16v11H8l-4 4V4Z"/></svg></button>
+    <button class="float-btn" id="notes-btn" onclick="toggleNotesPanel()" title="Sticky notes"><svg viewBox="0 0 24 24" class="icon" style="width:19px;height:19px;vertical-align:-2px;"><path d="M7 2h7l5 5v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z"/><path d="M14 2v5h5"/><path d="M8 13h8M8 17h5"/></svg></button>
+    <button class="float-btn" onclick="scrollToTop()" title="Back to top">↑</button>
+  </div>
+
+  <script>
+    // preloader locker
+    let unlocked = false;
+    function unlockPreloader(){
+      if(unlocked) return;
+      unlocked = true;
+      const card = document.getElementById('preloader-card');
+      const lock = document.getElementById('preloader-lock');
+      const text = document.getElementById('preloader-text');
+      const fill = document.getElementById('preloader-fill');
+      card.classList.add('unlocking');
+      lock.innerHTML = '<svg viewBox="0 0 24 24" class="icon" style="width:42px;height:42px;"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-2"/></svg>';
+      text.textContent = 'Ekdum ready!';
+      fill.style.width = '100%';
+      setTimeout(() => {
+        const pl = document.getElementById('preloader');
+        pl.classList.add('hide');
+        setTimeout(() => { pl.style.display = 'none'; }, 650);
+      }, 700);
+    }
+    // auto progress a little so it doesn't feel stuck if user waits
+    setTimeout(() => {
+      if(!unlocked) document.getElementById('preloader-fill').style.width = '55%';
+    }, 300);
+
+    function scrollToTop(){
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    const moonIcon = '<path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>';
+    const sunIcon = '<circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/>';
+    function toggleTheme(){
+      document.body.classList.toggle('dark');
+      const icon = document.getElementById('theme-icon');
+      icon.innerHTML = document.body.classList.contains('dark') ? sunIcon : moonIcon;
+    }
+
+    function toggleChatPanel(){
+      document.getElementById('chat-panel').classList.toggle('open');
+    }
+
+    function chatReply(msg){
+      const m = msg.toLowerCase();
+      const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+
+      if(m.includes('python')) return pick([
+        "Python ke liye #python section dekho — official docs, LeetCode aur CS50P hai wahan.",
+        "Python try kar rahi ho? #python section mein saara kaam ka stuff pinned hai."
+      ]);
+      if(m.includes('java') && !m.includes('javascript')) return pick([
+        "Java ke liye #java section mein Oracle docs, W3Schools aur HackerRank pinned hain.",
+        "OOP samajhna hai? #java section check karo, wahi resources hain jo mujhe kaam aaye."
+      ]);
+      if(m.includes('web') || m.includes('html') || m.includes('css') || m.includes('javascript') || m.includes('js')) return pick([
+        "Web dev ke liye #webdev section mein MDN, freeCodeCamp aur Frontend Mentor hai.",
+        "HTML-CSS-JS ke liye #webdev section dekho, sab kaam ka hai wahan."
+      ]);
+      if(m.includes('claude') || m.includes('ai')) return pick([
+        "Claude AI ke resources #claude section mein hain — docs, prompting guide, support.",
+        "AI wala kaam? #claude section mein docs aur prompting guide dono hain."
+      ]);
+      if(m.includes('cheat') || m.includes('syntax')) return pick([
+        "Cheat sheets #notes section mein hain — flexbox, array methods, list comprehensions.",
+        "Syntax bhool gayi? #notes section mein quick cheat sheets hain."
+      ]);
+      if(m.includes('locker') || m.includes('code')) return pick([
+        "Daily Locker mein ek chhota easter egg hai, code try karo!",
+        "Locker try kiya kya? Ek hint hai wahan already."
+      ]);
+      if(m.includes('hi') || m.includes('hello') || m.includes('hey')) return pick([
+        "Heyy! Bata, kaunsa resource dhoondh rahi ho?",
+        "Hii! Kya seekhna hai aaj?"
+      ]);
+      if(m.includes('thanks') || m.includes('thank')) return pick([
+        "Koi baat nahi! Aur kuch chahiye to poochho.",
+        "Anytime! Aur kuch help chahiye?"
+      ]);
+      return pick([
+        "Hmm, abhi mujhe iska exact jawab nahi pata — par webdev, python, java ya claude section try karo, kaam ka mil jayega.",
+        "Yeh wala mujhe nahi pata, par is baare mein GC ke owner Harsh se puch lena, wahi asli GOAT hai.",
+        "Iska jawab mere paas nahi hai abhi, upar ke sections mein dekh lo shayad mil jaye."
+      ]);
+    }
+
+    function sendChat(){
+      const input = document.getElementById('chat-input');
+      const val = input.value.trim();
+      if(!val) return;
+      const box = document.getElementById('chat-messages');
+      box.insertAdjacentHTML('beforeend', `<div class="chat-msg user">${escapeHtml(val)}</div>`);
+      input.value = '';
+      box.scrollTop = box.scrollHeight;
+      setTimeout(() => {
+        box.insertAdjacentHTML('beforeend', `<div class="chat-msg bot">${escapeHtml(chatReply(val))}</div>`);
+        box.scrollTop = box.scrollHeight;
+      }, 400);
+    }
+
+    function toggleNotesPanel(){
+      document.getElementById('notes-panel').classList.toggle('open');
+      renderNotes();
+    }
+
+    function getNotes(){
+      try{
+        return JSON.parse(localStorage.getItem('codevault-notes') || '[]');
+      } catch(e){ return []; }
+    }
+
+    function saveNotes(notes){
+      localStorage.setItem('codevault-notes', JSON.stringify(notes));
+    }
+
+    function addNote(){
+      const input = document.getElementById('notes-input');
+      const val = input.value.trim();
+      if(!val) return;
+      const notes = getNotes();
+      notes.unshift(val);
+      saveNotes(notes);
+      input.value = '';
+      renderNotes();
+    }
+
+    function deleteNote(i){
+      const notes = getNotes();
+      notes.splice(i,1);
+      saveNotes(notes);
+      renderNotes();
+    }
+
+    let editingIndex = null;
+
+    function editNote(i){
+      editingIndex = i;
+      renderNotes();
+    }
+
+    function saveEditedNote(i){
+      const input = document.getElementById('edit-input-' + i);
+      const notes = getNotes();
+      const val = input.value.trim();
+      if(val) notes[i] = val;
+      saveNotes(notes);
+      editingIndex = null;
+      renderNotes();
+    }
+
+    function renderNotes(){
+      const list = document.getElementById('notes-list');
+      const notes = getNotes();
+      if(notes.length === 0){
+        list.innerHTML = '<div class="notes-empty">Koi note nahi hai abhi, kuch likho!</div>';
+        return;
+      }
+      list.innerHTML = notes.map((n,i) => {
+        if(editingIndex === i){
+          return `<div class="sticky-note">
+            <input type="text" id="edit-input-${i}" class="notes-input" value="${escapeHtml(n)}" style="width:100%; margin-bottom:6px;">
+            <button class="notes-add" onclick="saveEditedNote(${i})">Save as note</button>
+          </div>`;
+        }
+        return `<div class="sticky-note">${escapeHtml(n)}
+          <span class="del" onclick="deleteNote(${i})"><svg viewBox="0 0 24 24" class="icon" style="width:13px;height:13px;stroke-width:2.4;"><path d="M18 6 6 18M6 6l12 12"/></svg></span>
+          <span class="edit" onclick="editNote(${i})"><svg viewBox="0 0 24 24" class="icon" style="width:13px;height:13px;stroke-width:2.2;"><path d="m4 16 1-4L15.5 2.5a2 2 0 0 1 2.8 0l1.2 1.2a2 2 0 0 1 0 2.8L9 17l-4 1Z"/></svg></span>
+        </div>`;
+      }).join('');
+    }
+
+    function escapeHtml(str){
+      const d = document.createElement('div');
+      d.textContent = str;
+      return d.innerHTML;
+    }
+
+    renderNotes();
+
+    function unlockLocker(){
+      const val = document.getElementById('locker-input').value.trim().toLowerCase();
+      const err = document.getElementById('locker-error');
+      if(val === 'javascript' || val === 'js'){
+        document.getElementById('locker-lock').style.display = 'none';
+        document.getElementById('locker-result').classList.add('show');
+        document.getElementById('locker-date').textContent = new Date().toDateString();
+        err.textContent = '';
+      } else {
+        err.textContent = 'Galat code, try again.';
+      }
+    }
+  </script>
+</body>
 </html>
