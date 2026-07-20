@@ -2,11 +2,15 @@
 
 # 👋 Hi, I'm Satyam Kumar
 
-### 🎓 BCA Student | ☕ Java Developer | 🌐 Frontend Web Developer
+### 🎓 BCA Student • ☕ Java Developer • 🌐 Frontend Web Developer
 
-<img src="https://readme-typing-svg.demolab.com?font=Poppins&weight=600&size=24&duration=3000&pause=1000&color=00C853&center=true&vCenter=true&width=700&lines=BCA+Student;Java+Developer;Frontend+Web+Developer;Building+Responsive+Websites;Future+Full+Stack+Developer" />
+<img src="https://readme-typing-svg.demolab.com?font=Poppins&weight=600&size=26&pause=1200&color=22C55E&center=true&vCenter=true&width=700&lines=Building+Modern+Web+Applications;Java+Developer;Frontend+Web+Developer;Learning+Full+Stack+Development;Always+Learning+Something+New" />
 
-<img src="https://komarev.com/ghpvc/?username=code-with-mishraji&label=Profile+Views&color=00C853&style=for-the-badge"/>
+<p>
+<img src="https://komarev.com/ghpvc/?username=code-with-mishraji&label=Profile%20Views&style=for-the-badge&color=22C55E"/>
+<img src="https://img.shields.io/github/followers/code-with-mishraji?style=for-the-badge&logo=github&color=22C55E"/>
+<img src="https://img.shields.io/github/stars/code-with-mishraji?affiliations=OWNER&style=for-the-badge&color=22C55E"/>
+</p>
 
 </div>
 
@@ -16,101 +20,102 @@
 
 🎓 Pursuing **Bachelor of Computer Applications (BCA)**
 
-💻 Passionate about **Java** and **Web Development**
+💻 Passionate about **Java** and **Frontend Web Development**
 
-🌱 Currently learning **Full Stack Development**
+🚀 I enjoy building responsive, user-friendly and visually appealing web applications.
 
-🚀 Love creating responsive and modern web applications.
+🛒 Hands-on experience building real-world clones like:
 
-🛍️ Built multiple real-world frontend projects including:
+- Amazon Clone
+- Flipkart Clone
+- Netflix Clone
+- Spotify Clone
+- Responsive Portfolio Website
 
-- 🛒 Amazon Clone
-- 🛍️ Flipkart Clone
-- 🎬 Netflix Clone
-- 💼 Portfolio Website
-- 📱 Responsive Landing Pages
-- ☕ Java Console Applications
+🌱 Currently learning:
 
-🎯 **Goal:** Become a skilled Full Stack Developer and build impactful digital products.
-
----
-
-# 🚀 Tech Stack
-
-### 👨‍💻 Languages
-
-<p align="center">
-<img src="https://skillicons.dev/icons?i=java,html,css,js"/>
-</p>
-
-### 🛠️ Tools & Technologies
-
-<p align="center">
-<img src="https://skillicons.dev/icons?i=git,github,vscode"/>
-</p>
-
----
-
-# 📌 Featured Projects
-
-✨ Amazon Clone
-
-✨ Flipkart Clone
-
-✨ Netflix Clone
-
-✨ Responsive Portfolio Website
-
-✨ Java Mini Projects
-
----
-
-# 📚 Currently Learning
-
-- JavaScript (Advanced)
 - React.js
 - Node.js
 - Express.js
 - MongoDB
-- Git & GitHub
+
+🎯 **Career Goal**
+
+Become a Full Stack Developer and contribute to impactful software products.
 
 ---
 
-# 📊 GitHub Stats
+# ⚡ Tech Stack
+
+<div align="center">
+
+<img src="https://skillicons.dev/icons?i=java,html,css,js,react,nodejs,express,mongodb,git,github,vscode"/>
+
+</div>
+
+---
+
+# 🚀 Featured Projects
+
+| Project | Description |
+|---------|-------------|
+| 🛒 Amazon Clone | Responsive e-commerce UI inspired by Amazon |
+| 🛍 Flipkart Clone | Modern Flipkart homepage clone |
+| 🎬 Netflix Clone | Streaming platform landing page |
+| 💼 Portfolio | Personal responsive portfolio |
+| ☕ Java Projects | Console applications using Java |
+
+---
+
+# 📈 GitHub Analytics
 
 <p align="center">
 
-<img height="170" src="https://github-readme-stats.vercel.app/api?username=code-with-mishraji&show_icons=true&theme=transparent"/>
+<img height="170" src="https://github-readme-stats.vercel.app/api?username=code-with-mishraji&show_icons=true&hide_border=true"/>
 
-<img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=code-with-mishraji&layout=compact&theme=transparent"/>
+<img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=code-with-mishraji&layout=compact&hide_border=true"/>
 
 </p>
 
 <p align="center">
 
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=code-with-mishraji&theme=transparent"/>
+<img src="https://github-readme-streak-stats.herokuapp.com/?user=code-with-mishraji&hide_border=true"/>
 
 </p>
 
 ---
 
-# 🏆 GitHub Trophies
+# 🏆 GitHub Achievements
 
 <p align="center">
 
-<img src="https://github-profile-trophy.vercel.app/?username=code-with-mishraji&theme=flat&no-frame=true&margin-w=15"/>
+<img src="https://github-profile-trophy.vercel.app/?username=code-with-mishraji&theme=flat&no-frame=true&column=4"/>
 
 </p>
 
 ---
 
-# 📈 Contribution Graph
+# 📊 Contribution Graph
 
 <p align="center">
 
 <img src="https://github-readme-activity-graph.vercel.app/graph?username=code-with-mishraji&theme=github-compact"/>
 
 </p>
+
+---
+
+# 🌟 Current Focus
+
+✔ Building responsive web applications
+
+✔ Improving Java programming skills
+
+✔ Learning Full Stack Development
+
+✔ Exploring Open Source
+
+✔ Practicing Data Structures & Algorithms
 
 ---
 
@@ -130,16 +135,10 @@
 
 ---
 
-# 💡 Quote
-
-> **"Great developers aren't born—they build, learn, fail, improve, and repeat."**
-
----
-
 <div align="center">
 
-### ⭐ Thanks for visiting my profile!
+### 💚 "Every project is a step toward becoming a better developer."
 
-If you like my work, don't forget to ⭐ my repositories.
+⭐ Thanks for visiting my profile!
 
 </div>
